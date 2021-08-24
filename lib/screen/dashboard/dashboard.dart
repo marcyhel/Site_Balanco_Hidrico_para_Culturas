@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:awesome_dropdown/awesome_dropdown.dart';
+import 'package:plat11/screen/dashboard/comp/dropDown.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -6,35 +8,10 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.amber,
+      color: Theme.of(context).backgroundColor,
       child: SingleChildScrollView(
           child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            color: Colors.red,
-            height: 500,
-            width: 50,
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            color: Colors.red,
-            height: 500,
-            width: 50,
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            color: Colors.red,
-            height: 500,
-            width: 50,
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            color: Colors.red,
-            height: 500,
-            width: 50,
-          ),
-        ],
+        children: [DropDown()],
       )),
     );
   }

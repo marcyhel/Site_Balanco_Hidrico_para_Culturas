@@ -2,24 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:plat11/screen/principal.dart';
 
 import 'dart:convert'; // Contains the JSON encoder
-
-import 'package:http/http.dart'; // Contains a client for making API calls
+import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
+import 'package:http/http.dart' as http;
 import 'package:html/parser.dart'; // Contains HTML parsers to generate a Document object
-import 'package:html/dom.dart'; // Contains DOM related classes for extracting data from elements
+import 'package:html/dom.dart';
+import 'package:plat11/util/themes.dart'; // Contains DOM related classes for extracting data from elements
 
-void get() async {
-  print("**********");
-  var client = Client();
-  Response response = await client
-      .get('https://apitempo.inmet.gov.br/condicao/capitais/2020-10-12');
+class Climas {
+  final String TMIN18;
+  final String TMAX18;
+  final String UMIN18;
+  final String PMAX12;
 
-  var js = json.decode(response.body);
-  print(js);
+  final String nome;
+
+  Climas({
+    required this.TMIN18,
+    required this.TMAX18,
+    required this.UMIN18,
+    required this.PMAX12,
+    required this.nome,
+  });
+
+  factory Climas.fromJson(Map<String, dynamic> json) {
+    return Climas(
+      TMIN18: json['TMIN18'],
+      TMAX18: json['TMAX18'],
+      UMIN18: json['UMIN18'],
+      PMAX12: json['PMAX12'],
+      nome: json['nome'],
+    );
+  }
 }
 
-void main() {
-  get();
-  runApp(const MyApp());
+Future<List<Climas>> getJason() async {
+  List<Climas> _postList = [];
+  final response = await http
+      .get('https://apitempo.inmet.gov.br/condicao/capitais/2020-10-12');
+
+  List<dynamic> values = [];
+  values = json.decode(response.body);
+  //print(values);
+  if (response.statusCode == 200) {
+    if (values.length > 0) {
+      for (int i = 0; i < values.length; i++) {
+        if (values[i] != null) {
+          Map<String, dynamic> map = values[i];
+
+          _postList.add(Climas(
+            nome: map['CAPITAL'],
+            TMAX18: map['TMAX18'],
+            TMIN18: map['TMIN18'],
+            PMAX12: map['PMAX12'],
+            UMIN18: map['UMIN18'],
+          ));
+        }
+      }
+    }
+  }
+  return _postList;
+}
+
+void main() async {
+  List<Climas> lista = await getJason();
+  print("**********");
+  print(lista.length);
+  print(lista[0].TMIN18);
+  print("**********");
+  runApp(EasyDynamicThemeWidget(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,18 +80,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightThemeData,
+      darkTheme: darkThemeData,
+      themeMode: EasyDynamicTheme.of(context).themeMode,
       home: Principal(),
     );
   }
