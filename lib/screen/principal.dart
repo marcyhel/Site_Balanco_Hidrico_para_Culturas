@@ -98,7 +98,7 @@ class _PrincipalState extends State<Principal> {
             } else {
               avatar = avatarImgDark;
             }
-            setState(() {});
+            //setState(() {});
 
             /*ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));*/

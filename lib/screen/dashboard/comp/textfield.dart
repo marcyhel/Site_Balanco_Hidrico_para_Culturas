@@ -12,7 +12,7 @@ class _CustonTextFieldState extends State<CustonTextField> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
-      width: 150,
+      width: MediaQuery.of(context).size.width / 1.8,
       child: TextFormField(
         decoration: InputDecoration(
           isDense: true,

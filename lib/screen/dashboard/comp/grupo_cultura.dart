@@ -4,47 +4,18 @@ import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_dropdown/smart_dropdown.dart';
 
-class DropDown extends StatefulWidget {
-  DropDown({Key? key}) : super(key: key);
+class GrupoCultura extends StatefulWidget {
+  GrupoCultura({Key? key}) : super(key: key);
 
   @override
-  _DropDownState createState() => _DropDownState();
+  _GrupoCulturaState createState() => _GrupoCulturaState();
 }
 
-var UF = [
-  "AC",
-  "AL",
-  "AP",
-  "AM",
-  "BA",
-  "CE",
-  "DF",
-  "ES",
-  "GO",
-  "MA",
-  "MT",
-  "MS",
-  "MG",
-  "PA",
-  "PB",
-  "PR",
-  "PE",
-  "PI",
-  "RJ",
-  "RN",
-  "RS",
-  "RO",
-  "RR",
-  "SC",
-  "SP",
-  "SE",
-  "TO",
-];
+var UF = ["Grupo 1", "Grupo 2", "Grupo 3", "Grupo 4"];
 
-class _DropDownState extends State<DropDown> {
+class _GrupoCulturaState extends State<GrupoCultura> {
   String selec = UF[0];
   List<SmartDropdownMenuItem> items = [];
-
   SmartDropdownMenuItem getItem(dynamic value, String item) {
     return SmartDropdownMenuItem(
         value: value,
@@ -78,7 +49,7 @@ class _DropDownState extends State<DropDown> {
       height: 40,
       child: SmartDropDown(
         items: items,
-        hintText: "UF",
+        hintText: "Grupo",
         borderRadius: 10,
         maxListHeight: 150,
         borderColor: Theme.of(context).primaryColor,
