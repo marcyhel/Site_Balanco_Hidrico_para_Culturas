@@ -93,8 +93,7 @@ class _PrincipalState extends State<Principal> {
           onTitleTap: () {
             EasyDynamicTheme.of(context).changeTheme();
 
-            if (EasyDynamicTheme.of(context).themeMode == ThemeMode.light ||
-                EasyDynamicTheme.of(context).themeMode == ThemeMode.system) {
+            if (EasyDynamicTheme.of(context).themeMode == ThemeMode.light) {
               avatar = avatarImg;
             } else {
               avatar = avatarImgDark;

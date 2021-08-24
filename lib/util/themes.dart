@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 var lightThemeData = ThemeData(
+  primaryColor: Colors.grey,
   primarySwatch: Colors.blueGrey,
   backgroundColor: Colors.white,
   cardColor: Colors.blueGrey[50],
@@ -23,6 +24,7 @@ var lightThemeData = ThemeData(
 );
 
 var darkThemeData = ThemeData(
+  primaryColor: Colors.grey,
   primarySwatch: Colors.blueGrey,
   backgroundColor: Colors.blueGrey[900],
   cardColor: Colors.grey[900],

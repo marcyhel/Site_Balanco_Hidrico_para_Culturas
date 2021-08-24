@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   collapsible_sidebar: ^2.0.1
   awesome_dropdown: ^0.0.4
-  
+  smart_dropdown: ^1.0.0
   easy_dynamic_theme: ^2.0.0
 
   html: ^0.13.3+3
