@@ -10,7 +10,7 @@ class TextLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 10, top: 15, bottom: 0),
+      margin: EdgeInsets.only(left: 10, top: 10, bottom: 0),
       child: Text(
         texto,
         style: Theme.of(context).textTheme.subtitle1,
@@ -29,7 +29,7 @@ class TextLabelTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 10, top: 15, bottom: 0),
+      margin: EdgeInsets.only(left: 10, top: 10, bottom: 0),
       child: Text(
         texto,
         style: TextStyle(

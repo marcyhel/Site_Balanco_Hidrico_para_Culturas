@@ -10,7 +10,7 @@ class Mob_dados = _Mob_dados with _$Mob_dados;
 abstract class _Mob_dados with Store {
   _Mob_dados() {
     autorun((_) {
-      print(estado);
+      print(grup_culura);
     });
   }
   @observable

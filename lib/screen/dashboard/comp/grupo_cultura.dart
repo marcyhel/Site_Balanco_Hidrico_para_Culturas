@@ -2,6 +2,8 @@ import 'package:awesome_dropdown/awesome_dropdown.dart';
 
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:smart_dropdown/smart_dropdown.dart';
 
 class GrupoCultura extends StatefulWidget {
@@ -12,6 +14,7 @@ class GrupoCultura extends StatefulWidget {
 }
 
 var UF = ["Grupo 1", "Grupo 2", "Grupo 3", "Grupo 4"];
+final Mob_dados mob = GetIt.I<Mob_dados>();
 
 class _GrupoCulturaState extends State<GrupoCultura> {
   String selec = UF[0];
@@ -49,13 +52,13 @@ class _GrupoCulturaState extends State<GrupoCultura> {
       height: 40,
       child: SmartDropDown(
         items: items,
-        hintText: "Grupo",
+        hintText: mob.grup_culura == "" ? "Grupo" : mob.grup_culura,
         borderRadius: 10,
         maxListHeight: 150,
         borderColor: Theme.of(context).primaryColor,
         expandedColor: Theme.of(context).primaryColor,
         onChanged: (e) {
-          print(e);
+          mob.setGrup_cultura(UF[e - 1]);
         },
       ),
     );

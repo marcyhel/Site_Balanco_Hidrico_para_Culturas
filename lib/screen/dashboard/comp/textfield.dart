@@ -17,7 +17,7 @@ class _CustonTextFieldState extends State<CustonTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(5),
       width: MediaQuery.of(context).size.width / 1.8,
       child: TextFormField(
         initialValue: widget.valor,

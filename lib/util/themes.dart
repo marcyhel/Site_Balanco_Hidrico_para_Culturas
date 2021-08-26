@@ -4,7 +4,7 @@ var lightThemeData = ThemeData(
   primaryColor: Colors.grey,
   primarySwatch: Colors.blueGrey,
   backgroundColor: Colors.white,
-  cardColor: Colors.blueGrey[50],
+  cardColor: Colors.white,
   primaryTextTheme: TextTheme(
     button: TextStyle(
       color: Colors.blueGrey,
@@ -27,7 +27,7 @@ var darkThemeData = ThemeData(
   primaryColor: Colors.grey,
   primarySwatch: Colors.blueGrey,
   backgroundColor: Colors.blueGrey[900],
-  cardColor: Colors.grey[900],
+  cardColor: Colors.blueGrey[800],
   primaryTextTheme: TextTheme(
     button: TextStyle(
       color: Colors.blueGrey[200],
