@@ -2,6 +2,8 @@ import 'package:awesome_dropdown/awesome_dropdown.dart';
 
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:smart_dropdown/smart_dropdown.dart';
 
 class DropDown extends StatefulWidget {
@@ -40,6 +42,7 @@ var UF = [
   "SE",
   "TO",
 ];
+final Mob_dados mob = GetIt.I<Mob_dados>();
 
 class _DropDownState extends State<DropDown> {
   String selec = UF[0];
@@ -78,13 +81,13 @@ class _DropDownState extends State<DropDown> {
       height: 40,
       child: SmartDropDown(
         items: items,
-        hintText: "UF",
+        hintText: mob.estado == "" ? "UF" : mob.estado,
         borderRadius: 10,
         maxListHeight: 150,
         borderColor: Theme.of(context).primaryColor,
         expandedColor: Theme.of(context).primaryColor,
         onChanged: (e) {
-          print(e);
+          mob.setEstado(UF[e - 1]);
         },
       ),
     );

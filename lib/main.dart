@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:plat11/screen/principal.dart';
 
 import 'dart:convert'; // Contains the JSON encoder
@@ -64,12 +66,17 @@ Future<List<Climas>> getJason() async {
 }
 
 void main() async {
+  singletonsApp();
   List<Climas> lista = await getJason();
   print("**********");
   print(lista.length);
   print(lista[0].TMIN18);
   print("**********");
   runApp(EasyDynamicThemeWidget(child: MyApp()));
+}
+
+void singletonsApp() {
+  GetIt.I.registerSingleton(Mob_dados());
 }
 
 class MyApp extends StatelessWidget {
