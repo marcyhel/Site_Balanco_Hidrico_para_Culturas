@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 
@@ -10,9 +11,21 @@ class Mob_dados = _Mob_dados with _$Mob_dados;
 abstract class _Mob_dados with Store {
   _Mob_dados() {
     autorun((_) {
-      print(grup_culura);
+      var lis = calculateDaysInterval(
+          DateTime(DateTime.now().year - 2, DateTime.now().month,
+              DateTime.now().day),
+          DateTime.now());
+      print(lis);
     });
   }
+  List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
+    List<DateTime> days = [];
+    for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
+      days.add(startDate.add(Duration(days: i)));
+    }
+    return days;
+  }
+
   @observable
   String estado = "";
   @observable

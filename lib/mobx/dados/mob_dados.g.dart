@@ -178,6 +178,649 @@ mixin _$Mob_dados on _Mob_dados, Store {
     });
   }
 
+  final _$est_kcAtom = Atom(name: '_Mob_dados.est_kc');
+
+  @override
+  String get est_kc {
+    _$est_kcAtom.reportRead();
+    return super.est_kc;
+  }
+
+  @override
+  set est_kc(String value) {
+    _$est_kcAtom.reportWrite(value, super.est_kc, () {
+      super.est_kc = value;
+    });
+  }
+
+  final _$est_kyAtom = Atom(name: '_Mob_dados.est_ky');
+
+  @override
+  String get est_ky {
+    _$est_kyAtom.reportRead();
+    return super.est_ky;
+  }
+
+  @override
+  set est_ky(String value) {
+    _$est_kyAtom.reportWrite(value, super.est_ky, () {
+      super.est_ky = value;
+    });
+  }
+
+  final _$est_iafAtom = Atom(name: '_Mob_dados.est_iaf');
+
+  @override
+  String get est_iaf {
+    _$est_iafAtom.reportRead();
+    return super.est_iaf;
+  }
+
+  @override
+  set est_iaf(String value) {
+    _$est_iafAtom.reportWrite(value, super.est_iaf, () {
+      super.est_iaf = value;
+    });
+  }
+
+  final _$est_cadAtom = Atom(name: '_Mob_dados.est_cad');
+
+  @override
+  String get est_cad {
+    _$est_cadAtom.reportRead();
+    return super.est_cad;
+  }
+
+  @override
+  set est_cad(String value) {
+    _$est_cadAtom.reportWrite(value, super.est_cad, () {
+      super.est_cad = value;
+    });
+  }
+
+  final _$des_kcAtom = Atom(name: '_Mob_dados.des_kc');
+
+  @override
+  String get des_kc {
+    _$des_kcAtom.reportRead();
+    return super.des_kc;
+  }
+
+  @override
+  set des_kc(String value) {
+    _$des_kcAtom.reportWrite(value, super.des_kc, () {
+      super.des_kc = value;
+    });
+  }
+
+  final _$des_kyAtom = Atom(name: '_Mob_dados.des_ky');
+
+  @override
+  String get des_ky {
+    _$des_kyAtom.reportRead();
+    return super.des_ky;
+  }
+
+  @override
+  set des_ky(String value) {
+    _$des_kyAtom.reportWrite(value, super.des_ky, () {
+      super.des_ky = value;
+    });
+  }
+
+  final _$des_iafAtom = Atom(name: '_Mob_dados.des_iaf');
+
+  @override
+  String get des_iaf {
+    _$des_iafAtom.reportRead();
+    return super.des_iaf;
+  }
+
+  @override
+  set des_iaf(String value) {
+    _$des_iafAtom.reportWrite(value, super.des_iaf, () {
+      super.des_iaf = value;
+    });
+  }
+
+  final _$des_cadAtom = Atom(name: '_Mob_dados.des_cad');
+
+  @override
+  String get des_cad {
+    _$des_cadAtom.reportRead();
+    return super.des_cad;
+  }
+
+  @override
+  set des_cad(String value) {
+    _$des_cadAtom.reportWrite(value, super.des_cad, () {
+      super.des_cad = value;
+    });
+  }
+
+  final _$flo_kcAtom = Atom(name: '_Mob_dados.flo_kc');
+
+  @override
+  String get flo_kc {
+    _$flo_kcAtom.reportRead();
+    return super.flo_kc;
+  }
+
+  @override
+  set flo_kc(String value) {
+    _$flo_kcAtom.reportWrite(value, super.flo_kc, () {
+      super.flo_kc = value;
+    });
+  }
+
+  final _$flo_kyAtom = Atom(name: '_Mob_dados.flo_ky');
+
+  @override
+  String get flo_ky {
+    _$flo_kyAtom.reportRead();
+    return super.flo_ky;
+  }
+
+  @override
+  set flo_ky(String value) {
+    _$flo_kyAtom.reportWrite(value, super.flo_ky, () {
+      super.flo_ky = value;
+    });
+  }
+
+  final _$flo_iafAtom = Atom(name: '_Mob_dados.flo_iaf');
+
+  @override
+  String get flo_iaf {
+    _$flo_iafAtom.reportRead();
+    return super.flo_iaf;
+  }
+
+  @override
+  set flo_iaf(String value) {
+    _$flo_iafAtom.reportWrite(value, super.flo_iaf, () {
+      super.flo_iaf = value;
+    });
+  }
+
+  final _$flo_cadAtom = Atom(name: '_Mob_dados.flo_cad');
+
+  @override
+  String get flo_cad {
+    _$flo_cadAtom.reportRead();
+    return super.flo_cad;
+  }
+
+  @override
+  set flo_cad(String value) {
+    _$flo_cadAtom.reportWrite(value, super.flo_cad, () {
+      super.flo_cad = value;
+    });
+  }
+
+  final _$fru_kcAtom = Atom(name: '_Mob_dados.fru_kc');
+
+  @override
+  String get fru_kc {
+    _$fru_kcAtom.reportRead();
+    return super.fru_kc;
+  }
+
+  @override
+  set fru_kc(String value) {
+    _$fru_kcAtom.reportWrite(value, super.fru_kc, () {
+      super.fru_kc = value;
+    });
+  }
+
+  final _$fru_kyAtom = Atom(name: '_Mob_dados.fru_ky');
+
+  @override
+  String get fru_ky {
+    _$fru_kyAtom.reportRead();
+    return super.fru_ky;
+  }
+
+  @override
+  set fru_ky(String value) {
+    _$fru_kyAtom.reportWrite(value, super.fru_ky, () {
+      super.fru_ky = value;
+    });
+  }
+
+  final _$fru_iafAtom = Atom(name: '_Mob_dados.fru_iaf');
+
+  @override
+  String get fru_iaf {
+    _$fru_iafAtom.reportRead();
+    return super.fru_iaf;
+  }
+
+  @override
+  set fru_iaf(String value) {
+    _$fru_iafAtom.reportWrite(value, super.fru_iaf, () {
+      super.fru_iaf = value;
+    });
+  }
+
+  final _$fru_cadAtom = Atom(name: '_Mob_dados.fru_cad');
+
+  @override
+  String get fru_cad {
+    _$fru_cadAtom.reportRead();
+    return super.fru_cad;
+  }
+
+  @override
+  set fru_cad(String value) {
+    _$fru_cadAtom.reportWrite(value, super.fru_cad, () {
+      super.fru_cad = value;
+    });
+  }
+
+  final _$mat_kcAtom = Atom(name: '_Mob_dados.mat_kc');
+
+  @override
+  String get mat_kc {
+    _$mat_kcAtom.reportRead();
+    return super.mat_kc;
+  }
+
+  @override
+  set mat_kc(String value) {
+    _$mat_kcAtom.reportWrite(value, super.mat_kc, () {
+      super.mat_kc = value;
+    });
+  }
+
+  final _$mat_kyAtom = Atom(name: '_Mob_dados.mat_ky');
+
+  @override
+  String get mat_ky {
+    _$mat_kyAtom.reportRead();
+    return super.mat_ky;
+  }
+
+  @override
+  set mat_ky(String value) {
+    _$mat_kyAtom.reportWrite(value, super.mat_ky, () {
+      super.mat_ky = value;
+    });
+  }
+
+  final _$mat_iafAtom = Atom(name: '_Mob_dados.mat_iaf');
+
+  @override
+  String get mat_iaf {
+    _$mat_iafAtom.reportRead();
+    return super.mat_iaf;
+  }
+
+  @override
+  set mat_iaf(String value) {
+    _$mat_iafAtom.reportWrite(value, super.mat_iaf, () {
+      super.mat_iaf = value;
+    });
+  }
+
+  final _$mat_cadAtom = Atom(name: '_Mob_dados.mat_cad');
+
+  @override
+  String get mat_cad {
+    _$mat_cadAtom.reportRead();
+    return super.mat_cad;
+  }
+
+  @override
+  set mat_cad(String value) {
+    _$mat_cadAtom.reportWrite(value, super.mat_cad, () {
+      super.mat_cad = value;
+    });
+  }
+
+  final _$_Mob_dadosActionController = ActionController(name: '_Mob_dados');
+
+  @override
+  void setEstado(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setEstado');
+    try {
+      return super.setEstado(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCad_min(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setCad_min');
+    try {
+      return super.setCad_min(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGrup_cultura(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setGrup_cultura');
+    try {
+      return super.setGrup_cultura(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGd(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setGd');
+    try {
+      return super.setGd(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTemp_base(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setTemp_base');
+    try {
+      return super.setTemp_base(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setNeg_acumulado_inicial(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setNeg_acumulado_inicial');
+    try {
+      return super.setNeg_acumulado_inicial(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setArmazenameto_inicial(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setArmazenameto_inicial');
+    try {
+      return super.setArmazenameto_inicial(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setUmidade_colheita(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setUmidade_colheita');
+    try {
+      return super.setUmidade_colheita(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIndice_colheita(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setIndice_colheita');
+    try {
+      return super.setIndice_colheita(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setA(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setA');
+    try {
+      return super.setA(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setB(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setB');
+    try {
+      return super.setB(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEst_kc(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setEst_kc');
+    try {
+      return super.setEst_kc(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEst_ky(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setEst_ky');
+    try {
+      return super.setEst_ky(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEst_iaf(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setEst_iaf');
+    try {
+      return super.setEst_iaf(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEst_cad(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setEst_cad');
+    try {
+      return super.setEst_cad(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDes_kc(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setDes_kc');
+    try {
+      return super.setDes_kc(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDes_ky(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setDes_ky');
+    try {
+      return super.setDes_ky(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDes_iaf(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setDes_iaf');
+    try {
+      return super.setDes_iaf(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDes_cad(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setDes_cad');
+    try {
+      return super.setDes_cad(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFlo_kc(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFlo_kc');
+    try {
+      return super.setFlo_kc(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFlo_ky(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFlo_ky');
+    try {
+      return super.setFlo_ky(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFlo_iaf(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFlo_iaf');
+    try {
+      return super.setFlo_iaf(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFlo_cad(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFlo_cad');
+    try {
+      return super.setFlo_cad(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFru_kc(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFru_kc');
+    try {
+      return super.setFru_kc(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFru_ky(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFru_ky');
+    try {
+      return super.setFru_ky(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFru_iaf(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFru_iaf');
+    try {
+      return super.setFru_iaf(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFru_cad(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setFru_cad');
+    try {
+      return super.setFru_cad(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMat_kc(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setMat_kc');
+    try {
+      return super.setMat_kc(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMat_ky(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setMat_ky');
+    try {
+      return super.setMat_ky(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMat_iaf(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setMat_iaf');
+    try {
+      return super.setMat_iaf(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMat_cad(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setMat_cad');
+    try {
+      return super.setMat_cad(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
@@ -191,7 +834,27 @@ armazenamento_inicial: ${armazenamento_inicial},
 umidade_colhida: ${umidade_colhida},
 indice_colheita: ${indice_colheita},
 a: ${a},
-b: ${b}
+b: ${b},
+est_kc: ${est_kc},
+est_ky: ${est_ky},
+est_iaf: ${est_iaf},
+est_cad: ${est_cad},
+des_kc: ${des_kc},
+des_ky: ${des_ky},
+des_iaf: ${des_iaf},
+des_cad: ${des_cad},
+flo_kc: ${flo_kc},
+flo_ky: ${flo_ky},
+flo_iaf: ${flo_iaf},
+flo_cad: ${flo_cad},
+fru_kc: ${fru_kc},
+fru_ky: ${fru_ky},
+fru_iaf: ${fru_iaf},
+fru_cad: ${fru_cad},
+mat_kc: ${mat_kc},
+mat_ky: ${mat_ky},
+mat_iaf: ${mat_iaf},
+mat_cad: ${mat_cad}
     ''';
   }
 }
