@@ -18,7 +18,7 @@ var lightThemeData = ThemeData(
     ),
     headline1: TextStyle(color: Colors.blueGrey[800]),
   ),
-  bottomAppBarColor: Color(0xffBF5E66),
+  bottomAppBarColor: Colors.blueGrey.withAlpha(50),
   iconTheme: IconThemeData(color: Colors.blueGrey),
   brightness: Brightness.light,
 );
@@ -43,7 +43,7 @@ var darkThemeData = ThemeData(
       color: Colors.white70,
     ),
   ),
-  bottomAppBarColor: Colors.grey[900],
+  bottomAppBarColor: Colors.blueGrey[700],
   iconTheme: IconThemeData(color: Colors.blueGrey[200]),
   brightness: Brightness.dark,
 );

@@ -9,6 +9,36 @@ part of 'mob_dados.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Mob_dados on _Mob_dados, Store {
+  final _$carregaAtom = Atom(name: '_Mob_dados.carrega');
+
+  @override
+  bool get carrega {
+    _$carregaAtom.reportRead();
+    return super.carrega;
+  }
+
+  @override
+  set carrega(bool value) {
+    _$carregaAtom.reportWrite(value, super.carrega, () {
+      super.carrega = value;
+    });
+  }
+
+  final _$datasAtom = Atom(name: '_Mob_dados.datas');
+
+  @override
+  List<DataClima> get datas {
+    _$datasAtom.reportRead();
+    return super.datas;
+  }
+
+  @override
+  set datas(List<DataClima> value) {
+    _$datasAtom.reportWrite(value, super.datas, () {
+      super.datas = value;
+    });
+  }
+
   final _$estadoAtom = Atom(name: '_Mob_dados.estado');
 
   @override
@@ -478,6 +508,13 @@ mixin _$Mob_dados on _Mob_dados, Store {
     });
   }
 
+  final _$carregarAsyncAction = AsyncAction('_Mob_dados.carregar');
+
+  @override
+  Future<void> carregar() {
+    return _$carregarAsyncAction.run(() => super.carregar());
+  }
+
   final _$_Mob_dadosActionController = ActionController(name: '_Mob_dados');
 
   @override
@@ -824,6 +861,8 @@ mixin _$Mob_dados on _Mob_dados, Store {
   @override
   String toString() {
     return '''
+carrega: ${carrega},
+datas: ${datas},
 estado: ${estado},
 cad_min: ${cad_min},
 grup_culura: ${grup_culura},

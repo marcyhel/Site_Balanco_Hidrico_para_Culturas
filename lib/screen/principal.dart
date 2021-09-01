@@ -6,6 +6,8 @@ import 'dart:math' as math show pi;
 import 'package:plat11/screen/dashboard/dashboard.dart';
 import 'package:plat11/util/themes.dart';
 
+import 'clima/clima.dart';
+
 class Principal extends StatefulWidget {
   const Principal({Key? key}) : super(key: key);
 
@@ -22,10 +24,8 @@ class _PrincipalState extends State<Principal> {
   String _headline = "";
   int index = 0;
   List screen = [
+    Clima(),
     Dashboard(),
-    Container(
-      color: Colors.blue,
-    ),
     Container(
       color: Colors.red,
     ),

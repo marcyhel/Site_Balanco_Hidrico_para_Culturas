@@ -1,7 +1,10 @@
+import 'dart:convert'; // Contains the JSON encoder
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
 
 part 'mob_dados.g.dart';
@@ -10,22 +13,29 @@ class Mob_dados = _Mob_dados with _$Mob_dados;
 
 abstract class _Mob_dados with Store {
   _Mob_dados() {
+    String s = "Hello";
+    String f = " ffdf";
+    String h = s + f;
+    print(h.replaceAll('*', ''));
     autorun((_) {
-      var lis = calculateDaysInterval(
-          DateTime(DateTime.now().year - 2, DateTime.now().month,
-              DateTime.now().day),
-          DateTime.now());
-      print(lis);
+      //conectar();
     });
   }
-  List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
-    List<DateTime> days = [];
-    for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
-      days.add(startDate.add(Duration(days: i)));
-    }
-    return days;
+  @action
+  Future<void> carregar() async {
+    carrega = true;
+
+    var result = await conectar();
+    print(result.length);
+
+    //await Future.delayed(Duration(seconds: 3));
+    carrega = false;
   }
 
+  @observable
+  bool carrega = false;
+  @observable
+  List<DataClima> datas = [];
   @observable
   String estado = "";
   @observable
@@ -161,4 +171,138 @@ abstract class _Mob_dados with Store {
   void setMat_iaf(valor) => mat_iaf = valor;
   @action
   void setMat_cad(valor) => mat_cad = valor;
+}
+
+Future<List<DataClima>> conectar() async {
+  var aux = calculateDaysInterval(
+      DateTime(
+          DateTime.now().year - 1, DateTime.now().month, DateTime.now().day),
+      DateTime.now());
+
+  List<List<Climas>> clima = [];
+  var cont = 0;
+  for (var e in aux) {
+    cont++;
+    try {
+      await Future.delayed(Duration(milliseconds: 100));
+      clima.add(await getJason(
+        DateFormat('yyyy-MM-dd ').format(e),
+      ));
+      //print(clima[clima.length - 1][0].TMAX18);
+    } catch (f) {
+      //print(
+      //  DateFormat('yyyy-MM-dd ').format(e),
+      //);
+    }
+    if (cont >= 30) {
+      cont = 0;
+      await Future.delayed(Duration(seconds: 10));
+    }
+  }
+  print(clima.length);
+
+  /*
+  print("dd");
+  var cont = 0;
+  double mediaT = 0;
+  double mediaP = 0;
+  List<DataClima> result = [];
+  for (var i = 0; i < aux.length; i++) {
+    print(clima[i][0]);
+    /*mediaT += double.parse(clima[i][0].TMAX18.replaceAll('*', ''));
+    mediaP += double.parse(clima[i][0].PMAX12.replaceAll('*', ''));
+
+    if (cont % 10 == 0) {
+      print("aqui");
+
+      result.add(DataClima(
+          dataStrat:
+              result.length == 0 ? aux[0] : result[result.length - 1].dataEnd,
+          dataEnd: aux[i],
+          p: mediaP / 10,
+          t: mediaT / 10));
+      mediaT = 0;
+      mediaP = 0;
+      cont = 0;
+    }
+    cont++;
+  }*/
+  }*/
+  return [DataClima()];
+}
+
+List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
+  List<DateTime> days = [];
+  for (int i = 0; i <= endDate.difference(startDate).inDays; i += 1) {
+    days.add(startDate.add(Duration(days: i)));
+  }
+  return days;
+}
+
+class DataClima {
+  DateTime? dataStrat;
+  DateTime? dataEnd;
+  double? t;
+  double? p;
+  DataClima({
+    this.dataStrat,
+    this.dataEnd,
+    this.t,
+    this.p,
+  });
+}
+
+class Climas {
+  final String TMIN18;
+  final String TMAX18;
+  final String UMIN18;
+  final String PMAX12;
+
+  final String nome;
+
+  Climas({
+    required this.TMIN18,
+    required this.TMAX18,
+    required this.UMIN18,
+    required this.PMAX12,
+    required this.nome,
+  });
+
+  factory Climas.fromJson(Map<String, dynamic> json) {
+    return Climas(
+      TMIN18: json['TMIN18'],
+      TMAX18: json['TMAX18'],
+      UMIN18: json['UMIN18'],
+      PMAX12: json['PMAX12'],
+      nome: json['nome'],
+    );
+  }
+}
+
+Future<List<Climas>> getJason(String dado) async {
+  List<Climas> _postList = [];
+  final response =
+      await http.get('https://apitempo.inmet.gov.br/condicao/capitais/' + dado);
+
+  List<dynamic> values = [];
+  values = json.decode(response.body);
+  //print(values);
+  if (response.statusCode == 200) {
+    if (values.length > 0) {
+      for (int i = 0; i < values.length; i++) {
+        if (values[i] != null) {
+          Map<String, dynamic> map = values[i];
+
+          _postList.add(Climas(
+            nome: map['CAPITAL'],
+            TMAX18: map['TMAX18'],
+            TMIN18: map['TMIN18'],
+            PMAX12: map['PMAX12'],
+            UMIN18: map['UMIN18'],
+          ));
+        }
+      }
+    }
+  }
+  return _postList;
 }

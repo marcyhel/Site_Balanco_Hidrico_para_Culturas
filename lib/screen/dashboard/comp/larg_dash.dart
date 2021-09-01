@@ -14,7 +14,7 @@ class LargDashBord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double espa = 18;
+    double espa = 25;
     return SingleChildScrollView(
       child: Container(
           padding: EdgeInsets.all(20),
@@ -34,10 +34,9 @@ class LargDashBord extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(3, 3),
-                            blurRadius: 10,
-                            color: Colors.black26,
-                          )
+                              blurRadius: 5,
+                              color: Colors.black26,
+                              offset: Offset(0, 0))
                         ]),
                     width: MediaQuery.of(context).size.width / 5,
                     child: Column(
@@ -64,10 +63,9 @@ class LargDashBord extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(3, 3),
-                            blurRadius: 10,
-                            color: Colors.black26,
-                          )
+                              blurRadius: 5,
+                              color: Colors.black26,
+                              offset: Offset(0, 0))
                         ]),
                     width: MediaQuery.of(context).size.width / 5,
                     child: Column(
@@ -90,10 +88,9 @@ class LargDashBord extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(3, 3),
-                            blurRadius: 10,
-                            color: Colors.black26,
-                          )
+                              blurRadius: 5,
+                              color: Colors.black26,
+                              offset: Offset(0, 0))
                         ]),
                     width: MediaQuery.of(context).size.width / 5,
                     child: Column(
@@ -132,10 +129,9 @@ class LargDashBord extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        offset: Offset(3, 3),
-                        blurRadius: 10,
-                        color: Colors.black26,
-                      )
+                          blurRadius: 5,
+                          color: Colors.black26,
+                          offset: Offset(0, 0))
                     ]),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -149,15 +145,15 @@ class LargDashBord extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(height: espa + 20),
-                          TextLabelTitle(texto: "1 - Estabelecimento"),
+                          TextLabel(texto: "1 - Estabelecimento"),
                           SizedBox(height: espa),
-                          TextLabelTitle(texto: "2 - Des. Vegetativo"),
+                          TextLabel(texto: "2 - Des. Vegetativo"),
                           SizedBox(height: espa),
-                          TextLabelTitle(texto: "3 - Florescimento"),
+                          TextLabel(texto: "3 - Florescimento"),
                           SizedBox(height: espa),
-                          TextLabelTitle(texto: "4 - Frutificação"),
+                          TextLabel(texto: "4 - Frutificação"),
                           SizedBox(height: espa),
-                          TextLabelTitle(texto: "5 - Maturação"),
+                          TextLabel(texto: "5 - Maturação"),
                           SizedBox(height: espa),
                         ],
                       ),
