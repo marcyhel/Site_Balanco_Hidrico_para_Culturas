@@ -27,9 +27,11 @@ class Custon_button extends StatelessWidget {
                 ? Center(child: CircularProgressIndicator())
                 : Center(child: Text(text)),
           ),
-          onTap: () {
-            func();
-          }),
+          onTap: carrega
+              ? null
+              : () {
+                  func();
+                }),
     );
   }
 }

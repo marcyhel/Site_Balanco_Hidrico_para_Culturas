@@ -9,6 +9,51 @@ part of 'mob_dados.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Mob_dados on _Mob_dados, Store {
+  final _$dataStartAtom = Atom(name: '_Mob_dados.dataStart');
+
+  @override
+  DateTime? get dataStart {
+    _$dataStartAtom.reportRead();
+    return super.dataStart;
+  }
+
+  @override
+  set dataStart(DateTime? value) {
+    _$dataStartAtom.reportWrite(value, super.dataStart, () {
+      super.dataStart = value;
+    });
+  }
+
+  final _$dataEndAtom = Atom(name: '_Mob_dados.dataEnd');
+
+  @override
+  DateTime? get dataEnd {
+    _$dataEndAtom.reportRead();
+    return super.dataEnd;
+  }
+
+  @override
+  set dataEnd(DateTime? value) {
+    _$dataEndAtom.reportWrite(value, super.dataEnd, () {
+      super.dataEnd = value;
+    });
+  }
+
+  final _$result_tabelaAtom = Atom(name: '_Mob_dados.result_tabela');
+
+  @override
+  List<DataClima> get result_tabela {
+    _$result_tabelaAtom.reportRead();
+    return super.result_tabela;
+  }
+
+  @override
+  set result_tabela(List<DataClima> value) {
+    _$result_tabelaAtom.reportWrite(value, super.result_tabela, () {
+      super.result_tabela = value;
+    });
+  }
+
   final _$carregaAtom = Atom(name: '_Mob_dados.carrega');
 
   @override
@@ -21,21 +66,6 @@ mixin _$Mob_dados on _Mob_dados, Store {
   set carrega(bool value) {
     _$carregaAtom.reportWrite(value, super.carrega, () {
       super.carrega = value;
-    });
-  }
-
-  final _$datasAtom = Atom(name: '_Mob_dados.datas');
-
-  @override
-  List<DataClima> get datas {
-    _$datasAtom.reportRead();
-    return super.datas;
-  }
-
-  @override
-  set datas(List<DataClima> value) {
-    _$datasAtom.reportWrite(value, super.datas, () {
-      super.datas = value;
     });
   }
 
@@ -518,6 +548,39 @@ mixin _$Mob_dados on _Mob_dados, Store {
   final _$_Mob_dadosActionController = ActionController(name: '_Mob_dados');
 
   @override
+  void calcula() {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.calcula');
+    try {
+      return super.calcula();
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDataStart(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setDataStart');
+    try {
+      return super.setDataStart(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDataEnd(dynamic valor) {
+    final _$actionInfo =
+        _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setDataEnd');
+    try {
+      return super.setDataEnd(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setEstado(dynamic valor) {
     final _$actionInfo =
         _$_Mob_dadosActionController.startAction(name: '_Mob_dados.setEstado');
@@ -859,10 +922,23 @@ mixin _$Mob_dados on _Mob_dados, Store {
   }
 
   @override
+  void setResult_tabela(dynamic valor) {
+    final _$actionInfo = _$_Mob_dadosActionController.startAction(
+        name: '_Mob_dados.setResult_tabela');
+    try {
+      return super.setResult_tabela(valor);
+    } finally {
+      _$_Mob_dadosActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+dataStart: ${dataStart},
+dataEnd: ${dataEnd},
+result_tabela: ${result_tabela},
 carrega: ${carrega},
-datas: ${datas},
 estado: ${estado},
 cad_min: ${cad_min},
 grup_culura: ${grup_culura},

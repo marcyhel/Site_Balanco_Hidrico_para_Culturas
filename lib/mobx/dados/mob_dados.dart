@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:plat11/mobx/dados_soltos.dart';
 
 part 'mob_dados.g.dart';
 
@@ -13,10 +14,11 @@ class Mob_dados = _Mob_dados with _$Mob_dados;
 
 abstract class _Mob_dados with Store {
   _Mob_dados() {
-    String s = "Hello";
-    String f = " ffdf";
-    String h = s + f;
-    print(h.replaceAll('*', ''));
+    double somass = 0;
+    j.forEach((b) {
+      somass += b;
+    });
+    print(somass / 3);
     autorun((_) {
       //conectar();
     });
@@ -27,15 +29,68 @@ abstract class _Mob_dados with Store {
 
     var result = await conectar();
     print(result.length);
-
+    setResult_tabela(result);
     //await Future.delayed(Duration(seconds: 3));
     carrega = false;
   }
 
+  bool carregaManual() {
+    carrega = true;
+    var result = datasManual(dataStart, dataEnd);
+    carrega = false;
+    if (result.length > 0) {
+      setResult_tabela(result);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  @action
+  void calcula() {
+    print("ewewewe");
+    calcularDadosOcultos();
+    int index = -1;
+    print(result_tabela.length);
+    result_tabela.forEach((e) {
+      index++;
+      e.i = double.parse(pow((0.2 * e.t), 1.514).toString());
+      e.horas = hn[index] * 2 / 15;
+    });
+
+    double soma = 0;
+    result_tabela.forEach((b) {
+      soma += b.i;
+    });
+    somatorio_i = soma / (3);
+
+    print(somatorio_i);
+
+    index = -1;
+    result_tabela.forEach((e) {
+      index++;
+      e.a = 0.49 +
+          0.018 * somatorio_i -
+          7.7 * pow(10, -5) * pow(somatorio_i, 2) +
+          6.75 * pow(10, -7) * pow(somatorio_i, 3);
+      e.etp =
+          (16 * pow((10 * (e.t / somatorio_i)), e.a) * (e.i / 12) * (10 / 30));
+      print(e.a);
+    });
+  }
+
+  @observable
+  double somatorio_i = 0;
+  @observable
+  DateTime? dataStart;
+
+  @observable
+  DateTime? dataEnd;
+  @observable
+  List<DataClima> result_tabela = ObservableList();
   @observable
   bool carrega = false;
-  @observable
-  List<DataClima> datas = [];
+
   @observable
   String estado = "";
   @observable
@@ -105,6 +160,10 @@ abstract class _Mob_dados with Store {
   String mat_cad = "";
 
   @action
+  void setDataStart(valor) => dataStart = valor;
+  @action
+  void setDataEnd(valor) => dataEnd = valor;
+  @action
   void setEstado(valor) => estado = valor;
   @action
   void setCad_min(valor) => cad_min = valor;
@@ -171,48 +230,94 @@ abstract class _Mob_dados with Store {
   void setMat_iaf(valor) => mat_iaf = valor;
   @action
   void setMat_cad(valor) => mat_cad = valor;
+  @action
+  void setResult_tabela(valor) => result_tabela = valor;
+}
+
+List<DataClima> datasManual(dataStart, dataEnd) {
+  try {
+    var aux = calculateDaysInterval(
+        DateTime(DateTime.now().year - 1, DateTime.now().month - 2,
+            DateTime.now().day),
+        DateTime.now());
+    List<DataClima> clima = [];
+    var auau = aux[0];
+    var cont = 0;
+    for (var e in aux) {
+      cont++;
+
+      if (cont >= 10) {
+        if (clima.length == 0) {
+          clima.add(DataClima(dataEnd: e, t: 0, p: 0, dataStrat: auau));
+        } else {
+          clima.add(DataClima(
+              dataEnd: e,
+              t: 0,
+              p: 0,
+              dataStrat: clima[clima.length - 1].dataEnd));
+        }
+        cont = 0;
+      }
+    }
+
+    return clima;
+  } catch (e) {
+    return [];
+  }
 }
 
 Future<List<DataClima>> conectar() async {
   var aux = calculateDaysInterval(
       DateTime(
-          DateTime.now().year - 1, DateTime.now().month, DateTime.now().day),
+          DateTime.now().year, DateTime.now().month - 2, DateTime.now().day),
       DateTime.now());
 
   List<List<Climas>> clima = [];
   var cont = 0;
   for (var e in aux) {
     cont++;
-    try {
-      await Future.delayed(Duration(milliseconds: 100));
-      clima.add(await getJason(
-        DateFormat('yyyy-MM-dd ').format(e),
-      ));
-      //print(clima[clima.length - 1][0].TMAX18);
-    } catch (f) {
-      //print(
-      //  DateFormat('yyyy-MM-dd ').format(e),
-      //);
+    while (true) {
+      try {
+        // await Future.delayed(Duration(milliseconds: 100));
+        clima.add(await getJason(
+          DateFormat('yyyy-MM-dd ').format(e),
+        ));
+        //print(clima[clima.length - 1][0].TMAX18);
+        break;
+      } catch (f) {
+        //print(
+        //  DateFormat('yyyy-MM-dd ').format(e),
+        //);
+      }
     }
-    if (cont >= 30) {
+    /*if (cont >= 30) {
       cont = 0;
       await Future.delayed(Duration(seconds: 10));
-    }
+    }*/
   }
   print(clima.length);
 
-  /*
   print("dd");
-  var cont = 0;
+  cont = 0;
   double mediaT = 0;
   double mediaP = 0;
   List<DataClima> result = [];
+  double tapaBuraco = 25;
   for (var i = 0; i < aux.length; i++) {
     print(clima[i][0]);
-    /*mediaT += double.parse(clima[i][0].TMAX18.replaceAll('*', ''));
-    mediaP += double.parse(clima[i][0].PMAX12.replaceAll('*', ''));
+    try {
+      mediaT += double.parse(clima[i][0].TMAX18.replaceAll('*', ''));
+      tapaBuraco = double.parse(clima[i][0].TMAX18.replaceAll('*', ''));
+    } catch (e) {
+      mediaT += tapaBuraco;
+    }
+    try {
+      mediaP += double.parse(clima[i][0].PMAX12.replaceAll('*', ''));
+    } catch (e) {
+      mediaP += mediaP / cont;
+    }
 
-    if (cont % 10 == 0) {
+    if (cont >= 10) {
       print("aqui");
 
       result.add(DataClima(
@@ -226,9 +331,9 @@ Future<List<DataClima>> conectar() async {
       cont = 0;
     }
     cont++;
-  }*/
-  }*/
-  return [DataClima()];
+  }
+
+  return result;
 }
 
 List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
@@ -242,12 +347,53 @@ List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
 class DataClima {
   DateTime? dataStrat;
   DateTime? dataEnd;
-  double? t;
+  double t = 0;
   double? p;
+
+  double qo = 0;
+  double horas = 0;
+  double i = 0;
+  double somai = 0;
+  double a = 0;
+  double etp = 0;
+  double kc = 0;
+  double gdi = 0;
+  double somegdi = 0;
+  double ky = 0;
+  double etm = 0;
+  double numero_dias_faze = 0;
+  double cad = 0;
+  double petm = 0;
+  double fim_periodo_Neg = 0;
+  double inicio_periodo_Neg = 0;
+  double fim_periodo_Arm = 0;
+  double inicio_periodo_Arm = 0;
+  double alt = 0;
+  double eta = 0;
+  double def = 0;
+  double exc = 0;
+
+  double eta_etm = 0;
+  double eta_etm_1 = 0;
+
+  double qo_calc = 0;
+  double iaf = 0;
+  double yo = 0;
+  double yc = 0;
+  double cto = 0;
+  double ctc = 0;
+  double rse = 0;
+  double qg = 0;
+  double f = 0;
+  double fase = 0;
+  double cl = 0;
+  double cn = 0;
+  double yp = 0;
+
   DataClima({
     this.dataStrat,
     this.dataEnd,
-    this.t,
+    this.t = 0,
     this.p,
   });
 }
