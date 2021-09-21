@@ -9,6 +9,21 @@ part of 'mob_dados.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Mob_dados on _Mob_dados, Store {
+  final _$somatorio_iAtom = Atom(name: '_Mob_dados.somatorio_i');
+
+  @override
+  double get somatorio_i {
+    _$somatorio_iAtom.reportRead();
+    return super.somatorio_i;
+  }
+
+  @override
+  set somatorio_i(double value) {
+    _$somatorio_iAtom.reportWrite(value, super.somatorio_i, () {
+      super.somatorio_i = value;
+    });
+  }
+
   final _$dataStartAtom = Atom(name: '_Mob_dados.dataStart');
 
   @override
@@ -42,13 +57,13 @@ mixin _$Mob_dados on _Mob_dados, Store {
   final _$result_tabelaAtom = Atom(name: '_Mob_dados.result_tabela');
 
   @override
-  List<DataClima> get result_tabela {
+  ObservableList<DataClima> get result_tabela {
     _$result_tabelaAtom.reportRead();
     return super.result_tabela;
   }
 
   @override
-  set result_tabela(List<DataClima> value) {
+  set result_tabela(ObservableList<DataClima> value) {
     _$result_tabelaAtom.reportWrite(value, super.result_tabela, () {
       super.result_tabela = value;
     });
@@ -935,6 +950,7 @@ mixin _$Mob_dados on _Mob_dados, Store {
   @override
   String toString() {
     return '''
+somatorio_i: ${somatorio_i},
 dataStart: ${dataStart},
 dataEnd: ${dataEnd},
 result_tabela: ${result_tabela},

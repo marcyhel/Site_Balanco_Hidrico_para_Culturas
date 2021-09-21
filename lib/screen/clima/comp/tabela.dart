@@ -108,9 +108,9 @@ class Tabela extends StatelessWidget {
                       Center(
                         child: ImputTabela(
                             func: (e) {
-                              element.p = e;
+                              element.p = double.parse(e);
                             },
-                            valor: element.p!.toStringAsFixed(
+                            valor: element.p.toStringAsFixed(
                                 2)), //Text(element.p!.toStringAsFixed(2)),
                       ),
                     ),

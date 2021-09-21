@@ -58,7 +58,10 @@ class _LargClimaState extends State<LargClima> {
                         text: "printar",
                         carrega: mob.carrega,
                         func: () {
-                          mob.calcula();
+                          setState(() {
+                            print("ds");
+                          });
+                          //mob.calcula();
                         },
                       ),
                     );

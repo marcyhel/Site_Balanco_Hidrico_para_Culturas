@@ -87,7 +87,7 @@ abstract class _Mob_dados with Store {
   @observable
   DateTime? dataEnd;
   @observable
-  List<DataClima> result_tabela = ObservableList();
+  ObservableList<DataClima> result_tabela = ObservableList();
   @observable
   bool carrega = false;
 
@@ -240,7 +240,7 @@ List<DataClima> datasManual(dataStart, dataEnd) {
         DateTime(DateTime.now().year - 1, DateTime.now().month - 2,
             DateTime.now().day),
         DateTime.now());
-    List<DataClima> clima = [];
+    ObservableList<DataClima> clima = ObservableList();
     var auau = aux[0];
     var cont = 0;
     for (var e in aux) {
@@ -301,7 +301,7 @@ Future<List<DataClima>> conectar() async {
   cont = 0;
   double mediaT = 0;
   double mediaP = 0;
-  List<DataClima> result = [];
+  ObservableList<DataClima> result = ObservableList();
   double tapaBuraco = 25;
   for (var i = 0; i < aux.length; i++) {
     print(clima[i][0]);
@@ -347,8 +347,9 @@ List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
 class DataClima {
   DateTime? dataStrat;
   DateTime? dataEnd;
+
   double t = 0;
-  double? p;
+  double p = 0;
 
   double qo = 0;
   double horas = 0;
@@ -394,7 +395,7 @@ class DataClima {
     this.dataStrat,
     this.dataEnd,
     this.t = 0,
-    this.p,
+    this.p = 0,
   });
 }
 
