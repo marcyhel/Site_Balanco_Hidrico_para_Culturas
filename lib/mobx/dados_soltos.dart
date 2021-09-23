@@ -50,15 +50,44 @@ void calcularDadosOcultos() {
   for (var i = 0; i < mob.result_tabela.length; i++) {
     dados.add(DadosOcultos());
   }
-
+  //-----------------------
   for (var i = 1; i < mob.result_tabela.length; i++) {
     if (i == 365) {}
     dados[i].nda = dados[i - 1].nda + 10;
-    print(dados[i - 1].nda);
   }
+  //-------------
   for (var i = 0; i < mob.result_tabela.length; i++) {
     dados[i].d = 23.45 * sin(((360 / 365) * (dados[i].nda - 81)) * (pi / 180));
-    print(dados[i].d);
+    dados[i].gdi_temp_l1 =
+        (mob.result_tabela[i].t - double.parse(mob.temp_base)) * 10;
+    //-------------------------
+    try {
+      dados[i].some_gdi_temp_l1 =
+          dados[i].gdi_temp_l1 + dados[i - 1].some_gdi_temp_l1;
+    } catch (e) {
+      dados[i].some_gdi_temp_l1 = dados[i].gdi_temp_l1;
+    }
+    //-----------------
+    if (dados[i].gdi_temp_l1 == 0 ||
+        dados[i].some_gdi_temp_l1 < double.parse(mob.gd)) {
+      dados[i].gdi_temp_l2 = dados[i].gdi_temp_l1;
+    } else {
+      dados[i].gdi_temp_l2 = 0;
+    }
+    //------------------------------------
+    try {
+      if (dados[i].gdi_temp_l2 == 0 && dados[i - 1].gdi_temp_l2 != 0) {
+        dados[i].gdi_temp_l3 = dados[i].gdi_temp_l1;
+      } else {
+        dados[i].gdi_temp_l3 = 0;
+      }
+    } catch (e) {
+      if (dados[i].gdi_temp_l2 == 0) {
+        dados[i].gdi_temp_l3 = dados[i].gdi_temp_l1;
+      } else {
+        dados[i].gdi_temp_l3 = 0;
+      }
+    }
   }
 }
 
