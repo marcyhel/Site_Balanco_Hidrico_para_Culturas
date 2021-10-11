@@ -7,7 +7,7 @@ final Mob_dados mob = GetIt.I<Mob_dados>();
 
 class DadosOcultos {
   int controle_logica = 0;
-  int temp_logica = 0;
+  double temp_logica = 0;
   double gdi_temp_l1 = 0;
   double gdi_temp_l2 = 0;
   double gdi_temp_l3 = 0;
@@ -87,6 +87,60 @@ void calcularDadosOcultos() {
       } else {
         dados[i].gdi_temp_l3 = 0;
       }
+    }
+    //-------------------------------------------
+    try {
+      if (dados[i].gdi_temp_l3 != 0) {
+        dados[i].gdi_temp_l4 =
+            (double.parse(mob.gd) - dados[i - 1].some_gdi_temp_l1) /
+                (mob.result_tabela[i].t - double.parse(mob.temp_base));
+      } else {
+        dados[i].gdi_temp_l4 = 0;
+      }
+    } catch (e) {
+      dados[i].gdi_temp_l4 = 0;
+    }
+  }
+  for (var i = 0; i < mob.result_tabela.length; i++) {
+    if (dados[i].gdi_temp_l4 != 0) {
+      mob.result_tabela[i].gdi =
+          (mob.result_tabela[i].t - double.parse(mob.temp_base)) *
+              dados[i].gdi_temp_l4;
+    } else {
+      mob.result_tabela[i].gdi = dados[i].gdi_temp_l2;
+    }
+  }
+  for (var i = 0; i < mob.result_tabela.length; i++) {
+    if (mob.result_tabela[i].gdi == 0) {
+      dados[i].some_gdi_temp_l2 = 0;
+    } else {
+      dados[i].some_gdi_temp_l2 = mob.result_tabela[i].gdi;
+    }
+    //--------------------------------
+
+    if (dados[i].some_gdi_temp_l2 == 0) {
+      dados[i].some_gdi_temp_l3 = 0;
+    } else {
+      try {
+        dados[i].some_gdi_temp_l3 =
+            dados[i - 1].some_gdi_temp_l3 + dados[i].some_gdi_temp_l2;
+      } catch (e) {
+        dados[i].some_gdi_temp_l3 = 0 + dados[i].some_gdi_temp_l2;
+      }
+    }
+    //------------------------------------------
+    if (mob.result_tabela[i].gdi != 0) {
+      dados[i].temp_logica = 10;
+    } else {
+      dados[i].temp_logica = dados[i].gdi_temp_l4;
+    }
+    //------------------------------------------
+    if (dados[i].gdi_temp_l4 != 0) {
+      mob.result_tabela[i].gdi =
+          (mob.result_tabela[i].t - double.parse(mob.temp_base)) *
+              dados[i].gdi_temp_l4;
+    } else {
+      mob.result_tabela[i].gdi = dados[i].gdi_temp_l2;
     }
   }
 }
