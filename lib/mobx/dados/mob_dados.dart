@@ -50,33 +50,6 @@ abstract class _Mob_dados with Store {
   void calcula() {
     print("ewewewe");
     calcularDadosOcultos();
-    int index = -1;
-    print(result_tabela.length);
-    result_tabela.forEach((e) {
-      index++;
-      e.i = double.parse(pow((0.2 * e.t), 1.514).toString());
-      e.horas = hn[index] * 2 / 15;
-    });
-
-    double soma = 0;
-    result_tabela.forEach((b) {
-      soma += b.i;
-    });
-    somatorio_i = soma / (3);
-
-    print(somatorio_i);
-
-    index = -1;
-    result_tabela.forEach((e) {
-      index++;
-      e.a = 0.49 +
-          0.018 * somatorio_i -
-          7.7 * pow(10, -5) * pow(somatorio_i, 2) +
-          6.75 * pow(10, -7) * pow(somatorio_i, 3);
-      e.etp =
-          (16 * pow((10 * (e.t / somatorio_i)), e.a) * (e.i / 12) * (10 / 30));
-      print(e.a);
-    });
   }
 
   @observable

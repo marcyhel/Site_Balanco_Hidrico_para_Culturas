@@ -134,15 +134,39 @@ void calcularDadosOcultos() {
     } else {
       dados[i].temp_logica = dados[i].gdi_temp_l4;
     }
-    //------------------------------------------
-    if (dados[i].gdi_temp_l4 != 0) {
-      mob.result_tabela[i].gdi =
-          (mob.result_tabela[i].t - double.parse(mob.temp_base)) *
-              dados[i].gdi_temp_l4;
-    } else {
-      mob.result_tabela[i].gdi = dados[i].gdi_temp_l2;
-    }
   }
+  //------------------------------------------
+  int index = -1;
+  print(mob.result_tabela.length);
+  mob.result_tabela.forEach((e) {
+    index++;
+    e.i = double.parse(pow((0.2 * e.t), 1.514).toString());
+    e.horas = hn[index] * 2 / 15;
+  });
+
+  double soma = 0;
+  mob.result_tabela.forEach((b) {
+    soma += b.i;
+  });
+  mob.somatorio_i = soma / (3);
+
+  print(mob.somatorio_i);
+
+  index = -1;
+  mob.result_tabela.forEach((e) {
+    index++;
+    e.a = 0.49 +
+        0.018 * mob.somatorio_i -
+        7.7 * pow(10, -5) * pow(mob.somatorio_i, 2) +
+        6.75 * pow(10, -7) * pow(mob.somatorio_i, 3);
+    e.etp = (16 *
+        pow((10 * (e.t / mob.somatorio_i)), e.a) *
+        (e.i / 12) *
+        (10 / 30));
+    print(e.a);
+  });
+  //-----------------------------------------
+  for (var i = 0; i < mob.result_tabela.length; i++) {}
 }
 
 List<double> j = [
