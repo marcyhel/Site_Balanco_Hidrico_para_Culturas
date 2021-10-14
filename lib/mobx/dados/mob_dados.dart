@@ -69,72 +69,72 @@ abstract class _Mob_dados with Store {
   bool carrega = false;
 
   @observable
-  String estado = "";
+  String estado = "0";
   @observable
-  String cad_min = "";
+  String cad_min = "0";
   @observable
-  String grup_culura = "";
+  String grup_culura = "0";
   @observable
-  String gd = "";
+  String gd = "0";
   @observable
-  String temp_base = "";
+  String temp_base = "0";
   @observable
-  String neg_acumulado_inicial = "";
+  String neg_acumulado_inicial = "0";
   @observable
-  String armazenamento_inicial = "";
+  String armazenamento_inicial = "0";
   @observable
-  String umidade_colhida = "";
+  String umidade_colhida = "0";
   @observable
-  String indice_colheita = "";
+  String indice_colheita = "0";
   @observable
-  String a = "";
+  String a = "0";
   @observable
-  String b = "";
+  String b = "0";
 
   @observable
-  String est_kc = "";
+  String est_kc = "0";
   @observable
-  String est_ky = "";
+  String est_ky = "0";
   @observable
-  String est_iaf = "";
+  String est_iaf = "0";
   @observable
-  String est_cad = "";
+  String est_cad = "0";
 
   @observable
-  String des_kc = "";
+  String des_kc = "0";
   @observable
-  String des_ky = "";
+  String des_ky = "0";
   @observable
-  String des_iaf = "";
+  String des_iaf = "0";
   @observable
-  String des_cad = "";
+  String des_cad = "0";
 
   @observable
-  String flo_kc = "";
+  String flo_kc = "0";
   @observable
-  String flo_ky = "";
+  String flo_ky = "0";
   @observable
-  String flo_iaf = "";
+  String flo_iaf = "0";
   @observable
-  String flo_cad = "";
+  String flo_cad = "0";
 
   @observable
-  String fru_kc = "";
+  String fru_kc = "0";
   @observable
-  String fru_ky = "";
+  String fru_ky = "0";
   @observable
-  String fru_iaf = "";
+  String fru_iaf = "0";
   @observable
-  String fru_cad = "";
+  String fru_cad = "0";
 
   @observable
-  String mat_kc = "";
+  String mat_kc = "0";
   @observable
-  String mat_ky = "";
+  String mat_ky = "0";
   @observable
-  String mat_iaf = "";
+  String mat_iaf = "0";
   @observable
-  String mat_cad = "";
+  String mat_cad = "0";
 
   @action
   void setDataStart(valor) => dataStart = valor;
