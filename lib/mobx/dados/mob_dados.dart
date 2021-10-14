@@ -52,6 +52,10 @@ abstract class _Mob_dados with Store {
     calcularDadosOcultos();
   }
 
+  double cadini = 0;
+  double negAcIni = 0;
+  double aRMini = 0;
+
   @observable
   double somatorio_i = 0;
   @observable
@@ -336,7 +340,7 @@ class DataClima {
   double ky = 0;
   double etm = 0;
   double numero_dias_faze = 0;
-  double cad = 0;
+  double delta_cad = 0;
   double petm = 0;
   double fim_periodo_Neg = 0;
   double inicio_periodo_Neg = 0;

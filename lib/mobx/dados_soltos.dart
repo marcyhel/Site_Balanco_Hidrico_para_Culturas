@@ -4,6 +4,7 @@ import 'dados/mob_dados.dart';
 import 'dart:math';
 
 final Mob_dados mob = GetIt.I<Mob_dados>();
+enum Estados { Estab, Des_Veg, Floresc, Frutif, Maturac, Vazio }
 
 class DadosOcultos {
   int controle_logica = 0;
@@ -18,11 +19,11 @@ class DadosOcultos {
   double some_gdi_temp_l4 = 0;
   double coluna_imprecao = 0;
   double fase_logica = 0;
-  double da_cultura = 0;
+  double da_Logica = 0;
   double cultura_logica = 0;
   double logica1 = 0;
   double logica2 = 0;
-  double logica3 = 0;
+  Estados logica3 = Estados.Vazio;
   double m1 = 0;
   double d1 = 0;
   double y1 = 0;
@@ -101,6 +102,7 @@ void calcularDadosOcultos() {
       dados[i].gdi_temp_l4 = 0;
     }
   }
+  //---------------------------------------
   for (var i = 0; i < mob.result_tabela.length; i++) {
     if (dados[i].gdi_temp_l4 != 0) {
       mob.result_tabela[i].gdi =
@@ -141,9 +143,10 @@ void calcularDadosOcultos() {
   mob.result_tabela.forEach((e) {
     index++;
     e.i = double.parse(pow((0.2 * e.t), 1.514).toString());
+    //---------------------------------------
     e.horas = hn[index] * 2 / 15;
   });
-
+  //---------------------------------------
   double soma = 0;
   mob.result_tabela.forEach((b) {
     soma += b.i;
@@ -155,10 +158,12 @@ void calcularDadosOcultos() {
   index = -1;
   mob.result_tabela.forEach((e) {
     index++;
+    //---------------------------------------
     e.a = 0.49 +
         0.018 * mob.somatorio_i -
         7.7 * pow(10, -5) * pow(mob.somatorio_i, 2) +
         6.75 * pow(10, -7) * pow(mob.somatorio_i, 3);
+    //---------------------------------------
     e.etp = (16 *
         pow((10 * (e.t / mob.somatorio_i)), e.a) *
         (e.i / 12) *
@@ -166,7 +171,149 @@ void calcularDadosOcultos() {
     print(e.a);
   });
   //-----------------------------------------
-  for (var i = 0; i < mob.result_tabela.length; i++) {}
+  for (var i = 0; i < mob.result_tabela.length; i++) {
+    //0,1101532+7,051467*10^(-4)*T31+9,609335*10^(-7)*T31^2-7,328136*10^(-10)*T31^3
+    if (dados[i].some_gdi_temp_l3 != 0) {
+      mob.result_tabela[i].kc = double.parse((0.1101532 +
+              7.051467 * pow(10, -4) * dados[i].some_gdi_temp_l3 +
+              9.609335 * pow(10, -7) * pow(dados[i].some_gdi_temp_l3, 2) -
+              7.328136 * pow(10, 10) * pow(dados[i].some_gdi_temp_l3, 3))
+          .toStringAsFixed(1));
+    } else {
+      mob.result_tabela[i].kc = 1.0;
+    }
+    //---------------------------------------
+
+    mob.result_tabela[i].etm =
+        mob.result_tabela[i].etp * mob.result_tabela[i].kc;
+    //---------------------------------------
+    mob.result_tabela[i].petm =
+        mob.result_tabela[i].p * mob.result_tabela[i].etm;
+    //---------------------------------------
+    try {
+      if (dados[i - 1].fase_logica == -999) {
+        dados[i].fase_logica = -999;
+      } else {
+        if (dados[i].some_gdi_temp_l3 == 0) {
+          dados[i].fase_logica = 0;
+        } else {
+          if (mob.result_tabela[i].kc <= double.parse(mob.est_kc)) {
+            dados[i].fase_logica = 1;
+          } else {
+            if (mob.result_tabela[i].kc <= double.parse(mob.des_kc)) {
+              dados[i].fase_logica = 2;
+            } else {
+              if (mob.result_tabela[i].kc <= double.parse(mob.flo_kc)) {
+                dados[i].fase_logica = 3;
+              } else
+                dados[i].fase_logica = -999;
+            }
+          }
+        }
+      }
+    } catch (e) {
+      if (dados[i].some_gdi_temp_l3 == 0) {
+        dados[i].fase_logica = 0;
+      } else {
+        if (mob.result_tabela[i].kc <= double.parse(mob.est_kc)) {
+          dados[i].fase_logica = 1;
+        } else {
+          if (mob.result_tabela[i].kc <= double.parse(mob.des_kc)) {
+            dados[i].fase_logica = 2;
+          } else {
+            if (mob.result_tabela[i].kc <= double.parse(mob.flo_kc)) {
+              dados[i].fase_logica = 3;
+            } else
+              dados[i].fase_logica = -999;
+          }
+        }
+      }
+    }
+    //---------------------------------------
+    if (dados[i].fase_logica == -999) {
+      if (mob.result_tabela[i].kc >= double.parse(mob.fru_kc)) {
+        dados[i].da_Logica = 4;
+      } else {
+        dados[i].da_Logica = -999;
+      }
+    } else {
+      dados[i].da_Logica = 0;
+    }
+    //---------------------------------------
+    if (dados[i].da_Logica == -999) {
+      dados[i].cultura_logica = 5;
+    } else {
+      dados[i].cultura_logica = 0;
+    }
+    //---------------------------------------
+    if (dados[i].fase_logica != 0 && dados[i].fase_logica != -999) {
+      dados[i].logica1 = dados[i].fase_logica;
+    } else {
+      if (dados[i].da_Logica != 0 && dados[i].da_Logica != -999) {
+        dados[i].logica1 = dados[i].da_Logica;
+      } else {
+        if (dados[i].cultura_logica == 5) {
+          dados[i].logica1 = 5;
+        } else {
+          dados[i].logica1 = 0;
+        }
+      }
+    }
+    //---------------------------------------
+    if (dados[i].some_gdi_temp_l3 != 0) {
+      dados[i].logica2 = dados[i].logica1;
+    } else {
+      dados[i].logica2 = 0;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 1) {
+      dados[i].logica3 = Estados.Estab;
+    }
+    if (dados[i].logica2 == 2) {
+      dados[i].logica3 = Estados.Des_Veg;
+    }
+    if (dados[i].logica2 == 3) {
+      dados[i].logica3 = Estados.Floresc;
+    }
+    if (dados[i].logica2 == 4) {
+      dados[i].logica3 = Estados.Frutif;
+    }
+    if (dados[i].logica2 == 5) {
+      dados[i].logica3 = Estados.Maturac;
+    }
+    //-----------------------------------------------------------
+    if (double.parse(mob.cad_min) == 0) {
+      mob.cadini = 0.00001;
+    } else {
+      mob.cadini = double.parse(mob.cad_min);
+    }
+    //-----------------------------------------------------------
+    if (double.parse(mob.neg_acumulado_inicial) == 0) {
+      mob.negAcIni = 0.00001;
+    } else {
+      mob.negAcIni = double.parse(mob.neg_acumulado_inicial);
+    }
+    //-----------------------------------------------------------
+    if (double.parse(mob.armazenamento_inicial) == 0) {
+      mob.aRMini = 0.00001;
+    } else {
+      mob.aRMini = double.parse(mob.armazenamento_inicial);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].temp_logica == 0) {
+      dados[i].cad = mob.cadini;
+    } else if (dados[i].logica2 == 1) {
+      dados[i].cad = double.parse(mob.est_cad);
+    } else if (dados[i].logica2 == 2) {
+      dados[i].cad = double.parse(mob.des_cad);
+    } else if (dados[i].logica2 == 3) {
+      dados[i].cad = double.parse(mob.flo_cad);
+    } else if (dados[i].logica2 == 4) {
+      dados[i].cad = double.parse(mob.fru_cad);
+    } else if (dados[i].logica2 == 5) {
+      dados[i].cad = double.parse(mob.mat_cad);
+    }
+  }
 }
 
 List<double> j = [
