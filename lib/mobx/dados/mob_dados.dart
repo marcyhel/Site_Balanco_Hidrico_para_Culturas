@@ -363,7 +363,7 @@ class DataClima {
   double rse = 0;
   double qg = 0;
   double f = 0;
-  double fase = 0;
+
   double cl = 0;
   double cn = 0;
   double yp = 0;

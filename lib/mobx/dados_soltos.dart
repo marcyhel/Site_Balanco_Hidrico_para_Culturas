@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 
 import 'dados/mob_dados.dart';
 import 'dart:math';
+import 'package:vector_math/vector_math.dart';
 
 final Mob_dados mob = GetIt.I<Mob_dados>();
 enum Estados { Estab, Des_Veg, Floresc, Frutif, Maturac, Vazio }
@@ -42,6 +43,14 @@ class DadosOcultos {
   double cad = 0;
   double nda = 1;
   double d = 0;
+  double cto_g1 = 0;
+  double cto_g2 = 0;
+  double cto_g3 = 0;
+  double cto_g4 = 0;
+  double ctc_g1 = 0;
+  double ctc_g2 = 0;
+  double ctc_g3 = 0;
+  double ctc_g4 = 0;
 }
 
 List<DadosOcultos> dados = [];
@@ -472,12 +481,265 @@ void calcularDadosOcultos() {
       mob.result_tabela[i].eta_etm_1 = 0;
     }
     //-----------------------------------------------------------
+
+    //-----------------------------------------------------------
+    double latitude = -22.45;
+    mob.result_tabela[i].qo = 37.76 *
+        (sin(radians(latitude)) * sin(radians(d[i])) * hn[i] * pi / 180 +
+            cos(radians(latitude)) * cos(radians(d[i])) * sin(radians(hn[i]))) /
+        2.45;
+    //-----------------------------------------------------------
+    mob.result_tabela[i].qo_calc = mob.result_tabela[i].qo * 59;
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].iaf = 0;
+    } else if (dados[i].logica2 == 1) {
+      mob.result_tabela[i].iaf = double.parse(mob.est_iaf);
+    } else if (dados[i].logica2 == 2) {
+      mob.result_tabela[i].iaf = double.parse(mob.des_iaf);
+    } else if (dados[i].logica2 == 3) {
+      mob.result_tabela[i].iaf = double.parse(mob.flo_iaf);
+    } else if (dados[i].logica2 == 4) {
+      mob.result_tabela[i].iaf = double.parse(mob.fru_iaf);
+    } else if (dados[i].logica2 == 5) {
+      mob.result_tabela[i].iaf = double.parse(mob.mat_iaf);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].yo = 0;
+    } else {
+      mob.result_tabela[i].yo = 31.7 + 0.219 * mob.result_tabela[i].qo_calc;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].yc = 0;
+    } else {
+      mob.result_tabela[i].yc = 107.2 + 0.36 * mob.result_tabela[i].qo_calc;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].cto_g1 = 0;
+    } else if (mob.result_tabela[i].t >= 15 && mob.result_tabela[i].qo <= 20) {
+      dados[i].cto_g1 = 0.7 +
+          0.035 * mob.result_tabela[i].t -
+          0.001 * pow(mob.result_tabela[i].t, 2);
+    } else {
+      dados[i].cto_g1 = 0.25 +
+          0.0875 * mob.result_tabela[i].t -
+          0.0025 * pow(mob.result_tabela[i].t, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].cto_g2 = 0;
+    } else if (mob.result_tabela[i].t >= 16.5 && mob.result_tabela[i].t <= 37) {
+      dados[i].cto_g2 = 0.583 +
+          0.014 * mob.result_tabela[i].t +
+          0.0013 * pow(mob.result_tabela[i].t, 2) -
+          0.000037 * pow(mob.result_tabela[i].t, 3);
+    } else {
+      dados[i].cto_g2 = -0.0425 +
+          0.035 * mob.result_tabela[i].t +
+          0.00325 * pow(mob.result_tabela[i].t, 2) -
+          0.0000925 * pow(mob.result_tabela[i].t, 3);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].cto_g3 = 0;
+    } else if (mob.result_tabela[i].t >= 12.5 && mob.result_tabela[i].t <= 30) {
+      dados[i].cto_g3 = -0.279 +
+          0.143 * mob.result_tabela[i].t -
+          0.0029 * pow(mob.result_tabela[i].t, 2);
+    } else {
+      dados[i].cto_g3 = -2.2 +
+          0.3575 * mob.result_tabela[i].t -
+          0.0074 * pow(mob.result_tabela[i].t, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].cto_g4 = 0;
+    } else if (mob.result_tabela[i].t >= 16.5) {
+      dados[i].cto_g4 = -1.064 +
+          0.173 * mob.result_tabela[i].t -
+          0.0029 * pow(mob.result_tabela[i].t, 2);
+    } else {
+      dados[i].cto_g4 = -4.16 +
+          0.4325 * mob.result_tabela[i].t -
+          0.00725 * pow(mob.result_tabela[i].t, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].ctc_g1 = 0;
+    } else if (mob.result_tabela[i].t >= 15 && mob.result_tabela[i].t <= 20) {
+      dados[i].ctc_g1 = 0.25 +
+          0.0875 * mob.result_tabela[i].t -
+          0.0025 * pow(mob.result_tabela[i].t, 2);
+    } else {
+      dados[i].ctc_g1 = -0.5 +
+          0.175 * mob.result_tabela[i].t -
+          0.005 * pow(mob.result_tabela[i].t, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].ctc_g2 = 0;
+    } else if (mob.result_tabela[i].t >= 16.5 && mob.result_tabela[i].t <= 37) {
+      dados[i].ctc_g2 = -0.0425 +
+          0.035 * mob.result_tabela[i].t +
+          0.00325 * pow(mob.result_tabela[i].t, 2) -
+          0.0000925 * pow(mob.result_tabela[i].t, 3);
+    } else {
+      dados[i].ctc_g2 = -1.085 +
+          0.07 * mob.result_tabela[i].t +
+          0.0065 * pow(mob.result_tabela[i].t, 2) +
+          0.000185 * pow(mob.result_tabela[i].t, 3);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].ctc_g3 = 0;
+    } else if (mob.result_tabela[i].t >= 12 && mob.result_tabela[i].t <= 30) {
+      dados[i].ctc_g3 = -2.2 +
+          0.3575 * mob.result_tabela[i].t -
+          0.0074 * pow(mob.result_tabela[i].t, 2);
+    } else {
+      dados[i].ctc_g3 = -5.395 +
+          0.715 * mob.result_tabela[i].t -
+          0.0145 * pow(mob.result_tabela[i].t, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      dados[i].ctc_g4 = 0;
+    } else if (mob.result_tabela[i].t >= 16.5) {
+      dados[i].ctc_g4 = -4.16 +
+          0.4325 * mob.result_tabela[i].t -
+          0.00725 * pow(mob.result_tabela[i].t, 2);
+    } else {
+      dados[i].ctc_g4 = 9.32 +
+          0.865 * mob.result_tabela[i].t -
+          0.0145 * pow(mob.result_tabela[i].t, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].cto = 0;
+    } else if (mob.grup_culura == 'Grupo 1') {
+      mob.result_tabela[i].cto = dados[i].cto_g1;
+    } else if (mob.grup_culura == 'Grupo 2') {
+      mob.result_tabela[i].cto = dados[i].cto_g2;
+    } else if (mob.grup_culura == 'Grupo 3') {
+      mob.result_tabela[i].cto = dados[i].cto_g3;
+    } else if (mob.grup_culura == 'Grupo 4') {
+      mob.result_tabela[i].cto = dados[i].cto_g4;
+    } else {
+      mob.result_tabela[i].cto = 0;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].ctc = 0;
+    } else if (mob.grup_culura == 'Grupo 1') {
+      mob.result_tabela[i].ctc = dados[i].ctc_g1;
+    } else if (mob.grup_culura == 'Grupo 2') {
+      mob.result_tabela[i].ctc = dados[i].ctc_g2;
+    } else if (mob.grup_culura == 'Grupo 3') {
+      mob.result_tabela[i].ctc = dados[i].ctc_g3;
+    } else if (mob.grup_culura == 'Grupo 4') {
+      mob.result_tabela[i].ctc = dados[i].ctc_g4;
+    } else {
+      mob.result_tabela[i].ctc = 0;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].rse = 0;
+    } else {
+      mob.result_tabela[i].rse = 0.5 * double.parse(mob.a) +
+          double.parse(mob.b) * mob.result_tabela[i].qo_calc;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].qg = 0;
+    } else {
+      mob.result_tabela[i].qg = (double.parse(mob.a) +
+              double.parse(mob.b) *
+                  mob.result_tabela[i].horas /
+                  mob.result_tabela[i].horas) *
+          mob.result_tabela[i].qo_calc;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].f = 0;
+    } else {
+      mob.result_tabela[i].f =
+          (mob.result_tabela[i].rse - 0.5 * mob.result_tabela[i].qg) /
+              (0.5 * double.parse(mob.b) * mob.result_tabela[i].qo_calc);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].cl = 0;
+    } else {
+      mob.result_tabela[i].cl = 0.0186 +
+          0.37 * mob.result_tabela[i].iaf -
+          0.035 * pow(mob.result_tabela[i].iaf, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].cn = 0;
+    } else if (mob.result_tabela[i].t <= 20) {
+      mob.result_tabela[i].cn = 0.6;
+    } else {
+      mob.result_tabela[i].cn = 0.5;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].cl = 0;
+    } else {
+      mob.result_tabela[i].cl = 0.0186 +
+          0.37 * mob.result_tabela[i].iaf -
+          0.035 * pow(mob.result_tabela[i].iaf, 2);
+    }
+    //-----------------------------------------------------------
+    if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].yp = 0;
+    } else {
+      mob.result_tabela[i].yp = (mob.result_tabela[i].f *
+                  mob.result_tabela[i].cto *
+                  mob.result_tabela[i].yo +
+              (1 - mob.result_tabela[i].f) *
+                  mob.result_tabela[i].ctc *
+                  mob.result_tabela[i].yc) *
+          mob.result_tabela[i].cl *
+          mob.result_tabela[i].cn *
+          double.parse(mob.indice_colheita) *
+          mob.result_tabela[i].numero_dias_faze;
+    }
     //-----------------------------------------------------------
     //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+
   }
 
   print("fim calculo");
-}
+} /*
+ if (dados[i].logica2 == 0) {
+      mob.result_tabela[i].cto = 0;
+    } else if (mob.grup_culura == 'Grupo 1') {
+      mob.result_tabela[i].cto = 0;
+    }
+*/
 
 List<double> j = [
   10.7,

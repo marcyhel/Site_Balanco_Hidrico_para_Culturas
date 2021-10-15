@@ -59,6 +59,7 @@ class _GrupoCulturaState extends State<GrupoCultura> {
         expandedColor: Theme.of(context).primaryColor,
         onChanged: (e) {
           mob.setGrup_cultura(UF[e - 1]);
+          print(mob.grup_culura);
         },
       ),
     );
