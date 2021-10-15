@@ -47,14 +47,67 @@ abstract class _Mob_dados with Store {
   }
 
   @action
-  void calcula() {
+  bool calcula() {
     print("ewewewe");
-    calcularDadosOcultos();
+    try {
+      calcularDadosOcultos();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   double cadini = 0;
   double negAcIni = 0;
   double aRMini = 0;
+
+  double some_m1 = 0;
+  double some_d1 = 0;
+  double some_y1 = 0;
+  double some_m2 = 0;
+  double some_d2 = 0;
+  double some_y2 = 0;
+  double some_m3 = 0;
+  double some_d3 = 0;
+  double some_y3 = 0;
+  double some_m4 = 0;
+  double some_d4 = 0;
+  double some_y4 = 0;
+  double some_m5 = 0;
+  double some_d5 = 0;
+  double some_y5 = 0;
+  double some_yp = 0;
+
+  double final_est_num = 0;
+  double final_est_eta = 0;
+  double final_est_ky = 0;
+  double final_est_prod = 0;
+
+  double final_des_num = 0;
+  double final_des_eta = 0;
+  double final_des_ky = 0;
+  double final_des_prod = 0;
+
+  double final_flo_num = 0;
+  double final_flo_eta = 0;
+  double final_flo_ky = 0;
+  double final_flo_prod = 0;
+
+  double final_fru_num = 0;
+  double final_fru_eta = 0;
+  double final_fru_ky = 0;
+  double final_fru_prod = 0;
+
+  double final_mat_num = 0;
+  double final_mat_eta = 0;
+  double final_mat_ky = 0;
+  double final_mat_prod = 0;
+
+  double produtividade_potencial_peso = 0;
+  double produtividade_potencial_agua = 0;
+  double produtividade_potencial_total = 0;
+  double final_total_dias = 0;
+  double final_quebra_produ = 0;
 
   @observable
   double somatorio_i = 0;
@@ -67,74 +120,76 @@ abstract class _Mob_dados with Store {
   ObservableList<DataClima> result_tabela = ObservableList();
   @observable
   bool carrega = false;
+  @observable
+  double some_i = 108.0238016;
 
   @observable
-  String estado = "0";
+  String estado = "";
   @observable
-  String cad_min = "0";
+  String cad_min = "0.0";
   @observable
-  String grup_culura = "0";
+  String grup_culura = "";
   @observable
-  String gd = "0";
+  String gd = "0.0";
   @observable
-  String temp_base = "0";
+  String temp_base = "0.0";
   @observable
-  String neg_acumulado_inicial = "0";
+  String neg_acumulado_inicial = "0.0";
   @observable
-  String armazenamento_inicial = "0";
+  String armazenamento_inicial = "0.0";
   @observable
-  String umidade_colhida = "0";
+  String umidade_colhida = "0.0";
   @observable
-  String indice_colheita = "0";
+  String indice_colheita = "0.0";
   @observable
-  String a = "0";
+  String a = "0.0";
   @observable
-  String b = "0";
+  String b = "0.0";
 
   @observable
-  String est_kc = "0";
+  String est_kc = "0.0";
   @observable
-  String est_ky = "0";
+  String est_ky = "0.0";
   @observable
-  String est_iaf = "0";
+  String est_iaf = "0.0";
   @observable
-  String est_cad = "0";
+  String est_cad = "0.0";
 
   @observable
-  String des_kc = "0";
+  String des_kc = "0.0";
   @observable
-  String des_ky = "0";
+  String des_ky = "0.0";
   @observable
-  String des_iaf = "0";
+  String des_iaf = "0.0";
   @observable
-  String des_cad = "0";
+  String des_cad = "0.0";
 
   @observable
-  String flo_kc = "0";
+  String flo_kc = "0.0";
   @observable
-  String flo_ky = "0";
+  String flo_ky = "0.0";
   @observable
-  String flo_iaf = "0";
+  String flo_iaf = "0.0";
   @observable
-  String flo_cad = "0";
+  String flo_cad = "0.0";
 
   @observable
-  String fru_kc = "0";
+  String fru_kc = "0.0";
   @observable
-  String fru_ky = "0";
+  String fru_ky = "0.0";
   @observable
-  String fru_iaf = "0";
+  String fru_iaf = "0.0";
   @observable
-  String fru_cad = "0";
+  String fru_cad = "0.0";
 
   @observable
-  String mat_kc = "0";
+  String mat_kc = "0.0";
   @observable
-  String mat_ky = "0";
+  String mat_ky = "0.0";
   @observable
-  String mat_iaf = "0";
+  String mat_iaf = "0.0";
   @observable
-  String mat_cad = "0";
+  String mat_cad = "0.0";
 
   @action
   void setDataStart(valor) => dataStart = valor;

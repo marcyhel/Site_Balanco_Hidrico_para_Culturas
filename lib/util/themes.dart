@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 var lightThemeData = ThemeData(
+  textSelectionColor: Colors.black54,
+  hintColor: Colors.blueGrey[600],
+  hoverColor: Colors.blueGrey[100],
   primaryColor: Colors.grey,
   primarySwatch: Colors.blueGrey,
   backgroundColor: Colors.white,
@@ -14,7 +17,7 @@ var lightThemeData = ThemeData(
       color: Colors.blueGrey[900],
     ),
     subtitle1: TextStyle(
-      color: Colors.black,
+      color: Colors.black54,
     ),
     headline1: TextStyle(color: Colors.blueGrey[800]),
   ),
@@ -24,6 +27,9 @@ var lightThemeData = ThemeData(
 );
 
 var darkThemeData = ThemeData(
+  textSelectionColor: Colors.black87,
+  hintColor: Colors.grey[900],
+  hoverColor: Colors.blueGrey,
   primaryColor: Colors.grey,
   primarySwatch: Colors.blueGrey,
   backgroundColor: Colors.blueGrey[900],

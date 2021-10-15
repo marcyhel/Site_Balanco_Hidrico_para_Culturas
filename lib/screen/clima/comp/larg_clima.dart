@@ -55,24 +55,6 @@ class _LargClimaState extends State<LargClima> {
                           top: 90,
                           left: MediaQuery.of(context).size.width / 80),
                       child: Custon_button(
-                        text: "printar",
-                        carrega: mob.carrega,
-                        func: () {
-                          setState(() {
-                            mob.calcula();
-                            //print("ds");
-                          });
-                          //mob.calcula();
-                        },
-                      ),
-                    );
-                  }),
-                  Observer(builder: (_) {
-                    return Container(
-                      margin: EdgeInsets.only(
-                          top: 90,
-                          left: MediaQuery.of(context).size.width / 80),
-                      child: Custon_button(
                         text: "Manual",
                         carrega: mob.carrega,
                         func: () {
@@ -109,7 +91,37 @@ class _LargClimaState extends State<LargClima> {
                         },*/
                           ),
                     );
-                  })
+                  }),
+                  Observer(builder: (_) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                          top: (MediaQuery.of(context).size.height / 1.6) - 120,
+                          left: MediaQuery.of(context).size.width / 80),
+                      child: Custon_button(
+                        text: "Calcular",
+                        carrega: mob.carrega,
+                        func: () {
+                          setState(() {
+                            mob.calcula()
+                                ? ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        backgroundColor: Colors.green[400],
+                                        duration: Duration(seconds: 2),
+                                        content:
+                                            Text('Calculado com sucesso !! ')))
+                                : ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        duration: Duration(seconds: 2),
+                                        content: Text(
+                                            'Ouve algum erro durante os calculos.')));
+                            //Navigator.of(context).pop();
+                            //print("ds");
+                          });
+                          //mob.calcula();
+                        },
+                      ),
+                    );
+                  }),
                 ],
               )
             ],

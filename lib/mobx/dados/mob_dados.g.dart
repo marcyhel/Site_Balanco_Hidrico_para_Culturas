@@ -84,6 +84,21 @@ mixin _$Mob_dados on _Mob_dados, Store {
     });
   }
 
+  final _$some_iAtom = Atom(name: '_Mob_dados.some_i');
+
+  @override
+  double get some_i {
+    _$some_iAtom.reportRead();
+    return super.some_i;
+  }
+
+  @override
+  set some_i(double value) {
+    _$some_iAtom.reportWrite(value, super.some_i, () {
+      super.some_i = value;
+    });
+  }
+
   final _$estadoAtom = Atom(name: '_Mob_dados.estado');
 
   @override
@@ -563,7 +578,7 @@ mixin _$Mob_dados on _Mob_dados, Store {
   final _$_Mob_dadosActionController = ActionController(name: '_Mob_dados');
 
   @override
-  void calcula() {
+  bool calcula() {
     final _$actionInfo =
         _$_Mob_dadosActionController.startAction(name: '_Mob_dados.calcula');
     try {
@@ -955,6 +970,7 @@ dataStart: ${dataStart},
 dataEnd: ${dataEnd},
 result_tabela: ${result_tabela},
 carrega: ${carrega},
+some_i: ${some_i},
 estado: ${estado},
 cad_min: ${cad_min},
 grup_culura: ${grup_culura},

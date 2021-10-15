@@ -55,6 +55,57 @@ class DadosOcultos {
 
 List<DadosOcultos> dados = [];
 void calcularDadosOcultos() {
+  mob.cadini = 0;
+  mob.negAcIni = 0;
+  mob.aRMini = 0;
+
+  mob.some_m1 = 0;
+  mob.some_d1 = 0;
+  mob.some_y1 = 0;
+  mob.some_m2 = 0;
+  mob.some_d2 = 0;
+  mob.some_y2 = 0;
+  mob.some_m3 = 0;
+  mob.some_d3 = 0;
+  mob.some_y3 = 0;
+  mob.some_m4 = 0;
+  mob.some_d4 = 0;
+  mob.some_y4 = 0;
+  mob.some_m5 = 0;
+  mob.some_d5 = 0;
+  mob.some_y5 = 0;
+  mob.some_yp = 0;
+
+  mob.final_est_num = 0;
+  mob.final_est_eta = 0;
+  mob.final_est_ky = 0;
+  mob.final_est_prod = 0;
+
+  mob.final_des_num = 0;
+  mob.final_des_eta = 0;
+  mob.final_des_ky = 0;
+  mob.final_des_prod = 0;
+
+  mob.final_flo_num = 0;
+  mob.final_flo_eta = 0;
+  mob.final_flo_ky = 0;
+  mob.final_flo_prod = 0;
+
+  mob.final_fru_num = 0;
+  mob.final_fru_eta = 0;
+  mob.final_fru_ky = 0;
+  mob.final_fru_prod = 0;
+
+  mob.final_mat_num = 0;
+  mob.final_mat_eta = 0;
+  mob.final_mat_ky = 0;
+  mob.final_mat_prod = 0;
+
+  mob.produtividade_potencial_peso = 0;
+  mob.produtividade_potencial_agua = 0;
+  mob.produtividade_potencial_total = 0;
+  mob.final_total_dias = 0;
+  mob.final_quebra_produ = 0;
   //print("dados Ocultos");
   //print("aquii 1");
   dados = [];
@@ -709,31 +760,211 @@ void calcularDadosOcultos() {
           mob.result_tabela[i].numero_dias_faze;
     }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 1) {
+      dados[i].m1 = mob.result_tabela[i].eta_etm;
+    } else {
+      dados[i].m1 = -999;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 1) {
+      dados[i].d1 = mob.result_tabela[i].numero_dias_faze;
+    } else {
+      dados[i].d1 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 1) {
+      dados[i].y1 = mob.result_tabela[i].yp;
+    } else {
+      dados[i].y1 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 2) {
+      dados[i].m2 = mob.result_tabela[i].eta_etm;
+    } else {
+      dados[i].m2 = -999;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 2) {
+      dados[i].d2 = mob.result_tabela[i].numero_dias_faze;
+    } else {
+      dados[i].d2 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 2) {
+      dados[i].y2 = mob.result_tabela[i].yp;
+    } else {
+      dados[i].y2 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 3) {
+      dados[i].m3 = mob.result_tabela[i].eta_etm;
+    } else {
+      dados[i].m3 = -999;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 3) {
+      dados[i].d3 = mob.result_tabela[i].numero_dias_faze;
+    } else {
+      dados[i].d3 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 3) {
+      dados[i].y3 = mob.result_tabela[i].yp;
+    } else {
+      dados[i].y3 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 4) {
+      dados[i].m4 = mob.result_tabela[i].eta_etm;
+    } else {
+      dados[i].m4 = -999;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 4) {
+      dados[i].d4 = mob.result_tabela[i].numero_dias_faze;
+    } else {
+      dados[i].d4 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 4) {
+      dados[i].y4 = mob.result_tabela[i].yp;
+    } else {
+      dados[i].y4 = 0;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 5) {
+      dados[i].m5 = mob.result_tabela[i].eta_etm;
+    } else {
+      dados[i].m5 = -999;
+    }
     //-----------------------------------------------------------
+    if (dados[i].logica2 == 5) {
+      dados[i].d5 = mob.result_tabela[i].numero_dias_faze;
+    } else {
+      dados[i].d5 = 0;
+    }
     //-----------------------------------------------------------
-    //-----------------------------------------------------------
-    //-----------------------------------------------------------
-    //-----------------------------------------------------------
-    //-----------------------------------------------------------
+    if (dados[i].logica2 == 5) {
+      dados[i].y5 = mob.result_tabela[i].yp;
+    } else {
+      dados[i].y5 = 0;
+    }
     //-----------------------------------------------------------
     //-----------------------------------------------------------
 
   }
 
+  for (var i = 0; i < mob.result_tabela.length; i++) {
+    if (dados[i].m1 != -999) {
+      mob.some_m1 += dados[i].m1;
+    }
+    if (dados[i].d1 != -999) {
+      mob.some_d1 += dados[i].d1;
+    }
+    if (dados[i].y1 != -999) {
+      mob.some_y1 += dados[i].y1;
+    }
+
+    //-----------------------------------------------------------
+    if (dados[i].m2 != -999) {
+      mob.some_m2 += dados[i].m2;
+    }
+    if (dados[i].d2 != -999) {
+      mob.some_d2 += dados[i].d2;
+    }
+    if (dados[i].y2 != -999) {
+      mob.some_y2 += dados[i].y2;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].m3 != -999) {
+      mob.some_m3 += dados[i].m3;
+    }
+    if (dados[i].d3 != -999) {
+      mob.some_d3 += dados[i].d3;
+    }
+    if (dados[i].y3 != -999) {
+      mob.some_y3 += dados[i].y3;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].m4 != -999) {
+      mob.some_m4 += dados[i].m4;
+    }
+    if (dados[i].d4 != -999) {
+      mob.some_d4 += dados[i].d4;
+    }
+    if (dados[i].y4 != -999) {
+      mob.some_y4 += dados[i].y4;
+    }
+    //-----------------------------------------------------------
+    if (dados[i].m5 != -999) {
+      mob.some_m5 += dados[i].m5;
+    }
+    if (dados[i].d5 != -999) {
+      mob.some_d5 += dados[i].d5;
+    }
+    if (dados[i].y5 != -999) {
+      mob.some_y5 += dados[i].y5;
+    }
+    //-----------------------------------------------------------
+    mob.some_yp = mob.result_tabela[i].yp;
+
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+    //-----------------------------------------------------------
+  }
+  mob.final_est_num = mob.some_d1;
+  mob.final_est_eta = 1 - mob.some_m1;
+  mob.final_est_ky = double.parse(mob.est_ky);
+
+  mob.final_des_num = mob.some_d2;
+  mob.final_des_eta = 1 - mob.some_m2;
+  mob.final_des_ky = double.parse(mob.des_ky);
+
+  mob.final_flo_num = mob.some_d3;
+  mob.final_flo_eta = 1 - mob.some_m3;
+  mob.final_flo_ky = double.parse(mob.flo_ky);
+
+  mob.final_fru_num = mob.some_d4;
+  mob.final_fru_eta = 1 - mob.some_m4;
+  mob.final_fru_ky = double.parse(mob.fru_ky);
+
+  mob.final_mat_num = mob.some_d5;
+  mob.final_mat_eta = 1 - mob.some_m5;
+  mob.final_mat_ky = double.parse(mob.mat_ky);
+
+  mob.final_total_dias = (mob.final_est_num +
+      mob.final_des_num +
+      mob.final_flo_num +
+      mob.final_fru_num +
+      mob.final_mat_num);
+  mob.produtividade_potencial_peso =
+      (mob.some_y1 + mob.some_y2 + mob.some_y3 + mob.some_y4 + mob.some_y5);
+  mob.produtividade_potencial_agua =
+      mob.produtividade_potencial_peso * double.parse(mob.umidade_colhida);
+  mob.produtividade_potencial_total =
+      mob.produtividade_potencial_peso + mob.produtividade_potencial_agua;
+
+  mob.final_est_prod = (1 - (mob.final_est_ky * mob.final_est_eta)) *
+      mob.produtividade_potencial_total;
+  mob.final_des_prod =
+      (1 - (mob.final_des_ky * mob.final_des_eta)) * mob.final_est_prod;
+  mob.final_flo_prod =
+      (1 - (mob.final_flo_ky * mob.final_flo_eta)) * mob.final_des_prod;
+  mob.final_fru_prod =
+      (1 - (mob.final_fru_ky * mob.final_fru_eta)) * mob.final_flo_prod;
+  mob.final_mat_prod =
+      (1 - (mob.final_mat_ky * mob.final_mat_eta)) * mob.final_fru_prod;
+
+  mob.final_quebra_produ =
+      (1 - mob.final_mat_prod / mob.produtividade_potencial_total);
   print("fim calculo");
-} /*
+}
+
+/*
  if (dados[i].logica2 == 0) {
       mob.result_tabela[i].cto = 0;
     } else if (mob.grup_culura == 'Grupo 1') {

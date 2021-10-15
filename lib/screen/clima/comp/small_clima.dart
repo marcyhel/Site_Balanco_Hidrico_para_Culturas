@@ -36,6 +36,25 @@ class _SmallClimaState extends State<SmallClima> {
                 width: MediaQuery.of(context).size.width / 1.55,
                 child: PikerData(func: mob.setDataEnd),
               ),*/
+              Observer(builder: (_) {
+                return Container(
+                  width: MediaQuery.of(context).size.width / 1.55,
+                  margin: EdgeInsets.only(
+                    top: 20,
+                  ), //left: MediaQuery.of(context).size.width / 80),
+                  child: Custon_button(
+                    text: "Manual",
+                    carrega: mob.carrega,
+                    func: () {
+                      if (mob.carregaManual()) {
+                        print('certo');
+                      } else {
+                        print('algo de errado');
+                      }
+                    },
+                  ),
+                );
+              }),
               Observer(
                 builder: (_) {
                   return Container(
@@ -58,6 +77,35 @@ class _SmallClimaState extends State<SmallClima> {
                   );
                 },
               ),
+              Observer(builder: (_) {
+                return Container(
+                  width: MediaQuery.of(context).size.width / 1.55,
+                  margin: EdgeInsets.only(
+                    top: 20,
+                  ), //left: MediaQuery.of(context).size.width / 80),
+                  child: Custon_button(
+                    text: "Calcular",
+                    carrega: mob.carrega,
+                    func: () {
+                      setState(() {
+                        mob.calcula()
+                            ? ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    backgroundColor: Colors.green[400],
+                                    duration: Duration(seconds: 2),
+                                    content: Text('Calculado com sucesso !! ')))
+                            : ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                duration: Duration(seconds: 2),
+                                content: Text(
+                                    'Ouve algum erro durante os calculos.')));
+                        //Navigator.of(context).pop();
+                        //print("ds");
+                      });
+                      //mob.calcula();
+                    },
+                  ),
+                );
+              }),
               SizedBox(height: 20),
               Tabela(),
             ],

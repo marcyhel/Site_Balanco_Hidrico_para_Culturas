@@ -4,6 +4,7 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'dart:math' as math show pi;
 
 import 'package:plat11/screen/dashboard/dashboard.dart';
+import 'package:plat11/screen/tabela/tabela.dart';
 import 'package:plat11/util/themes.dart';
 
 import 'clima/clima.dart';
@@ -26,6 +27,7 @@ class _PrincipalState extends State<Principal> {
   List screen = [
     Clima(),
     Dashboard(),
+    TabelaDados(),
     Container(
       color: Colors.red,
     ),
@@ -76,20 +78,22 @@ class _PrincipalState extends State<Principal> {
     ];
   }
 
-  dynamic avatar = Icon(
-    Icons.dark_mode,
-    size: 35,
-    color: Color(0xff6A7886),
-  );
   @override
   Widget build(BuildContext context) {
+    dynamic avatar = Icon(
+      (EasyDynamicTheme.of(context).themeMode == ThemeMode.light)
+          ? Icons.light_mode
+          : Icons.dark_mode,
+      size: 35,
+      color: Theme.of(context).hoverColor,
+    );
     var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: CollapsibleSidebar(
-          selectedIconColor: Colors.black,
-          selectedIconBox: Color(0xff6A7886),
+          selectedIconColor: Theme.of(context).hintColor,
+          selectedIconBox: Theme.of(context).hoverColor,
           items: _items,
           avatarImg: avatar,
           title: '',
@@ -99,14 +103,14 @@ class _PrincipalState extends State<Principal> {
               avatar = Icon(
                 Icons.dark_mode,
                 size: 35,
-                color: Color(0xff6A7886),
+                color: Theme.of(context).hoverColor,
               );
             } else {
               EasyDynamicTheme.of(context).changeTheme(dark: false);
               avatar = Icon(
                 Icons.light_mode,
                 size: 35,
-                color: Color(0xff6A7886),
+                color: Theme.of(context).hoverColor,
               );
             }
             //setState(() {});
@@ -115,8 +119,9 @@ class _PrincipalState extends State<Principal> {
                 SnackBar(content: Text('Yay! Flutter Collapsible Sidebar!')));*/
           },
           body: _body(size, context),
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).hintColor,
           selectedTextColor: Colors.black,
+          unselectedIconColor: Theme.of(context).hoverColor,
           textStyle: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
           titleStyle: TextStyle(
               fontSize: 20,

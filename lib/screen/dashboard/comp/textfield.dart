@@ -20,7 +20,7 @@ class _CustonTextFieldState extends State<CustonTextField> {
       margin: EdgeInsets.all(5),
       width: MediaQuery.of(context).size.width / 1.8,
       child: TextFormField(
-        initialValue: widget.valor,
+        initialValue: (widget.valor == '0.0') ? "" : widget.valor,
         onChanged: (e) {
           widget.func(e);
         },
