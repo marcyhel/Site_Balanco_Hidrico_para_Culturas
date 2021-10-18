@@ -24,7 +24,7 @@ class DadosOcultos {
   double cultura_logica = 0;
   double logica1 = 0;
   double logica2 = 0;
-  Estados logica3 = Estados.Vazio;
+  double logica3 = 0;
   double m1 = 0;
   double d1 = 0;
   double y1 = 0;
@@ -54,7 +54,7 @@ class DadosOcultos {
 }
 
 List<DadosOcultos> dados = [];
-void calcularDadosOcultos() {
+List<DadosOcultos> calcularDadosOcultos() {
   mob.cadini = 0;
   mob.negAcIni = 0;
   mob.aRMini = 0;
@@ -338,19 +338,19 @@ void calcularDadosOcultos() {
     }
     //-----------------------------------------------------------
     if (dados[i].logica2 == 1) {
-      dados[i].logica3 = Estados.Estab;
+      dados[i].logica3 = 1;
     }
     if (dados[i].logica2 == 2) {
-      dados[i].logica3 = Estados.Des_Veg;
+      dados[i].logica3 = 2;
     }
     if (dados[i].logica2 == 3) {
-      dados[i].logica3 = Estados.Floresc;
+      dados[i].logica3 = 3;
     }
     if (dados[i].logica2 == 4) {
-      dados[i].logica3 = Estados.Frutif;
+      dados[i].logica3 = 4;
     }
     if (dados[i].logica2 == 5) {
-      dados[i].logica3 = Estados.Maturac;
+      dados[i].logica3 = 5;
     }
     //print("aquii 4 6");
     //-----------------------------------------------------------
@@ -523,13 +523,13 @@ void calcularDadosOcultos() {
       mob.result_tabela[i].eta_etm =
           mob.result_tabela[i].eta / mob.result_tabela[i].etm;
     } else {
-      mob.result_tabela[i].eta_etm = 0;
+      mob.result_tabela[i].eta_etm = -999;
     }
     //-----------------------------------------------------------
     if (dados[i].temp_logica != 0) {
       mob.result_tabela[i].eta_etm_1 = 1 - mob.result_tabela[i].eta_etm;
     } else {
-      mob.result_tabela[i].eta_etm_1 = 0;
+      mob.result_tabela[i].eta_etm_1 = -999;
     }
     //-----------------------------------------------------------
 
@@ -962,6 +962,7 @@ void calcularDadosOcultos() {
   mob.final_quebra_produ =
       (1 - mob.final_mat_prod / mob.produtividade_potencial_total);
   print("fim calculo");
+  return dados;
 }
 
 /*

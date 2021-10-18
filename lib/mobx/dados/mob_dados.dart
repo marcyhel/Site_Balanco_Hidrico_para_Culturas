@@ -49,13 +49,16 @@ abstract class _Mob_dados with Store {
   @action
   bool calcula() {
     print("ewewewe");
+
     try {
-      calcularDadosOcultos();
+      dados_ocultos = calcularDadosOcultos();
       return true;
     } catch (e) {
       return false;
     }
   }
+
+  List<DadosOcultos> dados_ocultos = [];
 
   double cadini = 0;
   double negAcIni = 0;
@@ -300,8 +303,8 @@ List<DataClima> datasManual(dataStart, dataEnd) {
 
 Future<List<DataClima>> conectar() async {
   var aux = calculateDaysInterval(
-      DateTime(
-          DateTime.now().year, DateTime.now().month - 2, DateTime.now().day),
+      DateTime(DateTime.now().year - 1, DateTime.now().month - 2,
+          DateTime.now().day),
       DateTime.now());
 
   List<List<Climas>> clima = [];
