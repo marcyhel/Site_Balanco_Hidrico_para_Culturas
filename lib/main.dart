@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:plat11/screen/load.dart';
 import 'package:plat11/screen/principal.dart';
@@ -12,13 +13,15 @@ import 'package:html/dom.dart';
 import 'package:plat11/util/themes.dart'; // Contains DOM related classes for extracting data from elements
 
 void main() async {
-  singletonsApp();
+  await Hive.initFlutter();
+  var box = await Hive.openBox('minhaCaixa1');
+  singletonsApp(box);
 
   runApp(EasyDynamicThemeWidget(child: MyApp()));
 }
 
-void singletonsApp() {
-  GetIt.I.registerSingleton(Mob_dados());
+void singletonsApp(box) {
+  GetIt.I.registerSingleton(Mob_dados(box));
 }
 
 class MyApp extends StatelessWidget {

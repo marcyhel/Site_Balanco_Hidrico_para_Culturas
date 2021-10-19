@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+
 import 'package:plat11/mobx/dados_soltos.dart';
 
 part 'mob_dados.g.dart';
@@ -13,15 +14,17 @@ part 'mob_dados.g.dart';
 class Mob_dados = _Mob_dados with _$Mob_dados;
 
 abstract class _Mob_dados with Store {
-  _Mob_dados() {
-    double somass = 0;
-    j.forEach((b) {
-      somass += b;
-    });
-    print(somass / 3);
+  Box box;
+  _Mob_dados(
+    this.box,
+  ) {
+    this.box;
+
     autorun((_) {
       //conectar();
     });
+
+    carregaDados();
   }
 
   @action
@@ -50,12 +53,120 @@ abstract class _Mob_dados with Store {
   @action
   bool calcula() {
     print("ewewewe");
+    SalvarDados();
 
     try {
       dados_ocultos = calcularDadosOcultos();
       return true;
     } catch (e) {
       return false;
+    }
+  }
+
+  @action
+  Future<void> carregaDados() async {
+    box = await Hive.openBox('minhaCaixa1');
+    print("carregado");
+    if (box.get('dados') != null) {
+      var result = box.get('dados');
+      estado = result['estado'];
+      cad_min = result['cad_min'];
+      grup_culura = result['grup_culura'];
+      gd = result['gd'];
+      temp_base = result['temp_base'];
+      neg_acumulado_inicial = result['neg_acumulado_inicial'];
+      armazenamento_inicial = result['armazenamento_inicial'];
+      umidade_colhida = result['umidade_colhida'];
+      indice_colheita = result['indice_colheita'];
+      a = result['a'];
+      b = result['b'];
+      est_kc = result['est_kc'];
+      est_ky = result['est_ky'];
+      est_iaf = result['est_iaf'];
+      est_cad = result['est_cad'];
+      des_kc = result['des_kc'];
+      des_ky = result['des_ky'];
+      des_iaf = result['des_iaf'];
+      des_cad = result['des_cad'];
+      flo_kc = result['flo_kc'];
+      flo_ky = result['flo_ky'];
+      flo_iaf = result['flo_iaf'];
+      flo_cad = result['flo_cad'];
+      fru_kc = result['fru_kc'];
+      fru_ky = result['fru_ky'];
+      fru_iaf = result['fru_iaf'];
+      fru_cad = result['fru_cad'];
+      mat_kc = result['mat_kc'];
+      mat_ky = result['mat_ky'];
+      mat_iaf = result['mat_iaf'];
+      mat_cad = result['mat_cad'];
+    } else {
+      print("erro ao carregar dados");
+    }
+    if (box.get('result') != null) {
+      var re = box.get('result');
+      result_tabela = ObservableList();
+      for (var i = 0; i < re['index']; i++) {
+        result_tabela.add(DataClima(
+            dataEnd: re['dataEnd' + i.toString()],
+            t: re['t' + i.toString()],
+            p: re['p' + i.toString()],
+            dataStrat: re['dataStart' + i.toString()]));
+      }
+    } else {
+      print("erro ao carregar dados resultado");
+    }
+  }
+
+  @action
+  Future<void> SalvarDados() async {
+    try {
+      var save = {
+        'estado': estado,
+        'cad_min': cad_min,
+        'grup_culura': grup_culura,
+        'gd': gd,
+        'temp_base': temp_base,
+        'neg_acumulado_inicial': neg_acumulado_inicial,
+        'armazenamento_inicial': armazenamento_inicial,
+        'umidade_colhida': umidade_colhida,
+        'indice_colheita': indice_colheita,
+        'a': a,
+        'b': b,
+        'est_kc': est_kc,
+        'est_ky': est_ky,
+        'est_iaf': est_iaf,
+        'est_cad': est_cad,
+        'des_kc': des_kc,
+        'des_ky': des_ky,
+        'des_iaf': des_iaf,
+        'des_cad': des_cad,
+        'flo_kc': flo_kc,
+        'flo_ky': flo_ky,
+        'flo_iaf': flo_iaf,
+        'flo_cad': flo_cad,
+        'fru_kc': fru_kc,
+        'fru_ky': fru_ky,
+        'fru_iaf': fru_iaf,
+        'fru_cad': fru_cad,
+        'mat_kc': mat_kc,
+        'mat_ky': mat_ky,
+        'mat_iaf': mat_iaf,
+        'mat_cad': mat_cad,
+      };
+
+      var resu = {};
+      resu['index'] = result_tabela.length;
+      for (var i = 0; i < result_tabela.length; i++) {
+        resu['p' + i.toString()] = result_tabela[i].p;
+        resu['t' + i.toString()] = result_tabela[i].t;
+        resu['dataEnd' + i.toString()] = result_tabela[i].dataEnd;
+        resu['dataStart' + i.toString()] = result_tabela[i].dataStrat;
+      }
+      box.put('result', resu);
+      box.put('dados', save);
+    } catch (e) {
+      print("erro al salvar");
     }
   }
 

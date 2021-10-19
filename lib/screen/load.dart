@@ -27,7 +27,7 @@ class _LoadState extends State<Load> {
         widget.load += 0.01;
       });
     }
-    await Future.delayed(Duration(seconds: Random().nextInt(1) + 1));
+    await Future.delayed(Duration(milliseconds: Random().nextInt(500) + 500));
     for (var i = 0; i <= 10; i++) {
       await Future.delayed(Duration(milliseconds: 10));
       setState(() {
@@ -41,7 +41,7 @@ class _LoadState extends State<Load> {
         widget.load += 0.01;
       });
     }
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(milliseconds: 600));
     for (var i = 0; i <= 10; i++) {
       await Future.delayed(Duration(milliseconds: 20));
       setState(() {

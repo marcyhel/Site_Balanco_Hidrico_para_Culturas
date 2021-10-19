@@ -4,6 +4,7 @@ import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'dart:math' as math show pi;
 
 import 'package:plat11/screen/dashboard/dashboard.dart';
+import 'package:plat11/screen/graficos/grafico.dart';
 import 'package:plat11/screen/tabela/tabela.dart';
 import 'package:plat11/util/themes.dart';
 
@@ -28,6 +29,7 @@ class _PrincipalState extends State<Principal> {
     Clima(),
     Dashboard(),
     TabelaDados(),
+    Grafico(),
     Container(
       color: Colors.red,
     ),
