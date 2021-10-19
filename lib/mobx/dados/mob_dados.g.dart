@@ -24,6 +24,21 @@ mixin _$Mob_dados on _Mob_dados, Store {
     });
   }
 
+  final _$loadAtom = Atom(name: '_Mob_dados.load');
+
+  @override
+  double get load {
+    _$loadAtom.reportRead();
+    return super.load;
+  }
+
+  @override
+  set load(double value) {
+    _$loadAtom.reportWrite(value, super.load, () {
+      super.load = value;
+    });
+  }
+
   final _$dataStartAtom = Atom(name: '_Mob_dados.dataStart');
 
   @override
@@ -575,6 +590,13 @@ mixin _$Mob_dados on _Mob_dados, Store {
     return _$carregarAsyncAction.run(() => super.carregar());
   }
 
+  final _$setLoadAsyncAction = AsyncAction('_Mob_dados.setLoad');
+
+  @override
+  Future<void> setLoad() {
+    return _$setLoadAsyncAction.run(() => super.setLoad());
+  }
+
   final _$_Mob_dadosActionController = ActionController(name: '_Mob_dados');
 
   @override
@@ -966,6 +988,7 @@ mixin _$Mob_dados on _Mob_dados, Store {
   String toString() {
     return '''
 somatorio_i: ${somatorio_i},
+load: ${load},
 dataStart: ${dataStart},
 dataEnd: ${dataEnd},
 result_tabela: ${result_tabela},

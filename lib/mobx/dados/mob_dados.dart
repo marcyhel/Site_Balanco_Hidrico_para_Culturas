@@ -23,6 +23,7 @@ abstract class _Mob_dados with Store {
       //conectar();
     });
   }
+
   @action
   Future<void> carregar() async {
     carrega = true;
@@ -114,6 +115,8 @@ abstract class _Mob_dados with Store {
 
   @observable
   double somatorio_i = 0;
+  @observable
+  double load = 5;
   @observable
   DateTime? dataStart;
 
@@ -267,6 +270,20 @@ abstract class _Mob_dados with Store {
   void setMat_cad(valor) => mat_cad = valor;
   @action
   void setResult_tabela(valor) => result_tabela = valor;
+  @action
+  Future<void> setLoad() async {
+    print(load);
+    await Future.delayed(Duration(seconds: 3));
+    load = 30;
+    await Future.delayed(Duration(seconds: 3));
+    load = 60;
+    //for (var i = 0; i <= 30; i++) {
+    //  await Future.delayed(Duration(milliseconds: 200));
+    //  load += 1;
+    //}
+
+    print(load);
+  }
 }
 
 List<DataClima> datasManual(dataStart, dataEnd) {

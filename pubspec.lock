@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "22.0.0"
+  ai_progress:
+    dependency: "direct main"
+    description:
+      name: ai_progress
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   analyzer:
     dependency: transitive
     description:
@@ -282,6 +289,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  gradient_progress:
+    dependency: "direct main"
+    description:
+      name: gradient_progress
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   graphs:
     dependency: transitive
     description:
