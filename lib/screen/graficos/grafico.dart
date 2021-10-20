@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
+import 'package:plat11/mobx/dados_grafico.dart';
 import 'package:plat11/screen/graficos/componentes/grafic_1.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -47,17 +48,17 @@ class _GraficoState extends State<Grafico> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width / 3,
+                  width: MediaQuery.of(context).size.width / 2.3,
                   child: Grafico1(),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width / 3,
+                  width: MediaQuery.of(context).size.width / 2.3,
                   child: Grafico1(),
                 ),
               ],
             ),
             Container(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 1.5,
               child: Grafico1(),
             ),
           ],

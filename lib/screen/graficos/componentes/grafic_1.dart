@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
+import 'package:plat11/mobx/dados_grafico.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -24,8 +25,9 @@ class _SalesData {
 }
 
 class _GraficoState extends State<Grafico1> {
+  final Mob_Grafico mob_graf = Mob_Grafico();
   List<dynamic> dados = [];
-
+  int index = -1;
   List<dynamic> data3 = [
     _SalesData('Ano 1', -30),
     _SalesData('Ano 2', 20),
@@ -37,6 +39,7 @@ class _GraficoState extends State<Grafico1> {
   @override
   Widget build(BuildContext context) {
     ChartSeriesController? _chartSeriesController;
+
     return Container(
       decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
@@ -65,9 +68,18 @@ class _GraficoState extends State<Grafico1> {
               // Assigning the controller to the _chartSeriesController.
               //  mob.chartSeriesController = controller;
               //},
-              dataSource: data3.cast<dynamic>(),
-              xValueMapper: (dynamic sales, _) => sales.year,
-              yValueMapper: (dynamic sales, _) => sales.sales,
+              dataSource: mob_graf.dados1.cast<dynamic>(),
+
+              xValueMapper: (dynamic sales, _) {
+                if (index < mob_graf.meses.length - 1) {
+                  index++;
+                } else {
+                  //index = 0;
+                }
+
+                return mob_graf.meses[index].toString().split('-')[0];
+              },
+              yValueMapper: (dynamic sales, _) => sales,
               name: 'Fluxo de Caixa',
               color: Colors.blueGrey,
               // Enable data label

@@ -590,6 +590,20 @@ mixin _$Mob_dados on _Mob_dados, Store {
     return _$carregarAsyncAction.run(() => super.carregar());
   }
 
+  final _$carregaDadosAsyncAction = AsyncAction('_Mob_dados.carregaDados');
+
+  @override
+  Future<void> carregaDados() {
+    return _$carregaDadosAsyncAction.run(() => super.carregaDados());
+  }
+
+  final _$SalvarDadosAsyncAction = AsyncAction('_Mob_dados.SalvarDados');
+
+  @override
+  Future<void> SalvarDados() {
+    return _$SalvarDadosAsyncAction.run(() => super.SalvarDados());
+  }
+
   final _$setLoadAsyncAction = AsyncAction('_Mob_dados.setLoad');
 
   @override

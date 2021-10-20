@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
+import 'package:plat11/mobx/dados_grafico.dart';
 
 import 'package:plat11/mobx/dados_soltos.dart';
 
@@ -54,7 +55,7 @@ abstract class _Mob_dados with Store {
   bool calcula() {
     print("ewewewe");
     SalvarDados();
-
+    Dados_Grafico();
     try {
       dados_ocultos = calcularDadosOcultos();
       return true;
