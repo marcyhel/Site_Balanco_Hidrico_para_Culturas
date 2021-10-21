@@ -114,6 +114,7 @@ abstract class _Mob_dados with Store {
             p: re['p' + i.toString()],
             dataStrat: re['dataStart' + i.toString()]));
       }
+      calcula();
     } else {
       print("erro ao carregar dados resultado");
     }

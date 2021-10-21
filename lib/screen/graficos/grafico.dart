@@ -58,7 +58,7 @@ class _GraficoState extends State<Grafico> {
               ],
             ),
             Container(
-              width: MediaQuery.of(context).size.width / 1.5,
+              width: MediaQuery.of(context).size.width / 1.1,
               child: Grafico1(),
             ),
           ],

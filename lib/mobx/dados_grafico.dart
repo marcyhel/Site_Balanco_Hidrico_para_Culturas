@@ -24,32 +24,36 @@ abstract class _Mob_GraficoBase with Store {
     for (var i = 0; i < mob.result_tabela.length; i++) {
       print(mob.result_tabela[i].dataEnd!.month);
       if (mob.result_tabela[i].dataEnd!.month == 1) {
-        meses.add('jan -' + i.toString());
+        meses.add('jan');
       } else if (mob.result_tabela[i].dataEnd!.month == 2) {
-        meses.add('fev -' + i.toString());
+        meses.add('fev');
       } else if (mob.result_tabela[i].dataEnd!.month == 3) {
-        meses.add('mar -' + i.toString());
+        meses.add('mar ');
       } else if (mob.result_tabela[i].dataEnd!.month == 4) {
-        meses.add('abr -' + i.toString());
+        meses.add('abr');
       } else if (mob.result_tabela[i].dataEnd!.month == 5) {
-        meses.add('mai -' + i.toString());
+        meses.add('mai');
       } else if (mob.result_tabela[i].dataEnd!.month == 6) {
-        meses.add('jun -' + i.toString());
+        meses.add('jun');
       } else if (mob.result_tabela[i].dataEnd!.month == 7) {
-        meses.add('jul -' + i.toString());
+        meses.add('jul');
       } else if (mob.result_tabela[i].dataEnd!.month == 8) {
-        meses.add('ago -' + i.toString());
+        meses.add('ago');
       } else if (mob.result_tabela[i].dataEnd!.month == 9) {
-        meses.add('set -' + i.toString());
+        meses.add('set');
       } else if (mob.result_tabela[i].dataEnd!.month == 10) {
-        meses.add('out -' + i.toString());
+        meses.add('out');
       } else if (mob.result_tabela[i].dataEnd!.month == 11) {
-        meses.add('nov -' + i.toString());
+        meses.add('nov');
       } else if (mob.result_tabela[i].dataEnd!.month == 12) {
-        meses.add('dez -' + i.toString());
+        meses.add('dez');
       }
+      meses[i] = mob.result_tabela[i].dataEnd!.day.toString() +
+          '/' +
+          meses[i].toString();
       dados1.add(Random().nextDouble());
     }
+
     print(meses.length);
   }
 }

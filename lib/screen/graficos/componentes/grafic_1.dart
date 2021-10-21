@@ -26,16 +26,10 @@ class _SalesData {
 
 class _GraficoState extends State<Grafico1> {
   final Mob_Grafico mob_graf = Mob_Grafico();
-  List<dynamic> dados = [];
+
   int index = -1;
-  List<dynamic> data3 = [
-    _SalesData('Ano 1', -30),
-    _SalesData('Ano 2', 20),
-    _SalesData('Ano 3', 30),
-    _SalesData('Ano 4', 28),
-    _SalesData('Ano 5', 30),
-    _SalesData('Ano 6', 30),
-  ];
+  int index1 = -1;
+
   @override
   Widget build(BuildContext context) {
     ChartSeriesController? _chartSeriesController;
@@ -50,42 +44,157 @@ class _GraficoState extends State<Grafico1> {
           ]),
       margin: EdgeInsets.all(10),
       child: SfCartesianChart(
-          primaryXAxis: CategoryAxis(title: AxisTitle(text: 'Anos')),
-          primaryYAxis: NumericAxis(title: AxisTitle(text: 'VPL (R\$)')),
-          // Chart title
-          title: ChartTitle(text: 'Fluxo de Caixa Livre (FCL)'),
-          // Enable legend
-          legend: Legend(
-              isVisible: true,
-              orientation: LegendItemOrientation.horizontal,
-              position: LegendPosition.bottom),
+        primaryXAxis: CategoryAxis(title: AxisTitle(text: 'Anos')),
+        primaryYAxis: NumericAxis(title: AxisTitle(text: 'VPL (R\$)')),
+        // Chart title
+        title: ChartTitle(text: 'Fluxo de Caixa Livre (FCL)'),
+        // Enable legend
+        legend: Legend(
+            isVisible: true,
+            orientation: LegendItemOrientation.horizontal,
+            position: LegendPosition.bottom),
 
-          // Enable tooltip
-          tooltipBehavior: TooltipBehavior(enable: true),
-          series: <ChartSeries<dynamic, String>>[
-            ColumnSeries<dynamic, String>(
-              // onRendererCreated: (ChartSeriesController controller) {
-              // Assigning the controller to the _chartSeriesController.
-              //  mob.chartSeriesController = controller;
-              //},
-              dataSource: mob_graf.dados1.cast<dynamic>(),
-
-              xValueMapper: (dynamic sales, _) {
-                if (index < mob_graf.meses.length - 1) {
-                  index++;
-                } else {
-                  //index = 0;
-                }
-
-                return mob_graf.meses[index].toString().split('-')[0];
-              },
-              yValueMapper: (dynamic sales, _) => sales,
-              name: 'Fluxo de Caixa',
-              color: Colors.blueGrey,
-              // Enable data label
-              dataLabelSettings: DataLabelSettings(isVisible: false),
-            ),
-          ]),
+        // Enable tooltip
+        tooltipBehavior: TooltipBehavior(enable: true),
+        series: <ChartSeries<dynamic, String>>[
+          SplineSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return mob.result_tabela[index].eta;
+            },
+            name: 'ETa',
+            color: Colors.blueGrey,
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          SplineSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return mob.result_tabela[index].etm;
+            },
+            name: 'ETm',
+            color: Colors.blueGrey[100],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          SplineSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return mob.result_tabela[index].etp;
+            },
+            name: 'ETP',
+            color: Colors.blue[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          ColumnSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return (mob.dados_ocultos[index].logica2 == 1) ? -8 : 0;
+            },
+            name: '1',
+            color: Colors.red[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          ColumnSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return (mob.dados_ocultos[index].logica2 == 2) ? -8 : 0;
+            },
+            name: '2',
+            color: Colors.green[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          ColumnSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return (mob.dados_ocultos[index].logica2 == 3) ? -8 : 0;
+            },
+            name: '3',
+            color: Colors.yellow[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          ColumnSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return (mob.dados_ocultos[index].logica2 == 4) ? -8 : 0;
+            },
+            name: '4',
+            color: Colors.purple[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          ColumnSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return (mob.dados_ocultos[index].logica2 == 5) ? -8 : 0;
+            },
+            name: '5',
+            color: Colors.pink[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+        ],
+      ),
     );
   }
 }
