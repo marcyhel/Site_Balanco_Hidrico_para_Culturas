@@ -239,16 +239,18 @@ List<DadosOcultos> calcularDadosOcultos() {
   //print("aquii 4");
   //-----------------------------------------
   for (var i = 0; i < mob.result_tabela.length; i++) {
-    //0,1101532+7,051467*10^(-4)*T31+9,609335*10^(-7)*T31^2-7,328136*10^(-10)*T31^3
+    //0,1101532 +7,051467*10^(-4)*T31+9,609335*10^(-7)*T31^2-7,328136*10^(-10)*T31^3
+
     if (dados[i].some_gdi_temp_l3 != 0) {
       mob.result_tabela[i].kc = double.parse((0.1101532 +
               7.051467 * pow(10, -4) * dados[i].some_gdi_temp_l3 +
               9.609335 * pow(10, -7) * pow(dados[i].some_gdi_temp_l3, 2) -
-              7.328136 * pow(10, 10) * pow(dados[i].some_gdi_temp_l3, 3))
+              7.328136 * pow(10, -10) * pow(dados[i].some_gdi_temp_l3, 3))
           .toStringAsFixed(1));
     } else {
       mob.result_tabela[i].kc = 1.0;
     }
+    print(mob.result_tabela[i].kc);
     //---------------------------------------
     //print("aquii 4 1");
     mob.result_tabela[i].etm =

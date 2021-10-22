@@ -71,6 +71,7 @@ class _GraficoState extends State<Grafico1> {
               return mob.result_tabela[index].eta;
             },
             name: 'ETa',
+            width: 5,
             color: Colors.blueGrey,
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
@@ -108,7 +109,7 @@ class _GraficoState extends State<Grafico1> {
             color: Colors.blue[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
-          ColumnSeries<dynamic, String>(
+          StackedColumnSeries<dynamic, String>(
             dataSource: mob_graf.dados1.cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.meses.length - 1) {
@@ -121,11 +122,11 @@ class _GraficoState extends State<Grafico1> {
             yValueMapper: (dynamic sales, _) {
               return (mob.dados_ocultos[index].logica2 == 1) ? -8 : 0;
             },
-            name: '1',
+            name: 'Estabelecimento',
             color: Colors.red[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
-          ColumnSeries<dynamic, String>(
+          StackedColumnSeries<dynamic, String>(
             dataSource: mob_graf.dados1.cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.meses.length - 1) {
@@ -138,11 +139,11 @@ class _GraficoState extends State<Grafico1> {
             yValueMapper: (dynamic sales, _) {
               return (mob.dados_ocultos[index].logica2 == 2) ? -8 : 0;
             },
-            name: '2',
+            name: 'Des. Vegetativo',
             color: Colors.green[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
-          ColumnSeries<dynamic, String>(
+          StackedColumnSeries<dynamic, String>(
             dataSource: mob_graf.dados1.cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.meses.length - 1) {
@@ -155,11 +156,11 @@ class _GraficoState extends State<Grafico1> {
             yValueMapper: (dynamic sales, _) {
               return (mob.dados_ocultos[index].logica2 == 3) ? -8 : 0;
             },
-            name: '3',
+            name: 'Florescimento',
             color: Colors.yellow[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
-          ColumnSeries<dynamic, String>(
+          StackedColumnSeries<dynamic, String>(
             dataSource: mob_graf.dados1.cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.meses.length - 1) {
@@ -172,11 +173,11 @@ class _GraficoState extends State<Grafico1> {
             yValueMapper: (dynamic sales, _) {
               return (mob.dados_ocultos[index].logica2 == 4) ? -8 : 0;
             },
-            name: '4',
+            name: 'Frutificação',
             color: Colors.purple[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
-          ColumnSeries<dynamic, String>(
+          StackedColumnSeries<dynamic, String>(
             dataSource: mob_graf.dados1.cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.meses.length - 1) {
@@ -189,7 +190,7 @@ class _GraficoState extends State<Grafico1> {
             yValueMapper: (dynamic sales, _) {
               return (mob.dados_ocultos[index].logica2 == 5) ? -8 : 0;
             },
-            name: '5',
+            name: 'Maturação',
             color: Colors.pink[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
