@@ -44,10 +44,10 @@ class _GraficoState extends State<Grafico1> {
           ]),
       margin: EdgeInsets.all(10),
       child: SfCartesianChart(
-        primaryXAxis: CategoryAxis(title: AxisTitle(text: 'Anos')),
-        primaryYAxis: NumericAxis(title: AxisTitle(text: 'VPL (R\$)')),
+        primaryXAxis: CategoryAxis(title: AxisTitle(text: 'Tempo')),
+        primaryYAxis: NumericAxis(title: AxisTitle(text: 'mm')),
         // Chart title
-        title: ChartTitle(text: 'Fluxo de Caixa Livre (FCL)'),
+        title: ChartTitle(text: 'Balanço Hídrico'),
         // Enable legend
         legend: Legend(
             isVisible: true,
@@ -57,6 +57,24 @@ class _GraficoState extends State<Grafico1> {
         // Enable tooltip
         tooltipBehavior: TooltipBehavior(enable: true),
         series: <ChartSeries<dynamic, String>>[
+          SplineSeries<dynamic, String>(
+            dataSource: mob_graf.dados1.cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.meses.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.meses[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return mob.result_tabela[index].p;
+            },
+            name: 'Precipitação',
+            width: 5,
+            color: Colors.red[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
           SplineSeries<dynamic, String>(
             dataSource: mob_graf.dados1.cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
@@ -120,7 +138,7 @@ class _GraficoState extends State<Grafico1> {
               return mob_graf.meses[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return (mob.dados_ocultos[index].logica2 == 1) ? -8 : 0;
+              return (mob.dados_ocultos[index].logica2 == 1) ? -20 : 0;
             },
             name: 'Estabelecimento',
             color: Colors.red[300],
@@ -137,7 +155,7 @@ class _GraficoState extends State<Grafico1> {
               return mob_graf.meses[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return (mob.dados_ocultos[index].logica2 == 2) ? -8 : 0;
+              return (mob.dados_ocultos[index].logica2 == 2) ? -20 : 0;
             },
             name: 'Des. Vegetativo',
             color: Colors.green[300],
@@ -154,7 +172,7 @@ class _GraficoState extends State<Grafico1> {
               return mob_graf.meses[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return (mob.dados_ocultos[index].logica2 == 3) ? -8 : 0;
+              return (mob.dados_ocultos[index].logica2 == 3) ? -20 : 0;
             },
             name: 'Florescimento',
             color: Colors.yellow[300],
@@ -171,7 +189,7 @@ class _GraficoState extends State<Grafico1> {
               return mob_graf.meses[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return (mob.dados_ocultos[index].logica2 == 4) ? -8 : 0;
+              return (mob.dados_ocultos[index].logica2 == 4) ? -20 : 0;
             },
             name: 'Frutificação',
             color: Colors.purple[300],
@@ -188,7 +206,7 @@ class _GraficoState extends State<Grafico1> {
               return mob_graf.meses[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return (mob.dados_ocultos[index].logica2 == 5) ? -8 : 0;
+              return (mob.dados_ocultos[index].logica2 == 5) ? -20 : 0;
             },
             name: 'Maturação',
             color: Colors.pink[300],

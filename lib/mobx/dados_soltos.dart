@@ -435,6 +435,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     } else {
       mob.result_tabela[i].fim_periodo_Arm = dados[i].cad;
     }
+    print(' -> ${dados[i].coluna_imprecao}');
     //print("aquii 4 8 2");
     //-----------------------------------------------------------
     if (i != mob.result_tabela.length - 1) {

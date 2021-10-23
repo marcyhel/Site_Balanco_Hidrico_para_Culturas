@@ -4,6 +4,10 @@ import 'package:get_it/get_it.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:plat11/mobx/dados_grafico.dart';
 import 'package:plat11/screen/graficos/componentes/grafic_1.dart';
+import 'package:plat11/screen/graficos/componentes/grafic_2.dart';
+import 'package:plat11/screen/graficos/componentes/grafic_3.dart';
+import 'package:plat11/screen/graficos/componentes/grafic_4.dart';
+import 'package:plat11/screen/widgets/responsive.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -42,28 +46,77 @@ class _GraficoState extends State<Grafico> {
     return SingleChildScrollView(
       child: Container(
         color: Theme.of(context).backgroundColor,
-        child: Column(
+        child: ResponsiveWidget.isSmallScreen(context) ? Small() : Larg(),
+      ),
+    );
+  }
+}
+
+class Small extends StatelessWidget {
+  const Small({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico1(),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico2(),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico3(),
+        ),
+        SizedBox(
+          height: 50,
+        ),
+      ],
+    );
+  }
+}
+
+class Larg extends StatelessWidget {
+  const Larg({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico4(),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico1(),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.3,
-                  child: Grafico1(),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.3,
-                  child: Grafico1(),
-                ),
-              ],
+            Container(
+              width: MediaQuery.of(context).size.width / 2.25,
+              child: Grafico2(),
             ),
             Container(
-              width: MediaQuery.of(context).size.width / 1.1,
-              child: Grafico1(),
+              width: MediaQuery.of(context).size.width / 2.25,
+              child: Grafico3(),
             ),
           ],
         ),
-      ),
+        SizedBox(
+          height: 50,
+        ),
+      ],
     );
   }
 }

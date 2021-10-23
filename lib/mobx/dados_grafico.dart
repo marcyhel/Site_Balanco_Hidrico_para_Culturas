@@ -17,12 +17,40 @@ abstract class _Mob_GraficoBase with Store {
   @observable
   ObservableList<String> meses = ObservableList();
   @observable
+  List<String> fases = [
+    'Estabelecimento',
+    'Des.vegetativo',
+    'Florescimento',
+    'Frutificação',
+    'Maturação'
+  ];
+  @observable
   ObservableList<double> dados1 = ObservableList();
-
+  @observable
+  List<double> dados2 = [
+    mob.final_est_num,
+    mob.final_des_num,
+    mob.final_flo_num,
+    mob.final_fru_num,
+    mob.final_mat_num
+  ];
+  @observable
+  List<double> dados3 = [
+    100 - ((mob.final_est_prod * 100) / mob.produtividade_potencial_total),
+    100 - ((mob.final_des_prod * 100) / mob.produtividade_potencial_total),
+    100 - ((mob.final_flo_prod * 100) / mob.produtividade_potencial_total),
+    100 - ((mob.final_fru_prod * 100) / mob.produtividade_potencial_total),
+    100 - ((mob.final_mat_prod * 100) / mob.produtividade_potencial_total),
+  ];
   @action
   void calc_meses() {
+    dados2.add(mob.final_est_num);
+    dados2.add(mob.final_des_num);
+    dados2.add(mob.final_flo_num);
+    dados2.add(mob.final_fru_num);
+    dados2.add(mob.final_mat_num);
+    print(dados2);
     for (var i = 0; i < mob.result_tabela.length; i++) {
-      print(mob.result_tabela[i].dataEnd!.month);
       if (mob.result_tabela[i].dataEnd!.month == 1) {
         meses.add('jan');
       } else if (mob.result_tabela[i].dataEnd!.month == 2) {
@@ -53,8 +81,6 @@ abstract class _Mob_GraficoBase with Store {
           meses[i].toString();
       dados1.add(Random().nextDouble());
     }
-
-    print(meses.length);
   }
 }
 
@@ -92,6 +118,5 @@ class Dados_Grafico {
         meses.add('dez');
       }
     }
-    print(meses);
   }
 }

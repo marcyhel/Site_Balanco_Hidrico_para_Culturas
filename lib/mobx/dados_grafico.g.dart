@@ -24,6 +24,21 @@ mixin _$Mob_Grafico on _Mob_GraficoBase, Store {
     });
   }
 
+  final _$fasesAtom = Atom(name: '_Mob_GraficoBase.fases');
+
+  @override
+  List<String> get fases {
+    _$fasesAtom.reportRead();
+    return super.fases;
+  }
+
+  @override
+  set fases(List<String> value) {
+    _$fasesAtom.reportWrite(value, super.fases, () {
+      super.fases = value;
+    });
+  }
+
   final _$dados1Atom = Atom(name: '_Mob_GraficoBase.dados1');
 
   @override
@@ -36,6 +51,36 @@ mixin _$Mob_Grafico on _Mob_GraficoBase, Store {
   set dados1(ObservableList<double> value) {
     _$dados1Atom.reportWrite(value, super.dados1, () {
       super.dados1 = value;
+    });
+  }
+
+  final _$dados2Atom = Atom(name: '_Mob_GraficoBase.dados2');
+
+  @override
+  List<double> get dados2 {
+    _$dados2Atom.reportRead();
+    return super.dados2;
+  }
+
+  @override
+  set dados2(List<double> value) {
+    _$dados2Atom.reportWrite(value, super.dados2, () {
+      super.dados2 = value;
+    });
+  }
+
+  final _$dados3Atom = Atom(name: '_Mob_GraficoBase.dados3');
+
+  @override
+  List<double> get dados3 {
+    _$dados3Atom.reportRead();
+    return super.dados3;
+  }
+
+  @override
+  set dados3(List<double> value) {
+    _$dados3Atom.reportWrite(value, super.dados3, () {
+      super.dados3 = value;
     });
   }
 
@@ -57,7 +102,10 @@ mixin _$Mob_Grafico on _Mob_GraficoBase, Store {
   String toString() {
     return '''
 meses: ${meses},
-dados1: ${dados1}
+fases: ${fases},
+dados1: ${dados1},
+dados2: ${dados2},
+dados3: ${dados3}
     ''';
   }
 }
