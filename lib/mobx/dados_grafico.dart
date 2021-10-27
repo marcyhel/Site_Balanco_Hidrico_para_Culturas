@@ -42,6 +42,30 @@ abstract class _Mob_GraficoBase with Store {
     100 - ((mob.final_fru_prod * 100) / mob.produtividade_potencial_total),
     100 - ((mob.final_mat_prod * 100) / mob.produtividade_potencial_total),
   ];
+  @observable
+  List<List<double>> dados4 = [
+    [
+      double.parse(mob.est_kc),
+      double.parse(mob.des_kc),
+      double.parse(mob.flo_kc),
+      double.parse(mob.fru_kc),
+      double.parse(mob.mat_kc)
+    ],
+    [
+      double.parse(mob.est_ky),
+      double.parse(mob.des_ky),
+      double.parse(mob.flo_ky),
+      double.parse(mob.fru_ky),
+      double.parse(mob.mat_ky)
+    ],
+    [
+      double.parse(mob.est_iaf),
+      double.parse(mob.des_iaf),
+      double.parse(mob.flo_iaf),
+      double.parse(mob.fru_iaf),
+      double.parse(mob.mat_iaf)
+    ]
+  ];
   @action
   void calc_meses() {
     dados2.add(mob.final_est_num);
@@ -49,7 +73,7 @@ abstract class _Mob_GraficoBase with Store {
     dados2.add(mob.final_flo_num);
     dados2.add(mob.final_fru_num);
     dados2.add(mob.final_mat_num);
-    print(dados2);
+    print(dados4);
     for (var i = 0; i < mob.result_tabela.length; i++) {
       if (mob.result_tabela[i].dataEnd!.month == 1) {
         meses.add('jan');

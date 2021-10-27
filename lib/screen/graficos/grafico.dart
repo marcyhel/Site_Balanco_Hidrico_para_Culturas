@@ -7,6 +7,7 @@ import 'package:plat11/screen/graficos/componentes/grafic_1.dart';
 import 'package:plat11/screen/graficos/componentes/grafic_2.dart';
 import 'package:plat11/screen/graficos/componentes/grafic_3.dart';
 import 'package:plat11/screen/graficos/componentes/grafic_4.dart';
+import 'package:plat11/screen/graficos/componentes/grafic_5.dart';
 import 'package:plat11/screen/widgets/responsive.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -94,10 +95,6 @@ class Larg extends StatelessWidget {
         ),
         Container(
           width: MediaQuery.of(context).size.width / 1.1,
-          child: Grafico4(),
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width / 1.1,
           child: Grafico1(),
         ),
         Row(
@@ -110,6 +107,19 @@ class Larg extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width / 2.25,
               child: Grafico3(),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width / 2.25,
+              child: Grafico4(),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width / 2.25,
+              child: Grafico5(),
             ),
           ],
         ),

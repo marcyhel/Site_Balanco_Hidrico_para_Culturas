@@ -84,6 +84,21 @@ mixin _$Mob_Grafico on _Mob_GraficoBase, Store {
     });
   }
 
+  final _$dados4Atom = Atom(name: '_Mob_GraficoBase.dados4');
+
+  @override
+  List<List<double>> get dados4 {
+    _$dados4Atom.reportRead();
+    return super.dados4;
+  }
+
+  @override
+  set dados4(List<List<double>> value) {
+    _$dados4Atom.reportWrite(value, super.dados4, () {
+      super.dados4 = value;
+    });
+  }
+
   final _$_Mob_GraficoBaseActionController =
       ActionController(name: '_Mob_GraficoBase');
 
@@ -105,7 +120,8 @@ meses: ${meses},
 fases: ${fases},
 dados1: ${dados1},
 dados2: ${dados2},
-dados3: ${dados3}
+dados3: ${dados3},
+dados4: ${dados4}
     ''';
   }
 }

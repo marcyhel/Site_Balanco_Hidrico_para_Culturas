@@ -8,8 +8,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 final Mob_dados mob = GetIt.I<Mob_dados>();
 
-class Grafico4 extends StatefulWidget {
-  Grafico4({
+class Grafico5 extends StatefulWidget {
+  Grafico5({
     Key? key,
   }) : super(key: key);
 
@@ -24,7 +24,7 @@ class _SalesData {
   final double sales;
 }
 
-class _GraficoState extends State<Grafico4> {
+class _GraficoState extends State<Grafico5> {
   final Mob_Grafico mob_graf = Mob_Grafico();
 
   int index = -1;
@@ -56,8 +56,8 @@ class _GraficoState extends State<Grafico4> {
         // Enable tooltip
         tooltipBehavior: TooltipBehavior(enable: true),
         series: <ChartSeries<dynamic, String>>[
-          ColumnSeries<dynamic, String>(
-            dataSource: mob_graf.dados2.cast<dynamic>(),
+          SplineSeries<dynamic, String>(
+            dataSource: mob_graf.dados4[0].cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.fases.length - 1) {
                 index++;
@@ -67,14 +67,15 @@ class _GraficoState extends State<Grafico4> {
               return mob_graf.fases[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return mob_graf.dados2[index];
+              print(mob_graf.dados4[0].length);
+              return mob_graf.dados4[0][index];
             },
-            name: 'Número de dias',
-            color: Colors.blue[300],
+            name: 'Kc',
+            color: Colors.red[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
           SplineSeries<dynamic, String>(
-            dataSource: mob_graf.dados3.cast<dynamic>(),
+            dataSource: mob_graf.dados4[0].cast<dynamic>(),
             xValueMapper: (dynamic sales, _) {
               if (index < mob_graf.fases.length - 1) {
                 index++;
@@ -84,10 +85,27 @@ class _GraficoState extends State<Grafico4> {
               return mob_graf.fases[index].toString();
             },
             yValueMapper: (dynamic sales, _) {
-              return mob_graf.dados3[index];
+              return mob_graf.dados4[1][index];
             },
-            name: 'Quebra de produtividade acumulada por fase %',
-            color: Colors.blue[300],
+            name: 'Kcdd',
+            color: Colors.amber[300],
+            dataLabelSettings: DataLabelSettings(isVisible: false),
+          ),
+          SplineSeries<dynamic, String>(
+            dataSource: mob_graf.dados4[0].cast<dynamic>(),
+            xValueMapper: (dynamic sales, _) {
+              if (index < mob_graf.fases.length - 1) {
+                index++;
+              } else {
+                index = 0;
+              }
+              return mob_graf.fases[index].toString();
+            },
+            yValueMapper: (dynamic sales, _) {
+              return mob_graf.dados4[2][index];
+            },
+            name: 'Kcss',
+            color: Colors.green[300],
             dataLabelSettings: DataLabelSettings(isVisible: false),
           ),
         ],
