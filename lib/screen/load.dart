@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:gradient_progress/gradient_progress.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:plat11/screen/principal.dart';
+import 'package:plat11/screen/widgets/responsive.dart';
 
 class Load extends StatefulWidget {
   Load({Key? key}) : super(key: key);
@@ -71,22 +72,22 @@ class _LoadState extends State<Load> {
     //mob.setLoad();
     return Container(
       color: Colors.blueGrey[400],
-      child: Center(
-        child: Container(
-          //width: MediaQuery.of(context).size.width / 3,
-          //height: MediaQuery.of(context).size.height / 3,
-          child: GradientCircularProgressIndicator(
-            gradientColors: [
-              Colors.blueGrey.shade500,
-              Colors.blueGrey.shade700
-            ],
-            radius: MediaQuery.of(context).size.width / 10,
-            strokeWidth: MediaQuery.of(context).size.width / 25,
-            value: widget.load, //new Tween(begin: 0.0, end: 1.0)
-            //.animate(CurvedAnimation(
-            //      parent: _animationController, curve: Curves.decelerate))
-            // .value,
-          ), /*AirDashboardStateProgressIndicator(
+      child: ResponsiveWidget.isSmallScreen(context)
+          ? Center(
+              child: Expanded(
+                child: GradientCircularProgressIndicator(
+                  gradientColors: [
+                    Colors.blueGrey.shade500,
+                    Colors.blueGrey.shade700
+                  ],
+                  radius: MediaQuery.of(context).size.width / 10,
+                  strokeWidth: MediaQuery.of(context).size.width / 25,
+                  value: widget.load, //new Tween(begin: 0.0, end: 1.0)
+                  //.animate(CurvedAnimation(
+                  //      parent: _animationController, curve: Curves.decelerate))
+                  // .value,
+                ),
+              ), /*AirDashboardStateProgressIndicator(
             size: Size(150, 150),
             value: widget.load, //1~100
             valueColor: Colors
@@ -96,8 +97,34 @@ class _LoadState extends State<Load> {
             gapDegree: 60,
             roundCap: true,
           ),*/
-        ),
-      ),
+            )
+          : Center(
+              child: Container(
+                //width: MediaQuery.of(context).size.width / 3,
+                //height: MediaQuery.of(context).size.height / 3,
+                child: GradientCircularProgressIndicator(
+                  gradientColors: [
+                    Colors.blueGrey.shade500,
+                    Colors.blueGrey.shade700
+                  ],
+                  radius: MediaQuery.of(context).size.width / 10,
+                  strokeWidth: MediaQuery.of(context).size.width / 25,
+                  value: widget.load, //new Tween(begin: 0.0, end: 1.0)
+                  //.animate(CurvedAnimation(
+                  //      parent: _animationController, curve: Curves.decelerate))
+                  // .value,
+                ), /*AirDashboardStateProgressIndicator(
+            size: Size(150, 150),
+            value: widget.load, //1~100
+            valueColor: Colors
+                .amber, //ColorTween(begin: Colors.grey, end: Colors.blue).transform(_segmentValue / 10),
+            pathStrokeWidth: 0,
+            valueStrokeWidth: 40,
+            gapDegree: 60,
+            roundCap: true,
+          ),*/
+              ),
+            ),
     );
   }
 }

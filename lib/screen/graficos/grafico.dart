@@ -75,6 +75,14 @@ class Small extends StatelessWidget {
           width: MediaQuery.of(context).size.width / 1.1,
           child: Grafico3(),
         ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico4(),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width / 1.1,
+          child: Grafico5(),
+        ),
         SizedBox(
           height: 50,
         ),
