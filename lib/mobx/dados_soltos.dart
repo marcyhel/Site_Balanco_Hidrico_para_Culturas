@@ -751,6 +751,8 @@ List<DadosOcultos> calcularDadosOcultos() {
     if (dados[i].logica2 == 0) {
       mob.result_tabela[i].yp = 0;
     } else {
+      print(
+          "Marcyhel -- ${(mob.result_tabela[i].f * mob.result_tabela[i].cto * mob.result_tabela[i].yo + (1 - mob.result_tabela[i].f) * mob.result_tabela[i].ctc * mob.result_tabela[i].yc) * mob.result_tabela[i].cl * mob.result_tabela[i].cn * double.parse(mob.indice_colheita) * mob.result_tabela[i].numero_dias_faze}");
       mob.result_tabela[i].yp = (mob.result_tabela[i].f *
                   mob.result_tabela[i].cto *
                   mob.result_tabela[i].yo +
@@ -775,6 +777,7 @@ List<DadosOcultos> calcularDadosOcultos() {
       dados[i].d1 = 0;
     }
     //-----------------------------------------------------------
+    print("ddd--------${mob.result_tabela[i].yp}---${dados[i].logica2}");
     if (dados[i].logica2 == 1) {
       dados[i].y1 = mob.result_tabela[i].yp;
     } else {
@@ -813,6 +816,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].logica2 == 3) {
       dados[i].y3 = mob.result_tabela[i].yp;
+      print("aquiiii--");
     } else {
       dados[i].y3 = 0;
     }
@@ -831,6 +835,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].logica2 == 4) {
       dados[i].y4 = mob.result_tabela[i].yp;
+      print("aquiiii--!");
     } else {
       dados[i].y4 = 0;
     }
@@ -849,6 +854,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].logica2 == 5) {
       dados[i].y5 = mob.result_tabela[i].yp;
+      print("aquiiii-->");
     } else {
       dados[i].y5 = 0;
     }
@@ -919,6 +925,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     //-----------------------------------------------------------
   }
+  print(mob.some_y1);
   mob.final_est_num = mob.some_d1;
   mob.final_est_eta = 1 - mob.some_m1;
   mob.final_est_ky = double.parse(mob.est_ky);

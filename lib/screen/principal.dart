@@ -5,6 +5,7 @@ import 'dart:math' as math show pi;
 
 import 'package:plat11/screen/dashboard/dashboard.dart';
 import 'package:plat11/screen/graficos/grafico.dart';
+import 'package:plat11/screen/resultado/resultado.dart';
 import 'package:plat11/screen/tabela/tabela.dart';
 import 'package:plat11/util/themes.dart';
 
@@ -30,6 +31,7 @@ class _PrincipalState extends State<Principal> {
     Dashboard(),
     TabelaDados(),
     Grafico(),
+    ResultadoFinal(),
     Container(
       color: Colors.red,
     ),
@@ -75,7 +77,7 @@ class _PrincipalState extends State<Principal> {
       CollapsibleItem(
         text: 'Dark mode',
         icon: Icons.light_mode,
-        onPressed: () => print("mode"),
+        onPressed: () => setState(() => index = 4),
       ),
     ];
   }
