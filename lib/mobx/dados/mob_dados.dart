@@ -33,6 +33,7 @@ abstract class _Mob_dados with Store {
     carrega = true;
 
     var result = await conectar();
+
     print(result.length);
     setResult_tabela(result);
     //await Future.delayed(Duration(seconds: 3));
@@ -177,7 +178,7 @@ abstract class _Mob_dados with Store {
   double cadini = 0;
   double negAcIni = 0;
   double aRMini = 0;
-
+  double cont_debug = 0;
   double some_m1 = 0;
   double some_d1 = 0;
   double some_y1 = 0;
@@ -444,12 +445,17 @@ Future<List<DataClima>> conectar() async {
     while (true) {
       try {
         // await Future.delayed(Duration(milliseconds: 100));
+
         clima.add(await getJason(
           DateFormat('yyyy-MM-dd ').format(e),
         ));
+
         //print(clima[clima.length - 1][0].TMAX18);
         break;
       } catch (f) {
+        if (cont == 1) {
+          return [];
+        }
         //print(
         //  DateFormat('yyyy-MM-dd ').format(e),
         //);

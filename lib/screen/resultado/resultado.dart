@@ -57,14 +57,14 @@ class ResultadoFinal extends StatelessWidget {
                     color: Colors.black26,
                   ),
                 ]),
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(5),
             child: Column(
               //(mob.some_y1 + mob.some_y2 + mob.some_y3 + mob.some_y4 + mob.some_y5)
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text(
                       "FASES",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -75,7 +75,11 @@ class ResultadoFinal extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const Divider(
+                  thickness: 1,
+                  color: Colors.black45,
+                ),
+                const SizedBox(
                   height: 5,
                 ),
                 Linhas(tx1: "Estabelecimento", tx2: mob.some_y1.toString()),
@@ -86,6 +90,30 @@ class ResultadoFinal extends StatelessWidget {
               ],
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Theme.of(context).backgroundColor,
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 0),
+                    blurRadius: 5,
+                    color: Colors.black26,
+                  ),
+                ]),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(5),
+            child: Column(
+              children: [
+                Linhas(
+                    tx1: 'Peso Seco',
+                    tx2: mob.produtividade_potencial_peso.toString()),
+                Linhas(
+                    tx1: 'Peso Úmido',
+                    tx2: mob.produtividade_potencial_total.toString()),
+              ],
+            ),
+          )
         ],
       ),
     );
