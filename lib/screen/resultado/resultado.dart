@@ -113,6 +113,127 @@ class ResultadoFinal extends StatelessWidget {
                     tx2: mob.produtividade_potencial_total.toString()),
               ],
             ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Theme.of(context).backgroundColor,
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 0),
+                    blurRadius: 5,
+                    color: Colors.black26,
+                  ),
+                ]),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  children: const [
+                    SizedBox(height: 5),
+                    Text("Fazes",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    SizedBox(height: 10),
+                    Text("Estabelecimento"),
+                    SizedBox(height: 5),
+                    Text("Des. Vegetativo"),
+                    SizedBox(height: 5),
+                    Text("Florescimento"),
+                    SizedBox(height: 5),
+                    Text("Frutificação"),
+                    SizedBox(height: 5),
+                    Text("Maturação"),
+                  ],
+                ),
+                const SizedBox(
+                  width: 10,
+                  height: 100,
+                  child: Expanded(
+                    child: VerticalDivider(
+                      thickness: 1,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd r ")
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text("sd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("sd "),
+                            Text("ssdsd r ")
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd rtrtrtrtr"),
+                            Text("ssdsd r ")
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd r ")
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd r ")
+                          ],
+                        ),
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd "),
+                            Text("ssdsd r ")
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),
