@@ -37,9 +37,11 @@ class Linhas extends StatelessWidget {
   }
 }
 
+final Mob_dados mob = GetIt.I<Mob_dados>();
+
 class ResultadoFinal extends StatelessWidget {
-  ResultadoFinal({Key? key}) : super(key: key);
-  final Mob_dados mob = GetIt.I<Mob_dados>();
+  const ResultadoFinal({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -166,66 +168,64 @@ class ResultadoFinal extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd r ")
+                            Text("Numero  \nde dias  "),
+                            Text("1-(Eta/Etm)  \nMédio  "),
+                            Text("ky  "),
+                            Text("Produtividade  \nRelativa"),
                           ],
                         ),
                         SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
-                            Text("sd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("sd "),
-                            Text("ssdsd r ")
+                          children: [
+                            Text(mob.final_est_num.toStringAsFixed(1)),
+                            Text(mob.final_est_eta.toStringAsFixed(3)),
+                            Text(mob.final_est_ky.toStringAsFixed(2)),
+                            Text(mob.final_est_prod.toStringAsFixed(1)),
                           ],
                         ),
                         SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd rtrtrtrtr"),
-                            Text("ssdsd r ")
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  ")
                           ],
                         ),
                         SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd r ")
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  ")
                           ],
                         ),
                         SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd r ")
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  ")
                           ],
                         ),
                         SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd "),
-                            Text("ssdsd r ")
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  "),
+                            Text("ssdsd  ")
                           ],
                         ),
                       ],
