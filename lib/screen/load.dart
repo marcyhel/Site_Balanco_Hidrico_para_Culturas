@@ -21,7 +21,7 @@ class _LoadState extends State<Load> {
   final Mob_dados mob = GetIt.I<Mob_dados>();
   Future<void> carr() async {
     print(widget.load);
-    await Future.delayed(Duration(seconds: Random().nextInt(1) + 1));
+    await Future.delayed(Duration(seconds: Random().nextInt(1) + 0));
     for (var i = 0; i <= 30; i++) {
       await Future.delayed(Duration(milliseconds: 20));
       setState(() {
@@ -35,7 +35,7 @@ class _LoadState extends State<Load> {
         widget.load += 0.01;
       });
     }
-    await Future.delayed(Duration(seconds: Random().nextInt(1) + 1));
+    await Future.delayed(Duration(seconds: Random().nextInt(1) + 0));
     for (var i = 0; i <= 50; i++) {
       await Future.delayed(Duration(milliseconds: 20));
       setState(() {

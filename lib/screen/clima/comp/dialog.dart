@@ -48,9 +48,7 @@ class DialogCuston extends StatelessWidget {
                       Navigator.of(context).pop();
                       //await Future.delayed(Duration(seconds: 2));
                       await mob.carregar();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          duration: Duration(seconds: 1),
-                          content: Text('Yay! Flutter Collapsible Sidebar!')));
+                      mob.SalvarDados();
                     },
                     child: Text("OK")),
               ],

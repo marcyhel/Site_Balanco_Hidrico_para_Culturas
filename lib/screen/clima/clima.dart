@@ -23,6 +23,13 @@ final Mob_dados mob = GetIt.I<Mob_dados>();
 
 class _ClimaState extends State<Clima> {
   @override
+  void dispose() {
+    // TODO: implement dispose
+    mob.SalvarDados();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child:
