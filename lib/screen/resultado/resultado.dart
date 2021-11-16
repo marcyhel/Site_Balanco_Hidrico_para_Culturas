@@ -13,7 +13,8 @@ class ResultadoFinal extends StatelessWidget {
   double space = 20;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Container(
+      color: Theme.of(context).backgroundColor,
       child: ResponsiveWidget.isSmallScreen(context)
           ? SmallResultado()
           : LargResultado(),
