@@ -80,7 +80,6 @@ class SmallResultado extends StatelessWidget {
                   ),
                   const Divider(
                     thickness: 1,
-                    color: Colors.black45,
                   ),
                   const SizedBox(
                     height: 5,
@@ -287,7 +286,9 @@ class SmallResultado extends StatelessWidget {
                       tx2: mob.final_total_dias.toString()),
                   Linhas(
                       tx1: 'Quebra de produtividade',
-                      tx2: mob.final_quebra_produ.toString()),
+                      tx2: (mob.final_quebra_produ.isNaN)
+                          ? '0'
+                          : mob.final_quebra_produ.toString()),
                   Linhas(
                       tx1: 'Produtividade Real',
                       tx2: mob.final_mat_prod.toString()),

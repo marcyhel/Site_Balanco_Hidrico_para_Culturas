@@ -61,6 +61,9 @@ dependencies:
   gradient_progress: ^0.1.0
   ai_progress: ^2.0.0
 
+  gradient_progress_indicator: ^1.0.0+5
+  liquid_progress_indicator_ns: ^1.0.0
+
   
   syncfusion_flutter_charts: ^19.1.67
 

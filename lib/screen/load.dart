@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:gradient_progress/gradient_progress.dart';
+import 'package:gradient_progress_indicator/widget/gradient_progress_indicator_widget.dart';
+import 'package:liquid_progress_indicator_ns/liquid_progress_indicator.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
 import 'package:plat11/screen/principal.dart';
 import 'package:plat11/screen/widgets/responsive.dart';
@@ -74,45 +76,47 @@ class _LoadState extends State<Load> {
       color: Colors.blueGrey[400],
       child: ResponsiveWidget.isSmallScreen(context)
           ? Center(
-              child: Expanded(
-                child: GradientCircularProgressIndicator(
-                  gradientColors: [
-                    Colors.blueGrey.shade500,
-                    Colors.blueGrey.shade700
-                  ],
-                  radius: MediaQuery.of(context).size.width / 10,
-                  strokeWidth: MediaQuery.of(context).size.width / 25,
-                  value: widget.load, //new Tween(begin: 0.0, end: 1.0)
-                  //.animate(CurvedAnimation(
-                  //      parent: _animationController, curve: Curves.decelerate))
-                  // .value,
+              child: SizedBox(
+                width: 150.0,
+                height: 150.0,
+                child: LiquidCircularProgressIndicator(
+                  value: widget.load,
+                  backgroundColor: Colors.blueGrey[400],
+                  valueColor: AlwaysStoppedAnimation(
+                    Colors.blueGrey.shade700,
+                  ),
+                  borderColor: Colors.blueGrey.shade400,
+                  borderWidth: 0.0,
+                  center: Text(
+                    (widget.load * 100) > 100
+                        ? '100%'
+                        : "${(widget.load * 100).toStringAsFixed(0)}%",
+                    style: TextStyle(
+                      color: Colors.blueGrey.shade200,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ), /*AirDashboardStateProgressIndicator(
-            size: Size(150, 150),
-            value: widget.load, //1~100
-            valueColor: Colors
-                .amber, //ColorTween(begin: Colors.grey, end: Colors.blue).transform(_segmentValue / 10),
-            pathStrokeWidth: 0,
-            valueStrokeWidth: 40,
-            gapDegree: 60,
-            roundCap: true,
-          ),*/
+              ),
             )
           : Center(
               child: Container(
                 //width: MediaQuery.of(context).size.width / 3,
                 //height: MediaQuery.of(context).size.height / 3,
-                child: GradientCircularProgressIndicator(
-                  gradientColors: [
-                    Colors.blueGrey.shade500,
-                    Colors.blueGrey.shade700
-                  ],
-                  radius: MediaQuery.of(context).size.width / 10,
-                  strokeWidth: MediaQuery.of(context).size.width / 25,
-                  value: widget.load, //new Tween(begin: 0.0, end: 1.0)
-                  //.animate(CurvedAnimation(
-                  //      parent: _animationController, curve: Curves.decelerate))
-                  // .value,
+                child: Expanded(
+                  child: GradientCircularProgressIndicator(
+                    gradientColors: [
+                      Colors.blueGrey.shade500,
+                      Colors.blueGrey.shade700
+                    ],
+                    radius: MediaQuery.of(context).size.width / 10,
+                    strokeWidth: MediaQuery.of(context).size.width / 25,
+                    value: widget.load, //new Tween(begin: 0.0, end: 1.0)
+                    //.animate(CurvedAnimation(
+                    //      parent: _animationController, curve: Curves.decelerate))
+                    // .value,
+                  ),
                 ), /*AirDashboardStateProgressIndicator(
             size: Size(150, 150),
             value: widget.load, //1~100

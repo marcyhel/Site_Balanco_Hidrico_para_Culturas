@@ -296,6 +296,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.0"
+  gradient_progress_indicator:
+    dependency: "direct main"
+    description:
+      name: gradient_progress_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0+5"
   graphs:
     dependency: transitive
     description:
@@ -387,6 +394,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  liquid_progress_indicator_ns:
+    dependency: "direct main"
+    description:
+      name: liquid_progress_indicator_ns
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   logging:
     dependency: transitive
     description:

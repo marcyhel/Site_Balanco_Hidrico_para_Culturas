@@ -46,9 +46,11 @@ class LargResultado extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double space = 20;
+    double space = MediaQuery.of(context).size.width / 50;
+    print(space);
     return SingleChildScrollView(
       child: Container(
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
         color: Theme.of(context).backgroundColor,
         width: MediaQuery.of(context).size.width,
         child: IntrinsicHeight(
@@ -58,7 +60,7 @@ class LargResultado extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width / 3,
+                    width: MediaQuery.of(context).size.width / 2,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Theme.of(context).backgroundColor,
@@ -81,13 +83,13 @@ class LargResultado extends StatelessWidget {
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             SizedBox(height: 25),
                             Text("Estabelecimento"),
-                            SizedBox(height: 5),
+                            SizedBox(height: 10),
                             Text("Des. Vegetativo"),
-                            SizedBox(height: 5),
+                            SizedBox(height: 10),
                             Text("Florescimento"),
-                            SizedBox(height: 5),
+                            SizedBox(height: 10),
                             Text("Frutificação"),
-                            SizedBox(height: 5),
+                            SizedBox(height: 10),
                             Text("Maturação"),
                           ],
                         ),
@@ -101,130 +103,155 @@ class LargResultado extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Container(
-                              child: IntrinsicWidth(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: 5),
-                                    IntrinsicWidth(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const Text("Numero\nde dias"),
-                                          SizedBox(width: space),
-                                          const Text("1-(Eta/Etm)\nMédio"),
-                                          SizedBox(width: space),
-                                          const Text("ky"),
-                                          SizedBox(width: space),
-                                          const Text("Produtividade\nRelativa"),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(mob.final_est_num
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space + 20),
-                                        Text(mob.final_est_eta
-                                            .toStringAsFixed(3)),
-                                        SizedBox(width: space),
-                                        Text(mob.final_est_ky
-                                            .toStringAsFixed(2)),
-                                        SizedBox(width: space + 5),
-                                        Text(mob.final_est_prod
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(mob.final_des_num
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space + 20),
-                                        Text(mob.final_des_eta
-                                            .toStringAsFixed(3)),
-                                        SizedBox(width: space),
-                                        Text(mob.final_des_ky
-                                            .toStringAsFixed(2)),
-                                        SizedBox(width: space + 5),
-                                        Text(mob.final_des_prod
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(mob.final_flo_num
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space + 20),
-                                        Text(mob.final_flo_eta
-                                            .toStringAsFixed(3)),
-                                        SizedBox(width: space),
-                                        Text(mob.final_flo_ky
-                                            .toStringAsFixed(2)),
-                                        SizedBox(width: space + 5),
-                                        Text(mob.final_flo_prod
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(mob.final_fru_num
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space + 20),
-                                        Text(mob.final_fru_eta
-                                            .toStringAsFixed(3)),
-                                        SizedBox(width: space),
-                                        Text(mob.final_fru_ky
-                                            .toStringAsFixed(2)),
-                                        SizedBox(width: space + 5),
-                                        Text(mob.final_fru_prod
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text(mob.final_mat_num
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space + 20),
-                                        Text(mob.final_mat_eta
-                                            .toStringAsFixed(3)),
-                                        SizedBox(width: space),
-                                        Text(mob.final_mat_ky
-                                            .toStringAsFixed(2)),
-                                        SizedBox(width: space + 5),
-                                        Text(mob.final_mat_prod
-                                            .toStringAsFixed(1)),
-                                        SizedBox(width: space),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                          child: Container(
+                            child: IntrinsicWidth(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 5),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      const Text("Numero\nde dias"),
+                                      SizedBox(width: space),
+                                      const Text("1-(Eta/Etm)\nMédio"),
+                                      SizedBox(width: space),
+                                      const Text("ky"),
+                                      (MediaQuery.of(context).size.width > 1050)
+                                          ? SizedBox(width: space / 3)
+                                          : SizedBox(width: space),
+                                      const Text("Produtividade\nRelativa"),
+                                      (MediaQuery.of(context).size.width > 1050)
+                                          ? SizedBox(width: space)
+                                          : SizedBox(width: 0),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                          mob.final_est_num.toStringAsFixed(1)),
+                                      SizedBox(width: space + 20),
+                                      Text(
+                                          mob.final_est_eta.toStringAsFixed(3)),
+                                      SizedBox(width: space),
+                                      Text(mob.final_est_ky.toStringAsFixed(2)),
+                                      SizedBox(width: space + 5),
+                                      Text(mob.final_est_prod
+                                          .toStringAsFixed(1)),
+                                      SizedBox(width: space),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                          mob.final_des_num.toStringAsFixed(1)),
+                                      SizedBox(width: space + 20),
+                                      Text(
+                                          mob.final_des_eta.toStringAsFixed(3)),
+                                      SizedBox(width: space),
+                                      Text(mob.final_des_ky.toStringAsFixed(2)),
+                                      SizedBox(width: space + 5),
+                                      Text(mob.final_des_prod
+                                          .toStringAsFixed(1)),
+                                      SizedBox(width: space),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                          mob.final_flo_num.toStringAsFixed(1)),
+                                      SizedBox(width: space + 20),
+                                      Text(
+                                          mob.final_flo_eta.toStringAsFixed(3)),
+                                      SizedBox(width: space),
+                                      Text(mob.final_flo_ky.toStringAsFixed(2)),
+                                      SizedBox(width: space + 5),
+                                      Text(mob.final_flo_prod
+                                          .toStringAsFixed(1)),
+                                      SizedBox(width: space),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                          mob.final_fru_num.toStringAsFixed(1)),
+                                      SizedBox(width: space + 20),
+                                      Text(
+                                          mob.final_fru_eta.toStringAsFixed(3)),
+                                      SizedBox(width: space),
+                                      Text(mob.final_fru_ky.toStringAsFixed(2)),
+                                      SizedBox(width: space + 5),
+                                      Text(mob.final_fru_prod
+                                          .toStringAsFixed(1)),
+                                      SizedBox(width: space),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                          mob.final_mat_num.toStringAsFixed(1)),
+                                      SizedBox(width: space + 20),
+                                      Text(
+                                          mob.final_mat_eta.toStringAsFixed(3)),
+                                      SizedBox(width: space),
+                                      Text(mob.final_mat_ky.toStringAsFixed(2)),
+                                      SizedBox(width: space + 5),
+                                      Text(mob.final_mat_prod
+                                          .toStringAsFixed(1)),
+                                      SizedBox(width: space),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Theme.of(context).backgroundColor,
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(0, 0),
+                            blurRadius: 5,
+                            color: Colors.black26,
+                          ),
+                        ]),
+                    margin: const EdgeInsets.only(left: 15, right: 15, top: 50),
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      children: [
+                        Linhas(
+                            tx1: 'Total de Dias',
+                            tx2: mob.final_total_dias.toString()),
+                        Linhas(
+                            tx1: 'Quebra de produtividade',
+                            tx2: (mob.final_quebra_produ.isNaN)
+                                ? '0'
+                                : mob.final_quebra_produ.toString()),
+                        Linhas(
+                            tx1: 'Produtividade Real',
+                            tx2: mob.final_mat_prod.toString()),
                       ],
                     ),
                   ),
@@ -264,7 +291,6 @@ class LargResultado extends StatelessWidget {
                         ),
                         const Divider(
                           thickness: 1,
-                          color: Colors.black45,
                         ),
                         const SizedBox(
                           height: 5,
@@ -295,7 +321,7 @@ class LargResultado extends StatelessWidget {
                             color: Colors.black26,
                           ),
                         ]),
-                    margin: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.only(left: 15, right: 15, top: 50),
                     padding: const EdgeInsets.all(15),
                     child: Column(
                       children: [
