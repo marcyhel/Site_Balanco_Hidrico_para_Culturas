@@ -24,32 +24,36 @@ class _LoadState extends State<Load> {
   Future<void> carr() async {
     print(widget.load);
     await Future.delayed(Duration(seconds: Random().nextInt(1) + 0));
-    for (var i = 0; i <= 30; i++) {
+    for (var i = 0; i <= (Random().nextInt(20) + 30); i++) {
       await Future.delayed(Duration(milliseconds: 20));
       setState(() {
         widget.load += 0.01;
       });
     }
     await Future.delayed(Duration(milliseconds: Random().nextInt(500) + 500));
-    for (var i = 0; i <= 10; i++) {
+    for (var i = 0; i <= (Random().nextInt(20) + 10); i++) {
       await Future.delayed(Duration(milliseconds: 10));
       setState(() {
         widget.load += 0.01;
       });
     }
-    await Future.delayed(Duration(seconds: Random().nextInt(1) + 0));
-    for (var i = 0; i <= 50; i++) {
-      await Future.delayed(Duration(milliseconds: 20));
-      setState(() {
-        widget.load += 0.01;
-      });
+    await Future.delayed(Duration(seconds: Random().nextInt(1) + 1));
+    for (var i = 0; i <= (Random().nextInt(20) + 40); i++) {
+      if (widget.load < 100) {
+        await Future.delayed(Duration(milliseconds: 20));
+        setState(() {
+          widget.load += 0.01;
+        });
+      }
     }
     await Future.delayed(Duration(milliseconds: 600));
-    for (var i = 0; i <= 10; i++) {
-      await Future.delayed(Duration(milliseconds: 20));
-      setState(() {
-        widget.load += 0.01;
-      });
+    for (var i = 0; i <= (Random().nextInt(20) + 10); i++) {
+      if (widget.load < 100) {
+        await Future.delayed(Duration(milliseconds: 20));
+        setState(() {
+          widget.load += 0.01;
+        });
+      }
     }
     Navigator.pop(context);
     Navigator.push(
@@ -62,73 +66,125 @@ class _LoadState extends State<Load> {
   void initState() {
     // TODO: implement initState
     carr();
-    // _animationController =
-    //     new AnimationController(vsync: this, duration: Duration(seconds: 3));
-    //_animationController.addListener(() => setState(() {}));
-    // _animationController.repeat();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    //mob.setLoad();
-    return Container(
-      color: Colors.blueGrey[400],
-      child: ResponsiveWidget.isSmallScreen(context)
-          ? Center(
-              child: SizedBox(
-                width: 150.0,
-                height: 150.0,
-                child: LiquidCircularProgressIndicator(
+    var size = MediaQuery.of(context).size;
+    Path _buildHeartPath() {
+      return Path()
+        ..moveTo(55, 15)
+        ..cubicTo(55, 12, 50, 0, 30, 0)
+        ..cubicTo(0, 0, 0, 37.5, 0, 37.5)
+        ..cubicTo(0, 55, 20, 77, 55, 95)
+        ..cubicTo(90, 77, 110, 55, 110, 37.5)
+        ..cubicTo(110, 37.5, 110, 0, 80, 0)
+        ..cubicTo(65, 0, 55, 12, 55, 15)
+        ..close();
+    } /*
+   ..moveTo(0, 250)
+        ..cubicTo(50, 150, 160, 200, 200, 100)
+        ..quadraticBezierTo(210, 65, 200, 50)
+        ..quadraticBezierTo(200, 40, 210, 40)
+        ..lineTo(205, 30)
+        ..quadraticBezierTo(195, 30, 190, 40)
+        ..cubicTo(150, 0, -20, 50, 0, 250)*/
+
+    Path _buildFolhaPath() {
+      return Path()
+        ..moveTo(50, 250)
+        ..cubicTo(100, 150, 210, 200, 250, 100)
+        ..quadraticBezierTo(260, 65, 250, 50)
+        ..quadraticBezierTo(250, 40, 260, 40)
+        ..lineTo(255, 30)
+        ..lineTo(305, 30)
+        ..lineTo(255, 30)
+        ..quadraticBezierTo(245, 30, 240, 35)
+        ..quadraticBezierTo(90, 90, 70, 180)
+        ..quadraticBezierTo(90, 90, 232, 32)
+        // ..cubicTo(230, 30, 60, 175, 70, 180)
+        //..cubicTo(50, 150, 100, 0, 235, 35)
+        //..lineTo(70, 180)
+        // ..lineTo(235, 35)
+
+        ..cubicTo(170, 0, 20, 50, 50, 250)
+
+        /*..cubicTo(0, 55, 20, 77, 55, 95)
+        ..cubicTo(90, 77, 110, 55, 110, 37.5)
+        ..cubicTo(110, 37.5, 110, 0, 80, 0)
+        ..cubicTo(65, 0, 55, 12, 55, 15)*/
+        ..close();
+    }
+
+    return Scaffold(
+      body: Container(
+        color: Colors.blueGrey[400],
+        child: ResponsiveWidget.isSmallScreen(context)
+            ? Center(
+                child: LiquidCustomProgressIndicator(
                   value: widget.load,
+                  direction: Axis.vertical,
                   backgroundColor: Colors.blueGrey[400],
-                  valueColor: AlwaysStoppedAnimation(
-                    Colors.blueGrey.shade700,
+                  valueColor: AlwaysStoppedAnimation(Colors.blueGrey.shade700),
+                  shapePath: _buildFolhaPath(),
+                  center: Container(
+                    margin: EdgeInsets.only(bottom: 50),
+                    child: Text(
+                      (widget.load * 100) > 100
+                          ? '100%'
+                          : "${(widget.load * 100).toStringAsFixed(0)}%",
+                      style: TextStyle(
+                        color: Colors.blueGrey.shade200,
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  borderColor: Colors.blueGrey.shade400,
-                  borderWidth: 0.0,
-                  center: Text(
-                    (widget.load * 100) > 100
-                        ? '100%'
-                        : "${(widget.load * 100).toStringAsFixed(0)}%",
-                    style: TextStyle(
-                      color: Colors.blueGrey.shade200,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
+                ),
+              )
+            : Center(
+                child: LiquidCustomProgressIndicator(
+                  value: widget.load,
+                  direction: Axis.vertical,
+                  backgroundColor: Colors.blueGrey[400],
+                  valueColor: AlwaysStoppedAnimation(Colors.blueGrey.shade700),
+                  shapePath: _buildFolhaPath(),
+                  center: Container(
+                    margin: EdgeInsets.only(bottom: 50),
+                    child: Text(
+                      (widget.load * 100) > 100
+                          ? '100%'
+                          : "${(widget.load * 100).toStringAsFixed(0)}%",
+                      style: TextStyle(
+                        color: Colors.blueGrey.shade200,
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ),
-            )
-          : Center(
-              child: Container(
-                //width: MediaQuery.of(context).size.width / 3,
-                //height: MediaQuery.of(context).size.height / 3,
-                child: Expanded(
-                  child: GradientCircularProgressIndicator(
-                    gradientColors: [
-                      Colors.blueGrey.shade500,
-                      Colors.blueGrey.shade700
-                    ],
-                    radius: MediaQuery.of(context).size.width / 10,
-                    strokeWidth: MediaQuery.of(context).size.width / 25,
-                    value: widget.load, //new Tween(begin: 0.0, end: 1.0)
-                    //.animate(CurvedAnimation(
-                    //      parent: _animationController, curve: Curves.decelerate))
-                    // .value,
-                  ),
-                ), /*AirDashboardStateProgressIndicator(
-            size: Size(150, 150),
-            value: widget.load, //1~100
-            valueColor: Colors
-                .amber, //ColorTween(begin: Colors.grey, end: Colors.blue).transform(_segmentValue / 10),
-            pathStrokeWidth: 0,
-            valueStrokeWidth: 40,
-            gapDegree: 60,
-            roundCap: true,
-          ),*/
-              ),
-            ),
+      ),
     );
   }
+}
+
+class PathPainter extends CustomPainter {
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 8.0;
+
+    Path path = Path();
+    path.moveTo(0, size.height / 2);
+    path.quadraticBezierTo(
+        size.width / 2, size.height, size.width, size.height / 2);
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
