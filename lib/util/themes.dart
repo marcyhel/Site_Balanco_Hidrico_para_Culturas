@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 var lightThemeData = ThemeData(
   textSelectionColor: Colors.black54,
+  canvasColor: Colors.red,
   hintColor: Colors.blueGrey[600],
   hoverColor: Colors.blueGrey[100],
   primaryColor: Colors.grey,
@@ -28,6 +29,7 @@ var lightThemeData = ThemeData(
 
 var darkThemeData = ThemeData(
   textSelectionColor: Colors.black87,
+  canvasColor: Colors.red[300],
   hintColor: Colors.grey[900],
   hoverColor: Colors.blueGrey,
   primaryColor: Colors.grey,
