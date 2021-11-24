@@ -9,8 +9,10 @@ class Explicacao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Theme.of(context).backgroundColor,
-        child: ResponsiveWidget.isSmallScreen(context)
-            ? Container()
-            : LargExplicacao());
+        child: SingleChildScrollView(
+          child: ResponsiveWidget.isSmallScreen(context)
+              ? Container()
+              : LargExplicacao(),
+        ));
   }
 }

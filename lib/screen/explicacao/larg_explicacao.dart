@@ -14,17 +14,18 @@ class CustonLinha extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, top: 7, bottom: 7),
+      margin: EdgeInsets.only(left: 50, top: 7, bottom: 7),
       child: Row(
         children: [
           SizedBox(
-              width: 50,
-              child: Text(
-                sigla,
-                style: cor == '1'
-                    ? TextStyle(color: Theme.of(context).canvasColor)
-                    : null,
-              )),
+            width: 100,
+            child: Text(
+              sigla,
+              style: cor == '1'
+                  ? TextStyle(color: Theme.of(context).canvasColor)
+                  : null,
+            ),
+          ),
           Text(
             texto,
             style: cor == '1'
@@ -59,20 +60,96 @@ class LargExplicacao extends StatelessWidget {
       '1'
     ],
     ['GDi', 'Graus-Dia - do período(GDi=(Tmédida-Tbase da cultura))', '1'],
+    ['ΣGDi', 'Somatório de Graus-Dia', '0'],
+    ['Etm', 'Evapotranspiração máxima da Cultura', '0'],
+    ['Δ CAD', 'Variação da CAD', '0'],
+    [
+      'Neg-Acumulado',
+      'Soma dos Negativos Acumulados de P-ETm (A coluna Temporário só e utilizada para os cáculos.)',
+      '0'
+    ],
+    [
+      'ARM',
+      'Armazenamento de água nas plantas (A coluna Temporário só é utilizada para os cáculos)',
+      '0'
+    ],
+    ['ALT', 'Alteração do Armazenamento', '0'],
+    ['ETa', 'Evapotranspiração Atual ou Real', '0'],
+    ['DEF', 'Deficiência Hídrica da Cultura', '0'],
+    ['EXC', 'Excedente Hídrico da Cultura', '0'],
   ];
+  List<List<String>> list2 = [
+    ['ETa/ETm', 'Evapotranspiração Relativa', '0'],
+    [
+      'Ky',
+      'Fator de Resposta da Cultura - Deduzido para diferentes culturas de acordo com a fase fenológica',
+      '1'
+    ],
+    ['1-(ETa/ETm)', 'Déficit de Evapotranspiração Relativa', '0'],
+  ];
+  List<List<String>> list3 = [
+    [
+      'a & b',
+      'Coeficientes para o cálculo da Rad. Global (Rs = ( a+bxn / N )xQo. { Caso desconheca utilize vlrs Médios : a=0,25 b=0,50 }',
+      '1'
+    ],
+    ['N', 'Fotoperíodo em horas', '0'],
+    ['n', 'Número de Horas de Brilho Solar', '1'],
+    ['IAF', 'Índice de Área Foliar', '1'],
+    [
+      'Yo',
+      'Taxa de produção de matéria seca máxima de uma cultura para um dado local e dia nublado(p/temperaturas padronizadas). kg/ha.dia',
+      '0'
+    ],
+    [
+      'Yc',
+      'Taxa de produção de matéria seca máxima de uma cultura para um dado local e dia claro(p/ temperaturas padronizadas). kg/ha.dia',
+      '0'
+    ],
+    ['CTO', 'Fator de correção para dias nublados', '0'],
+    ['CTC', 'Fator de correção para dias Claros', '0'],
+    [
+      'Rse',
+      'Disponibilidade Máxima de radiação fotossinteticamente ativa em dias limpos. cal/cm2.dia',
+      '0'
+    ],
+    ['Qg', 'Radiação Global (cal/cm2.dia)', '0'],
+    [
+      'F',
+      'Fator de correção correspondente a fração de energia disponível',
+      '0'
+    ],
+    ['cH', 'Correção ou Índice de colheita', '0'],
+    ['cL', 'Correção da fotossíntese em função da superfície foliar', '0'],
+    ['cN', 'Correção para efeitos de temperatura na taxa de respiração', '0'],
+    ['Yp', 'Produtividade Potencial - Kg/ha.período', '0'],
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
+          const SizedBox(height: 40),
+          const Text(
+            'Instruções Gerai',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+          ),
+          const SizedBox(height: 100),
           IntrinsicHeight(
             child: Row(
               children: [
-                const Text('Blanço Hidrico\ncom CAD\ne Kc Variavel'),
+                SizedBox(
+                  width: 200,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 50, left: 50),
+                    child: const Text('Blanço Hidrico\ncom CAD\ne Kc Variavel'),
+                  ),
+                ),
                 IntrinsicWidth(
                   child: Expanded(
                     child: Container(
-                      color: Colors.amber,
+                      color: Colors.blueGrey[400],
                       width: 3,
                       //height: 600,
                     ),
@@ -82,8 +159,8 @@ class LargExplicacao extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      color: Colors.amber,
-                      width: 20,
+                      color: Colors.blueGrey[400],
+                      width: 30,
                       height: 3,
                       //height: 600,
                     ),
@@ -95,8 +172,8 @@ class LargExplicacao extends StatelessWidget {
                               cor: list1[index][2],
                             )).toList(),
                     Container(
-                      color: Colors.amber,
-                      width: 20,
+                      color: Colors.blueGrey[400],
+                      width: 30,
                       height: 3,
                       //height: 600,
                     ),
@@ -104,7 +181,102 @@ class LargExplicacao extends StatelessWidget {
                 )
               ],
             ),
-          )
+          ),
+          const SizedBox(height: 50),
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 50, left: 50),
+                    child: const Text('Produtividade\nReal'),
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Expanded(
+                    child: Container(
+                      color: Colors.blueGrey[400],
+                      width: 3,
+                      //height: 600,
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      color: Colors.blueGrey[400],
+                      width: 30,
+                      height: 3,
+                      //height: 600,
+                    ),
+                    ...List<Widget>.generate(
+                        list2.length,
+                        (int index) => CustonLinha(
+                              sigla: list2[index][0],
+                              texto: list2[index][1],
+                              cor: list2[index][2],
+                            )).toList(),
+                    Container(
+                      color: Colors.blueGrey[400],
+                      width: 30,
+                      height: 3,
+                      //height: 600,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          const SizedBox(height: 50),
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 50, left: 50),
+                    child: const Text('Produtividade\nPotencial'),
+                  ),
+                ),
+                IntrinsicWidth(
+                  child: Expanded(
+                    child: Container(
+                      color: Colors.blueGrey[400],
+                      width: 3,
+                      //height: 600,
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      color: Colors.blueGrey[400],
+                      width: 30,
+                      height: 3,
+                      //height: 600,
+                    ),
+                    ...List<Widget>.generate(
+                        list3.length,
+                        (int index) => CustonLinha(
+                              sigla: list3[index][0],
+                              texto: list3[index][1],
+                              cor: list3[index][2],
+                            )).toList(),
+                    Container(
+                      color: Colors.blueGrey[400],
+                      width: 30,
+                      height: 3,
+                      //height: 600,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          const SizedBox(height: 50),
         ],
       ),
     );
