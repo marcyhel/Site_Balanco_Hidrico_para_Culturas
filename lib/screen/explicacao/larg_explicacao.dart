@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustonLinha extends StatelessWidget {
@@ -14,23 +15,28 @@ class CustonLinha extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 50, top: 7, bottom: 7),
+      margin: const EdgeInsets.only(left: 50, top: 7, bottom: 7),
+      width: MediaQuery.of(context).size.width / 1.8,
       child: Row(
         children: [
           SizedBox(
             width: 100,
+            child: Expanded(
+              child: Text(
+                sigla,
+                style: cor == '1'
+                    ? TextStyle(color: Theme.of(context).canvasColor)
+                    : null,
+              ),
+            ),
+          ),
+          Expanded(
             child: Text(
-              sigla,
+              texto,
               style: cor == '1'
                   ? TextStyle(color: Theme.of(context).canvasColor)
                   : null,
             ),
-          ),
-          Text(
-            texto,
-            style: cor == '1'
-                ? TextStyle(color: Theme.of(context).canvasColor)
-                : null,
           ),
         ],
       ),
@@ -128,14 +134,123 @@ class LargExplicacao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
           const SizedBox(height: 40),
           const Text(
             'Instruções Gerai',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+            ),
+            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 100),
+          Container(
+            margin: const EdgeInsets.only(left: 200),
+            width: MediaQuery.of(context).size.width * 1.8,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 100),
+                const Text(
+                    'Preencha os dados necessários na telas de Dados iniciais e Dados do clima'),
+                const Text(
+                    'Todos os cálculos são dependentes do preenchimento correto dos dados para o cálculo do Balanço Hídrico'),
+                const SizedBox(height: 20),
+                Container(
+                    margin: const EdgeInsets.only(left: 25),
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: const Divider()),
+                const Text(
+                  'Verifique o valor do grupo de culturas adequado      (Temp=oC)',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: const [
+                    Text(
+                      'Grupo 1',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Text(' - '),
+                    Expanded(
+                      child: Text(
+                          'Plantas C3 de Inverno : Feijão, Repolho, Grão de Bico,ervilha, Bata e Trigo ...(3<Temp<30)'),
+                    )
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Grupo 2',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Text(' - '),
+                    Expanded(
+                      child: Text(
+                          'Plantas C3 de Verão:  Alfafa, Cítricos, Algodão,Amendoim,Pimentão,Arroz,açafrão,Soja,Girassol,Tabaco,Tomate, ...(15<Temp<40)'),
+                    )
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Grupo 3',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Text(' - '),
+                    Expanded(
+                        child: Text(
+                            'Algumas Variedades de Milho e Sorgo(10<Temp<30)'))
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Grupo 4',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Text(' - '),
+                    Expanded(
+                      child: Text(
+                          'Plantas C4: Milho, Sorgo Cana de Açúcar,....(14<Temp<40)'),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                    margin: const EdgeInsets.only(left: 25),
+                    width: MediaQuery.of(context).size.width / 2,
+                    child: const Divider()),
+                const Text(
+                  'Simbologia utilizada',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'Obs:',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    Text(' '),
+                    Expanded(
+                      child: Text(
+                          'Dados que deverão ser fornecidos pelo usuário estão em vermelho.'),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 40),
           IntrinsicHeight(
             child: Row(
               children: [
