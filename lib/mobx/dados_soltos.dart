@@ -174,6 +174,17 @@ List<DadosOcultos> calcularDadosOcultos() {
     } else {
       mob.result_tabela[i].gdi = dados[i].gdi_temp_l2;
     }
+
+    if (mob.result_tabela[i].gdi != 0) {
+      try {
+        mob.result_tabela[i].somegdi =
+            mob.result_tabela[i - 1].somegdi + mob.result_tabela[i].gdi;
+      } catch (e) {
+        mob.result_tabela[i].somegdi = 0 + mob.result_tabela[i].gdi;
+      }
+    } else {
+      mob.result_tabela[i].somegdi = 0;
+    }
   }
 
   for (var i = 0; i < mob.result_tabela.length; i++) {
@@ -435,7 +446,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     } else {
       mob.result_tabela[i].fim_periodo_Arm = dados[i].cad;
     }
-    print(' -> ${dados[i].coluna_imprecao}');
+    //print(' -> ${dados[i].coluna_imprecao}');
     //print("aquii 4 8 2");
     //-----------------------------------------------------------
     if (i != mob.result_tabela.length - 1) {
@@ -489,11 +500,13 @@ List<DadosOcultos> calcularDadosOcultos() {
       mob.result_tabela[i].ky = double.parse(mob.mat_ky);
     }
     //-----------------------------------------------------------
+
     if (dados[i].gdi_temp_l4 == 0) {
       mob.result_tabela[i].numero_dias_faze = dados[i].temp_logica;
     } else {
       mob.result_tabela[i].numero_dias_faze = dados[i].gdi_temp_l4;
     }
+
     //-----------------------------------------------------------
     if (i == 0) {
       mob.result_tabela[i].alt =
@@ -751,8 +764,10 @@ List<DadosOcultos> calcularDadosOcultos() {
     if (dados[i].logica2 == 0) {
       mob.result_tabela[i].yp = 0;
     } else {
-      print(
-          "Marcyhel -- ${(mob.result_tabela[i].f * mob.result_tabela[i].cto * mob.result_tabela[i].yo + (1 - mob.result_tabela[i].f) * mob.result_tabela[i].ctc * mob.result_tabela[i].yc) * mob.result_tabela[i].cl * mob.result_tabela[i].cn * double.parse(mob.indice_colheita) * mob.result_tabela[i].numero_dias_faze}");
+      //print(mob.result_tabela[i].numero_dias_faze);
+      //print("ddd - ${mob.result_tabela[i].numero_dias_faze}");
+      //print(
+      // "Marcyhel -- ${(mob.result_tabela[i].f * mob.result_tabela[i].cto * mob.result_tabela[i].yo + (1 - mob.result_tabela[i].f) * mob.result_tabela[i].ctc * mob.result_tabela[i].yc) * mob.result_tabela[i].cl * mob.result_tabela[i].cn * double.parse(mob.indice_colheita) * mob.result_tabela[i].numero_dias_faze}");
       mob.result_tabela[i].yp = (mob.result_tabela[i].f *
                   mob.result_tabela[i].cto *
                   mob.result_tabela[i].yo +
@@ -764,6 +779,7 @@ List<DadosOcultos> calcularDadosOcultos() {
           double.parse(mob.indice_colheita) *
           mob.result_tabela[i].numero_dias_faze;
     }
+    print("-< ${mob.result_tabela[i].yp} >-");
     //-----------------------------------------------------------
     if (dados[i].logica2 == 1) {
       dados[i].m1 = mob.result_tabela[i].eta_etm;
@@ -777,7 +793,7 @@ List<DadosOcultos> calcularDadosOcultos() {
       dados[i].d1 = 0;
     }
     //-----------------------------------------------------------
-    print("ddd--------${mob.result_tabela[i].yp}---${dados[i].logica2}");
+    // print("ddd--------${mob.result_tabela[i].yp}---${dados[i].logica2}");
     if (dados[i].logica2 == 1) {
       dados[i].y1 = mob.result_tabela[i].yp;
     } else {
@@ -816,7 +832,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].logica2 == 3) {
       dados[i].y3 = mob.result_tabela[i].yp;
-      print("aquiiii--");
+      //print("aquiiii--");
     } else {
       dados[i].y3 = 0;
     }
@@ -835,7 +851,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].logica2 == 4) {
       dados[i].y4 = mob.result_tabela[i].yp;
-      print("aquiiii--!");
+      //print("aquiiii--!");
     } else {
       dados[i].y4 = 0;
     }
@@ -854,7 +870,6 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].logica2 == 5) {
       dados[i].y5 = mob.result_tabela[i].yp;
-      print("aquiiii-->");
     } else {
       dados[i].y5 = 0;
     }
@@ -862,10 +877,16 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
 
   }
-
+  int aux1 = 0;
+  int aux2 = 0;
+  int aux3 = 0;
+  int aux4 = 0;
+  int aux5 = 0;
   for (var i = 0; i < mob.result_tabela.length; i++) {
+    print("--${dados[i].y1}");
     if (dados[i].m1 != -999) {
       mob.some_m1 += dados[i].m1;
+      aux1++;
     }
     if (dados[i].d1 != -999) {
       mob.some_d1 += dados[i].d1;
@@ -877,6 +898,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     if (dados[i].m2 != -999) {
       mob.some_m2 += dados[i].m2;
+      aux2++;
     }
     if (dados[i].d2 != -999) {
       mob.some_d2 += dados[i].d2;
@@ -886,6 +908,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     }
     //-----------------------------------------------------------
     if (dados[i].m3 != -999) {
+      aux3++;
       mob.some_m3 += dados[i].m3;
     }
     if (dados[i].d3 != -999) {
@@ -896,6 +919,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     }
     //-----------------------------------------------------------
     if (dados[i].m4 != -999) {
+      aux4++;
       mob.some_m4 += dados[i].m4;
     }
     if (dados[i].d4 != -999) {
@@ -906,6 +930,7 @@ List<DadosOcultos> calcularDadosOcultos() {
     }
     //-----------------------------------------------------------
     if (dados[i].m5 != -999) {
+      aux5++;
       mob.some_m5 += dados[i].m5;
     }
     if (dados[i].d5 != -999) {
@@ -915,7 +940,7 @@ List<DadosOcultos> calcularDadosOcultos() {
       mob.some_y5 += dados[i].y5;
     }
     //-----------------------------------------------------------
-    mob.some_yp = mob.result_tabela[i].yp;
+    mob.some_yp += mob.result_tabela[i].yp;
 
     //-----------------------------------------------------------
     //-----------------------------------------------------------
@@ -925,25 +950,36 @@ List<DadosOcultos> calcularDadosOcultos() {
     //-----------------------------------------------------------
     //-----------------------------------------------------------
   }
-  print(mob.some_y1);
+
+  print("-> ${mob.some_m4}");
   mob.final_est_num = mob.some_d1;
-  mob.final_est_eta = 1 - mob.some_m1;
+  if (aux1 != 0) {
+    mob.final_est_eta = 1 - (mob.some_m1 / aux1);
+  }
   mob.final_est_ky = double.parse(mob.est_ky);
 
   mob.final_des_num = mob.some_d2;
-  mob.final_des_eta = 1 - mob.some_m2;
+  if (aux2 != 0) {
+    mob.final_des_eta = 1 - (mob.some_m2 / aux2);
+  }
   mob.final_des_ky = double.parse(mob.des_ky);
 
   mob.final_flo_num = mob.some_d3;
-  mob.final_flo_eta = 1 - mob.some_m3;
+  if (aux3 != 0) {
+    mob.final_flo_eta = 1 - (mob.some_m3 / aux3);
+  }
   mob.final_flo_ky = double.parse(mob.flo_ky);
 
   mob.final_fru_num = mob.some_d4;
-  mob.final_fru_eta = 1 - mob.some_m4;
+  if (aux4 != 0) {
+    mob.final_fru_eta = 1 - (mob.some_m4 / aux4);
+  }
   mob.final_fru_ky = double.parse(mob.fru_ky);
 
   mob.final_mat_num = mob.some_d5;
-  mob.final_mat_eta = 1 - mob.some_m5;
+  if (aux5 != 0) {
+    mob.final_mat_eta = 1 - (mob.some_m5 / aux5);
+  }
   mob.final_mat_ky = double.parse(mob.mat_ky);
 
   mob.final_total_dias = (mob.final_est_num +
@@ -951,6 +987,13 @@ List<DadosOcultos> calcularDadosOcultos() {
       mob.final_flo_num +
       mob.final_fru_num +
       mob.final_mat_num);
+
+  print("marcyhel ${mob.some_y1}");
+  print("marcyhel ${mob.some_y2}");
+  print("marcyhel ${mob.some_y3}");
+  print("marcyhel ${mob.some_y4}");
+  print("marcyhel ${mob.some_y5}");
+  print("marcyhel ${mob.produtividade_potencial_peso}");
   mob.produtividade_potencial_peso =
       (mob.some_y1 + mob.some_y2 + mob.some_y3 + mob.some_y4 + mob.some_y5);
   mob.produtividade_potencial_agua =
@@ -971,6 +1014,7 @@ List<DadosOcultos> calcularDadosOcultos() {
 
   mob.final_quebra_produ =
       (1 - mob.final_mat_prod / mob.produtividade_potencial_total);
+  print(mob.produtividade_potencial_total);
   print("fim calculo");
   return dados;
 }
