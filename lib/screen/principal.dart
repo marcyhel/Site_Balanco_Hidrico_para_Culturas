@@ -56,34 +56,34 @@ class _PrincipalState extends State<Principal> {
   List<CollapsibleItem> get _generateItems {
     return [
       CollapsibleItem(
-        text: 'Dashboard',
-        icon: Icons.assessment,
+        text: 'Dados do clima',
+        icon: Icons.cloud_circle,
         onPressed: () => setState(() => index = 0),
         isSelected: true,
       ),
       CollapsibleItem(
-        text: 'Errors',
-        icon: Icons.cancel,
+        text: 'Expecifiações',
+        icon: Icons.space_dashboard,
         onPressed: () => setState(() => index = 1),
       ),
       CollapsibleItem(
-        text: 'Search',
-        icon: Icons.search,
+        text: 'Tabela',
+        icon: Icons.table_chart_rounded,
         onPressed: () => setState(() => index = 2),
       ),
       CollapsibleItem(
-        text: 'Notifications',
-        icon: Icons.notifications,
+        text: 'Graficos',
+        icon: Icons.stacked_line_chart_rounded,
         onPressed: () => setState(() => index = 3),
       ),
       CollapsibleItem(
-        text: 'Dark mode',
-        icon: Icons.light_mode,
+        text: 'Resultados',
+        icon: Icons.table_rows_rounded,
         onPressed: () => setState(() => index = 4),
       ),
       CollapsibleItem(
-        text: 'Dark mode',
-        icon: Icons.light_mode,
+        text: 'Explicação',
+        icon: Icons.wysiwyg_rounded,
         onPressed: () => setState(() => index = 5),
       ),
     ];
