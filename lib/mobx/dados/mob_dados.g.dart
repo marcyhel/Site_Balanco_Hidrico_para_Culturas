@@ -583,6 +583,464 @@ mixin _$Mob_dados on _Mob_dados, Store {
     });
   }
 
+  final _$bool_cad_minAtom = Atom(name: '_Mob_dados.bool_cad_min');
+
+  @override
+  bool get bool_cad_min {
+    _$bool_cad_minAtom.reportRead();
+    return super.bool_cad_min;
+  }
+
+  @override
+  set bool_cad_min(bool value) {
+    _$bool_cad_minAtom.reportWrite(value, super.bool_cad_min, () {
+      super.bool_cad_min = value;
+    });
+  }
+
+  final _$bool_grup_culuraAtom = Atom(name: '_Mob_dados.bool_grup_culura');
+
+  @override
+  bool get bool_grup_culura {
+    _$bool_grup_culuraAtom.reportRead();
+    return super.bool_grup_culura;
+  }
+
+  @override
+  set bool_grup_culura(bool value) {
+    _$bool_grup_culuraAtom.reportWrite(value, super.bool_grup_culura, () {
+      super.bool_grup_culura = value;
+    });
+  }
+
+  final _$bool_gdAtom = Atom(name: '_Mob_dados.bool_gd');
+
+  @override
+  bool get bool_gd {
+    _$bool_gdAtom.reportRead();
+    return super.bool_gd;
+  }
+
+  @override
+  set bool_gd(bool value) {
+    _$bool_gdAtom.reportWrite(value, super.bool_gd, () {
+      super.bool_gd = value;
+    });
+  }
+
+  final _$bool_temp_baseAtom = Atom(name: '_Mob_dados.bool_temp_base');
+
+  @override
+  bool get bool_temp_base {
+    _$bool_temp_baseAtom.reportRead();
+    return super.bool_temp_base;
+  }
+
+  @override
+  set bool_temp_base(bool value) {
+    _$bool_temp_baseAtom.reportWrite(value, super.bool_temp_base, () {
+      super.bool_temp_base = value;
+    });
+  }
+
+  final _$bool_neg_acumulado_inicialAtom =
+      Atom(name: '_Mob_dados.bool_neg_acumulado_inicial');
+
+  @override
+  bool get bool_neg_acumulado_inicial {
+    _$bool_neg_acumulado_inicialAtom.reportRead();
+    return super.bool_neg_acumulado_inicial;
+  }
+
+  @override
+  set bool_neg_acumulado_inicial(bool value) {
+    _$bool_neg_acumulado_inicialAtom
+        .reportWrite(value, super.bool_neg_acumulado_inicial, () {
+      super.bool_neg_acumulado_inicial = value;
+    });
+  }
+
+  final _$bool_armazenamento_inicialAtom =
+      Atom(name: '_Mob_dados.bool_armazenamento_inicial');
+
+  @override
+  bool get bool_armazenamento_inicial {
+    _$bool_armazenamento_inicialAtom.reportRead();
+    return super.bool_armazenamento_inicial;
+  }
+
+  @override
+  set bool_armazenamento_inicial(bool value) {
+    _$bool_armazenamento_inicialAtom
+        .reportWrite(value, super.bool_armazenamento_inicial, () {
+      super.bool_armazenamento_inicial = value;
+    });
+  }
+
+  final _$bool_umidade_colhidaAtom =
+      Atom(name: '_Mob_dados.bool_umidade_colhida');
+
+  @override
+  bool get bool_umidade_colhida {
+    _$bool_umidade_colhidaAtom.reportRead();
+    return super.bool_umidade_colhida;
+  }
+
+  @override
+  set bool_umidade_colhida(bool value) {
+    _$bool_umidade_colhidaAtom.reportWrite(value, super.bool_umidade_colhida,
+        () {
+      super.bool_umidade_colhida = value;
+    });
+  }
+
+  final _$bool_indice_colheitaAtom =
+      Atom(name: '_Mob_dados.bool_indice_colheita');
+
+  @override
+  bool get bool_indice_colheita {
+    _$bool_indice_colheitaAtom.reportRead();
+    return super.bool_indice_colheita;
+  }
+
+  @override
+  set bool_indice_colheita(bool value) {
+    _$bool_indice_colheitaAtom.reportWrite(value, super.bool_indice_colheita,
+        () {
+      super.bool_indice_colheita = value;
+    });
+  }
+
+  final _$bool_aAtom = Atom(name: '_Mob_dados.bool_a');
+
+  @override
+  bool get bool_a {
+    _$bool_aAtom.reportRead();
+    return super.bool_a;
+  }
+
+  @override
+  set bool_a(bool value) {
+    _$bool_aAtom.reportWrite(value, super.bool_a, () {
+      super.bool_a = value;
+    });
+  }
+
+  final _$bool_bAtom = Atom(name: '_Mob_dados.bool_b');
+
+  @override
+  bool get bool_b {
+    _$bool_bAtom.reportRead();
+    return super.bool_b;
+  }
+
+  @override
+  set bool_b(bool value) {
+    _$bool_bAtom.reportWrite(value, super.bool_b, () {
+      super.bool_b = value;
+    });
+  }
+
+  final _$bool_est_kcAtom = Atom(name: '_Mob_dados.bool_est_kc');
+
+  @override
+  bool get bool_est_kc {
+    _$bool_est_kcAtom.reportRead();
+    return super.bool_est_kc;
+  }
+
+  @override
+  set bool_est_kc(bool value) {
+    _$bool_est_kcAtom.reportWrite(value, super.bool_est_kc, () {
+      super.bool_est_kc = value;
+    });
+  }
+
+  final _$bool_est_kyAtom = Atom(name: '_Mob_dados.bool_est_ky');
+
+  @override
+  bool get bool_est_ky {
+    _$bool_est_kyAtom.reportRead();
+    return super.bool_est_ky;
+  }
+
+  @override
+  set bool_est_ky(bool value) {
+    _$bool_est_kyAtom.reportWrite(value, super.bool_est_ky, () {
+      super.bool_est_ky = value;
+    });
+  }
+
+  final _$bool_est_iafAtom = Atom(name: '_Mob_dados.bool_est_iaf');
+
+  @override
+  bool get bool_est_iaf {
+    _$bool_est_iafAtom.reportRead();
+    return super.bool_est_iaf;
+  }
+
+  @override
+  set bool_est_iaf(bool value) {
+    _$bool_est_iafAtom.reportWrite(value, super.bool_est_iaf, () {
+      super.bool_est_iaf = value;
+    });
+  }
+
+  final _$bool_est_cadAtom = Atom(name: '_Mob_dados.bool_est_cad');
+
+  @override
+  bool get bool_est_cad {
+    _$bool_est_cadAtom.reportRead();
+    return super.bool_est_cad;
+  }
+
+  @override
+  set bool_est_cad(bool value) {
+    _$bool_est_cadAtom.reportWrite(value, super.bool_est_cad, () {
+      super.bool_est_cad = value;
+    });
+  }
+
+  final _$bool_des_kcAtom = Atom(name: '_Mob_dados.bool_des_kc');
+
+  @override
+  bool get bool_des_kc {
+    _$bool_des_kcAtom.reportRead();
+    return super.bool_des_kc;
+  }
+
+  @override
+  set bool_des_kc(bool value) {
+    _$bool_des_kcAtom.reportWrite(value, super.bool_des_kc, () {
+      super.bool_des_kc = value;
+    });
+  }
+
+  final _$bool_des_kyAtom = Atom(name: '_Mob_dados.bool_des_ky');
+
+  @override
+  bool get bool_des_ky {
+    _$bool_des_kyAtom.reportRead();
+    return super.bool_des_ky;
+  }
+
+  @override
+  set bool_des_ky(bool value) {
+    _$bool_des_kyAtom.reportWrite(value, super.bool_des_ky, () {
+      super.bool_des_ky = value;
+    });
+  }
+
+  final _$bool_des_iafAtom = Atom(name: '_Mob_dados.bool_des_iaf');
+
+  @override
+  bool get bool_des_iaf {
+    _$bool_des_iafAtom.reportRead();
+    return super.bool_des_iaf;
+  }
+
+  @override
+  set bool_des_iaf(bool value) {
+    _$bool_des_iafAtom.reportWrite(value, super.bool_des_iaf, () {
+      super.bool_des_iaf = value;
+    });
+  }
+
+  final _$bool_des_cadAtom = Atom(name: '_Mob_dados.bool_des_cad');
+
+  @override
+  bool get bool_des_cad {
+    _$bool_des_cadAtom.reportRead();
+    return super.bool_des_cad;
+  }
+
+  @override
+  set bool_des_cad(bool value) {
+    _$bool_des_cadAtom.reportWrite(value, super.bool_des_cad, () {
+      super.bool_des_cad = value;
+    });
+  }
+
+  final _$bool_flo_kcAtom = Atom(name: '_Mob_dados.bool_flo_kc');
+
+  @override
+  bool get bool_flo_kc {
+    _$bool_flo_kcAtom.reportRead();
+    return super.bool_flo_kc;
+  }
+
+  @override
+  set bool_flo_kc(bool value) {
+    _$bool_flo_kcAtom.reportWrite(value, super.bool_flo_kc, () {
+      super.bool_flo_kc = value;
+    });
+  }
+
+  final _$bool_flo_kyAtom = Atom(name: '_Mob_dados.bool_flo_ky');
+
+  @override
+  bool get bool_flo_ky {
+    _$bool_flo_kyAtom.reportRead();
+    return super.bool_flo_ky;
+  }
+
+  @override
+  set bool_flo_ky(bool value) {
+    _$bool_flo_kyAtom.reportWrite(value, super.bool_flo_ky, () {
+      super.bool_flo_ky = value;
+    });
+  }
+
+  final _$bool_flo_iafAtom = Atom(name: '_Mob_dados.bool_flo_iaf');
+
+  @override
+  bool get bool_flo_iaf {
+    _$bool_flo_iafAtom.reportRead();
+    return super.bool_flo_iaf;
+  }
+
+  @override
+  set bool_flo_iaf(bool value) {
+    _$bool_flo_iafAtom.reportWrite(value, super.bool_flo_iaf, () {
+      super.bool_flo_iaf = value;
+    });
+  }
+
+  final _$bool_flo_cadAtom = Atom(name: '_Mob_dados.bool_flo_cad');
+
+  @override
+  bool get bool_flo_cad {
+    _$bool_flo_cadAtom.reportRead();
+    return super.bool_flo_cad;
+  }
+
+  @override
+  set bool_flo_cad(bool value) {
+    _$bool_flo_cadAtom.reportWrite(value, super.bool_flo_cad, () {
+      super.bool_flo_cad = value;
+    });
+  }
+
+  final _$bool_fru_kcAtom = Atom(name: '_Mob_dados.bool_fru_kc');
+
+  @override
+  bool get bool_fru_kc {
+    _$bool_fru_kcAtom.reportRead();
+    return super.bool_fru_kc;
+  }
+
+  @override
+  set bool_fru_kc(bool value) {
+    _$bool_fru_kcAtom.reportWrite(value, super.bool_fru_kc, () {
+      super.bool_fru_kc = value;
+    });
+  }
+
+  final _$bool_fru_kyAtom = Atom(name: '_Mob_dados.bool_fru_ky');
+
+  @override
+  bool get bool_fru_ky {
+    _$bool_fru_kyAtom.reportRead();
+    return super.bool_fru_ky;
+  }
+
+  @override
+  set bool_fru_ky(bool value) {
+    _$bool_fru_kyAtom.reportWrite(value, super.bool_fru_ky, () {
+      super.bool_fru_ky = value;
+    });
+  }
+
+  final _$bool_fru_iafAtom = Atom(name: '_Mob_dados.bool_fru_iaf');
+
+  @override
+  bool get bool_fru_iaf {
+    _$bool_fru_iafAtom.reportRead();
+    return super.bool_fru_iaf;
+  }
+
+  @override
+  set bool_fru_iaf(bool value) {
+    _$bool_fru_iafAtom.reportWrite(value, super.bool_fru_iaf, () {
+      super.bool_fru_iaf = value;
+    });
+  }
+
+  final _$bool_fru_cadAtom = Atom(name: '_Mob_dados.bool_fru_cad');
+
+  @override
+  bool get bool_fru_cad {
+    _$bool_fru_cadAtom.reportRead();
+    return super.bool_fru_cad;
+  }
+
+  @override
+  set bool_fru_cad(bool value) {
+    _$bool_fru_cadAtom.reportWrite(value, super.bool_fru_cad, () {
+      super.bool_fru_cad = value;
+    });
+  }
+
+  final _$bool_mat_kcAtom = Atom(name: '_Mob_dados.bool_mat_kc');
+
+  @override
+  bool get bool_mat_kc {
+    _$bool_mat_kcAtom.reportRead();
+    return super.bool_mat_kc;
+  }
+
+  @override
+  set bool_mat_kc(bool value) {
+    _$bool_mat_kcAtom.reportWrite(value, super.bool_mat_kc, () {
+      super.bool_mat_kc = value;
+    });
+  }
+
+  final _$bool_mat_kyAtom = Atom(name: '_Mob_dados.bool_mat_ky');
+
+  @override
+  bool get bool_mat_ky {
+    _$bool_mat_kyAtom.reportRead();
+    return super.bool_mat_ky;
+  }
+
+  @override
+  set bool_mat_ky(bool value) {
+    _$bool_mat_kyAtom.reportWrite(value, super.bool_mat_ky, () {
+      super.bool_mat_ky = value;
+    });
+  }
+
+  final _$bool_mat_iafAtom = Atom(name: '_Mob_dados.bool_mat_iaf');
+
+  @override
+  bool get bool_mat_iaf {
+    _$bool_mat_iafAtom.reportRead();
+    return super.bool_mat_iaf;
+  }
+
+  @override
+  set bool_mat_iaf(bool value) {
+    _$bool_mat_iafAtom.reportWrite(value, super.bool_mat_iaf, () {
+      super.bool_mat_iaf = value;
+    });
+  }
+
+  final _$bool_mat_cadAtom = Atom(name: '_Mob_dados.bool_mat_cad');
+
+  @override
+  bool get bool_mat_cad {
+    _$bool_mat_cadAtom.reportRead();
+    return super.bool_mat_cad;
+  }
+
+  @override
+  set bool_mat_cad(bool value) {
+    _$bool_mat_cadAtom.reportWrite(value, super.bool_mat_cad, () {
+      super.bool_mat_cad = value;
+    });
+  }
+
   final _$carregarAsyncAction = AsyncAction('_Mob_dados.carregar');
 
   @override
@@ -1038,7 +1496,37 @@ fru_cad: ${fru_cad},
 mat_kc: ${mat_kc},
 mat_ky: ${mat_ky},
 mat_iaf: ${mat_iaf},
-mat_cad: ${mat_cad}
+mat_cad: ${mat_cad},
+bool_cad_min: ${bool_cad_min},
+bool_grup_culura: ${bool_grup_culura},
+bool_gd: ${bool_gd},
+bool_temp_base: ${bool_temp_base},
+bool_neg_acumulado_inicial: ${bool_neg_acumulado_inicial},
+bool_armazenamento_inicial: ${bool_armazenamento_inicial},
+bool_umidade_colhida: ${bool_umidade_colhida},
+bool_indice_colheita: ${bool_indice_colheita},
+bool_a: ${bool_a},
+bool_b: ${bool_b},
+bool_est_kc: ${bool_est_kc},
+bool_est_ky: ${bool_est_ky},
+bool_est_iaf: ${bool_est_iaf},
+bool_est_cad: ${bool_est_cad},
+bool_des_kc: ${bool_des_kc},
+bool_des_ky: ${bool_des_ky},
+bool_des_iaf: ${bool_des_iaf},
+bool_des_cad: ${bool_des_cad},
+bool_flo_kc: ${bool_flo_kc},
+bool_flo_ky: ${bool_flo_ky},
+bool_flo_iaf: ${bool_flo_iaf},
+bool_flo_cad: ${bool_flo_cad},
+bool_fru_kc: ${bool_fru_kc},
+bool_fru_ky: ${bool_fru_ky},
+bool_fru_iaf: ${bool_fru_iaf},
+bool_fru_cad: ${bool_fru_cad},
+bool_mat_kc: ${bool_mat_kc},
+bool_mat_ky: ${bool_mat_ky},
+bool_mat_iaf: ${bool_mat_iaf},
+bool_mat_cad: ${bool_mat_cad}
     ''';
   }
 }

@@ -227,6 +227,40 @@ abstract class _Mob_dados with Store {
   double final_total_dias = 0;
   double final_quebra_produ = 0;
 
+//---------------------------------
+  bool bool_final_est_num = false;
+  bool bool_final_est_eta = false;
+  bool bool_final_est_ky = false;
+  bool bool_final_est_prod = false;
+
+  bool bool_final_des_num = false;
+  bool bool_final_des_eta = false;
+  bool bool_final_des_ky = false;
+  bool bool_final_des_prod = false;
+
+  bool bool_final_flo_num = false;
+  bool bool_final_flo_eta = false;
+  bool bool_final_flo_ky = false;
+  bool bool_final_flo_prod = false;
+
+  bool bool_final_fru_num = false;
+  bool bool_final_fru_eta = false;
+  bool bool_final_fru_ky = false;
+  bool bool_final_fru_prod = false;
+
+  bool bool_final_mat_num = false;
+  bool bool_final_mat_eta = false;
+  bool bool_final_mat_ky = false;
+  bool bool_final_mat_prod = false;
+
+  bool bool_produtividade_potencial_peso = false;
+  bool bool_produtividade_potencial_agua = false;
+  bool bool_produtividade_potencial_total = false;
+  bool bool_final_total_dias = false;
+  bool bool_final_quebra_produ = false;
+
+  //-------------------------------------------
+
   @observable
   double somatorio_i = 0;
   @observable
@@ -311,6 +345,80 @@ abstract class _Mob_dados with Store {
   @observable
   String mat_cad = "0.0";
 
+  //---------------------------------------------------------
+  @observable
+  bool bool_cad_min = false;
+  @observable
+  bool bool_grup_culura = false;
+  @observable
+  bool bool_gd = false;
+  @observable
+  bool bool_temp_base = false;
+  @observable
+  bool bool_neg_acumulado_inicial = false;
+  @observable
+  bool bool_armazenamento_inicial = false;
+  @observable
+  bool bool_umidade_colhida = false;
+  @observable
+  bool bool_indice_colheita = false;
+  @observable
+  bool bool_a = false;
+  @observable
+  bool bool_b = false;
+
+  @observable
+  bool bool_est_kc = false;
+  @observable
+  bool bool_est_ky = false;
+  @observable
+  bool bool_est_iaf = false;
+  @observable
+  bool bool_est_cad = false;
+
+  @observable
+  bool bool_des_kc = false;
+  @observable
+  bool bool_des_ky = false;
+  @observable
+  bool bool_des_iaf = false;
+  @observable
+  bool bool_des_cad = false;
+
+  @observable
+  bool bool_flo_kc = false;
+  @observable
+  bool bool_flo_ky = false;
+  @observable
+  bool bool_flo_iaf = false;
+  @observable
+  bool bool_flo_cad = false;
+
+  @observable
+  bool bool_fru_kc = false;
+  @observable
+  bool bool_fru_ky = false;
+  @observable
+  bool bool_fru_iaf = false;
+  @observable
+  bool bool_fru_cad = false;
+
+  @observable
+  bool bool_mat_kc = false;
+  @observable
+  bool bool_mat_ky = false;
+  @observable
+  bool bool_mat_iaf = false;
+  @observable
+  bool bool_mat_cad = false;
+  //---------------------------------
+  bool veri_reg(valor) {
+    return !valor.contains(',');
+  }
+
+  RegExp regExp = RegExp(
+    r"\-?\d+\.\d+",
+  );
   @action
   void setDataStart(valor) => dataStart = valor;
   @action
@@ -318,70 +426,298 @@ abstract class _Mob_dados with Store {
   @action
   void setEstado(valor) => estado = valor;
   @action
-  void setCad_min(valor) => cad_min = valor;
+  void setCad_min(valor) {
+    if (veri_reg(valor)) {
+      bool_cad_min = false;
+    } else {
+      bool_cad_min = true;
+    }
+
+    cad_min = valor;
+  }
+
   @action
   void setGrup_cultura(valor) => grup_culura = valor;
   @action
-  void setGd(valor) => gd = valor;
-  @action
-  void setTemp_base(valor) => temp_base = valor;
-  @action
-  void setNeg_acumulado_inicial(valor) => neg_acumulado_inicial = valor;
-  @action
-  void setArmazenameto_inicial(valor) => armazenamento_inicial = valor;
-  @action
-  void setUmidade_colheita(valor) => umidade_colhida = valor;
-  @action
-  void setIndice_colheita(valor) => indice_colheita = valor;
-  @action
-  void setA(valor) => a = valor;
-  @action
-  void setB(valor) => b = valor;
+  void setGd(valor) {
+    if (veri_reg(valor)) {
+      bool_gd = false;
+    } else {
+      bool_gd = true;
+    }
+    gd = valor;
+  }
 
   @action
-  void setEst_kc(valor) => est_kc = valor;
-  @action
-  void setEst_ky(valor) => est_ky = valor;
-  @action
-  void setEst_iaf(valor) => est_iaf = valor;
-  @action
-  void setEst_cad(valor) => est_cad = valor;
+  void setTemp_base(valor) {
+    if (veri_reg(valor)) {
+      bool_temp_base = false;
+    } else {
+      bool_temp_base = true;
+    }
+    temp_base = valor;
+  }
 
   @action
-  void setDes_kc(valor) => des_kc = valor;
-  @action
-  void setDes_ky(valor) => des_ky = valor;
-  @action
-  void setDes_iaf(valor) => des_iaf = valor;
-  @action
-  void setDes_cad(valor) => des_cad = valor;
+  void setNeg_acumulado_inicial(valor) {
+    if (veri_reg(valor)) {
+      bool_neg_acumulado_inicial = false;
+    } else {
+      bool_neg_acumulado_inicial = true;
+    }
+    neg_acumulado_inicial = valor;
+  }
 
   @action
-  void setFlo_kc(valor) => flo_kc = valor;
-  @action
-  void setFlo_ky(valor) => flo_ky = valor;
-  @action
-  void setFlo_iaf(valor) => flo_iaf = valor;
-  @action
-  void setFlo_cad(valor) => flo_cad = valor;
+  void setArmazenameto_inicial(valor) {
+    if (veri_reg(valor)) {
+      bool_armazenamento_inicial = false;
+    } else {
+      bool_armazenamento_inicial = true;
+    }
+    armazenamento_inicial = valor;
+  }
 
   @action
-  void setFru_kc(valor) => fru_kc = valor;
-  @action
-  void setFru_ky(valor) => fru_ky = valor;
-  @action
-  void setFru_iaf(valor) => fru_iaf = valor;
-  @action
-  void setFru_cad(valor) => fru_cad = valor;
+  void setUmidade_colheita(valor) {
+    if (veri_reg(valor)) {
+      bool_umidade_colhida = false;
+    } else {
+      bool_umidade_colhida = true;
+    }
+    umidade_colhida = valor;
+  }
 
   @action
-  void setMat_kc(valor) => mat_kc = valor;
+  void setIndice_colheita(valor) {
+    if (veri_reg(valor)) {
+      bool_indice_colheita = false;
+    } else {
+      bool_indice_colheita = true;
+    }
+    indice_colheita = valor;
+  }
+
   @action
-  void setMat_ky(valor) => mat_ky = valor;
+  void setA(valor) {
+    if (veri_reg(valor)) {
+      bool_a = false;
+    } else {
+      bool_a = true;
+    }
+    a = valor;
+  }
+
   @action
-  void setMat_iaf(valor) => mat_iaf = valor;
+  void setB(valor) {
+    if (veri_reg(valor)) {
+      bool_b = false;
+    } else {
+      bool_b = true;
+    }
+    b = valor;
+  }
+
   @action
-  void setMat_cad(valor) => mat_cad = valor;
+  void setEst_kc(valor) {
+    if (veri_reg(valor)) {
+      bool_est_kc = false;
+    } else {
+      bool_est_kc = true;
+    }
+    est_kc = valor;
+  }
+
+  @action
+  void setEst_ky(valor) {
+    if (veri_reg(valor)) {
+      bool_est_ky = false;
+    } else {
+      bool_est_ky = true;
+    }
+    est_ky = valor;
+  }
+
+  @action
+  void setEst_iaf(valor) {
+    if (veri_reg(valor)) {
+      bool_est_iaf = false;
+    } else {
+      bool_est_iaf = true;
+    }
+    est_iaf = valor;
+  }
+
+  @action
+  void setEst_cad(valor) {
+    if (veri_reg(valor)) {
+      bool_est_cad = false;
+    } else {
+      bool_est_cad = true;
+    }
+    est_cad = valor;
+  }
+
+  @action
+  void setDes_kc(valor) {
+    if (veri_reg(valor)) {
+      bool_des_kc = false;
+    } else {
+      bool_des_kc = true;
+    }
+    des_kc = valor;
+  }
+
+  @action
+  void setDes_ky(valor) {
+    if (veri_reg(valor)) {
+      bool_des_ky = false;
+    } else {
+      bool_des_ky = true;
+    }
+    des_ky = valor;
+  }
+
+  @action
+  void setDes_iaf(valor) {
+    if (veri_reg(valor)) {
+      bool_des_iaf = false;
+    } else {
+      bool_des_iaf = true;
+    }
+    des_iaf = valor;
+  }
+
+  @action
+  void setDes_cad(valor) {
+    if (veri_reg(valor)) {
+      bool_des_cad = false;
+    } else {
+      bool_des_cad = true;
+    }
+    des_cad = valor;
+  }
+
+  @action
+  void setFlo_kc(valor) {
+    if (veri_reg(valor)) {
+      bool_flo_kc = false;
+    } else {
+      bool_flo_kc = true;
+    }
+    flo_kc = valor;
+  }
+
+  @action
+  void setFlo_ky(valor) {
+    if (veri_reg(valor)) {
+      bool_flo_ky = false;
+    } else {
+      bool_flo_ky = true;
+    }
+    flo_ky = valor;
+  }
+
+  @action
+  void setFlo_iaf(valor) {
+    if (veri_reg(valor)) {
+      bool_flo_iaf = false;
+    } else {
+      bool_flo_iaf = true;
+    }
+    flo_iaf = valor;
+  }
+
+  @action
+  void setFlo_cad(valor) {
+    if (veri_reg(valor)) {
+      bool_flo_cad = false;
+    } else {
+      bool_flo_cad = true;
+    }
+    flo_cad = valor;
+  }
+
+  @action
+  void setFru_kc(valor) {
+    if (veri_reg(valor)) {
+      bool_fru_kc = false;
+    } else {
+      bool_fru_kc = true;
+    }
+    fru_kc = valor;
+  }
+
+  @action
+  void setFru_ky(valor) {
+    if (veri_reg(valor)) {
+      bool_fru_ky = false;
+    } else {
+      bool_fru_ky = true;
+    }
+    fru_ky = valor;
+  }
+
+  @action
+  void setFru_iaf(valor) {
+    if (veri_reg(valor)) {
+      bool_fru_iaf = false;
+    } else {
+      bool_fru_iaf = true;
+    }
+    fru_iaf = valor;
+  }
+
+  @action
+  void setFru_cad(valor) {
+    if (veri_reg(valor)) {
+      bool_fru_cad = false;
+    } else {
+      bool_fru_cad = true;
+    }
+    fru_cad = valor;
+  }
+
+  @action
+  void setMat_kc(valor) {
+    if (veri_reg(valor)) {
+      bool_mat_kc = false;
+    } else {
+      bool_mat_kc = true;
+    }
+    mat_kc = valor;
+  }
+
+  @action
+  void setMat_ky(valor) {
+    if (veri_reg(valor)) {
+      bool_mat_ky = false;
+    } else {
+      bool_mat_ky = true;
+    }
+    mat_ky = valor;
+  }
+
+  @action
+  void setMat_iaf(valor) {
+    if (veri_reg(valor)) {
+      bool_mat_iaf = false;
+    } else {
+      bool_mat_iaf = true;
+    }
+    mat_iaf = valor;
+  }
+
+  @action
+  void setMat_cad(valor) {
+    if (veri_reg(valor)) {
+      bool_mat_cad = false;
+    } else {
+      bool_mat_cad = true;
+    }
+    mat_cad = valor;
+  }
+
   @action
   void setResult_tabela(valor) => result_tabela = valor;
   @action
