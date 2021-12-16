@@ -56,10 +56,12 @@ class _LoadState extends State<Load> {
       }
     }
     Navigator.pop(context);
-    Navigator.push(
+    Navigator.pushNamed(context, '/home');
+    //
+    /*Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Principal()),
-    );
+    );*/
   }
 
   @override

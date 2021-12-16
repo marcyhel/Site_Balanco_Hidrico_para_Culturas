@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:plat11/mobx/dados/mob_dados.dart';
+import 'package:plat11/screen/clima/clima.dart';
 import 'package:plat11/screen/load.dart';
 import 'package:plat11/screen/principal.dart';
 
@@ -31,11 +32,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: lightThemeData,
-        darkTheme: darkThemeData,
-        themeMode: EasyDynamicTheme.of(context).themeMode,
-        home: Load() //Principal(),
-        );
+      title: 'Flutter Demo',
+      theme: lightThemeData,
+      darkTheme: darkThemeData,
+      themeMode: EasyDynamicTheme.of(context).themeMode,
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) => Load(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/home': (context) => Principal(indexx: 0),
+        '/clima': (context) => Principal(indexx: 1),
+        '/expecifica': (context) => Principal(indexx: 2),
+        '/tabela': (context) => Principal(indexx: 3),
+        '/grafico': (context) => Principal(indexx: 4),
+        '/resultados': (context) => Principal(indexx: 5),
+        '/explicacao': (context) => Principal(indexx: 6),
+      },
+    );
   }
 }

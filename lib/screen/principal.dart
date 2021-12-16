@@ -1,11 +1,13 @@
+import 'dart:math' as math show pi;
+
+import 'package:collapsible_sidebar/collapsible_sidebar.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:collapsible_sidebar/collapsible_sidebar.dart';
-import 'dart:math' as math show pi;
 
 import 'package:plat11/screen/dashboard/dashboard.dart';
 import 'package:plat11/screen/explicacao/explicacao.dart';
 import 'package:plat11/screen/graficos/grafico.dart';
+import 'package:plat11/screen/home/home.dart';
 import 'package:plat11/screen/resultado/resultado.dart';
 import 'package:plat11/screen/tabela/tabela.dart';
 import 'package:plat11/util/themes.dart';
@@ -13,7 +15,11 @@ import 'package:plat11/util/themes.dart';
 import 'clima/clima.dart';
 
 class Principal extends StatefulWidget {
-  const Principal({Key? key}) : super(key: key);
+  int indexx;
+  Principal({
+    Key? key,
+    required this.indexx,
+  }) : super(key: key);
 
   @override
   _PrincipalState createState() => _PrincipalState();
@@ -28,6 +34,7 @@ class _PrincipalState extends State<Principal> {
   String _headline = "";
   int index = 0;
   List screen = [
+    HomePage(),
     Clima(),
     Dashboard(),
     TabelaDados(),
@@ -50,41 +57,53 @@ class _PrincipalState extends State<Principal> {
     super.initState();
 
     _items = _generateItems;
-    index = 0;
+    _items[widget.indexx].isSelected = true;
+    index = widget.indexx;
   }
 
   List<CollapsibleItem> get _generateItems {
     return [
       CollapsibleItem(
+        text: 'Home page',
+        icon: Icons.cloud_circle,
+        onPressed: () => setState(() => Navigator.pushNamed(context, '/home')),
+        //isSelected: true,
+      ),
+      CollapsibleItem(
         text: 'Dados do clima',
         icon: Icons.cloud_circle,
-        onPressed: () => setState(() => index = 0),
-        isSelected: true,
+        onPressed: () => setState(() => Navigator.pushNamed(context, '/clima')),
+        //isSelected: true,
       ),
       CollapsibleItem(
         text: 'Expecifiações',
         icon: Icons.space_dashboard,
-        onPressed: () => setState(() => index = 1),
+        onPressed: () =>
+            setState(() => Navigator.pushNamed(context, '/expecifica')),
       ),
       CollapsibleItem(
         text: 'Tabela',
         icon: Icons.table_chart_rounded,
-        onPressed: () => setState(() => index = 2),
+        onPressed: () =>
+            setState(() => Navigator.pushNamed(context, '/tabela')),
       ),
       CollapsibleItem(
         text: 'Graficos',
         icon: Icons.stacked_line_chart_rounded,
-        onPressed: () => setState(() => index = 3),
+        onPressed: () =>
+            setState(() => Navigator.pushNamed(context, '/grafico')),
       ),
       CollapsibleItem(
         text: 'Resultados',
         icon: Icons.table_rows_rounded,
-        onPressed: () => setState(() => index = 4),
+        onPressed: () =>
+            setState(() => Navigator.pushNamed(context, '/resultados')),
       ),
       CollapsibleItem(
         text: 'Explicação',
         icon: Icons.wysiwyg_rounded,
-        onPressed: () => setState(() => index = 5),
+        onPressed: () =>
+            setState(() => Navigator.pushNamed(context, '/explicacao')),
       ),
     ];
   }
