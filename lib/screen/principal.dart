@@ -65,7 +65,7 @@ class _PrincipalState extends State<Principal> {
     return [
       CollapsibleItem(
         text: 'Home page',
-        icon: Icons.cloud_circle,
+        icon: Icons.home_rounded,
         onPressed: () => setState(() => Navigator.pushNamed(context, '/home')),
         //isSelected: true,
       ),

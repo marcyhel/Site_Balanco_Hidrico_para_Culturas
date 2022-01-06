@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plat11/screen/explicacao/larg_explicacao.dart';
+import 'package:plat11/screen/explicacao/small_explicacao.dart';
 import 'package:plat11/screen/widgets/responsive.dart';
 
 class Explicacao extends StatelessWidget {
@@ -12,7 +13,7 @@ class Explicacao extends StatelessWidget {
         child: SingleChildScrollView(
           controller: _controller,
           child: ResponsiveWidget.isSmallScreen(context)
-              ? Container()
+              ? SmallExplicacao()
               : LargExplicacao(),
         ));
   }

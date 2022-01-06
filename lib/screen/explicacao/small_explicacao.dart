@@ -1,5 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+
+class CustonLinhaSmall extends StatelessWidget {
+  String texto;
+  String sigla;
+  String cor;
+  CustonLinhaSmall({
+    Key? key,
+    required this.texto,
+    required this.sigla,
+    required this.cor,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            sigla,
+            style: cor == '1'
+                ? TextStyle(
+                    color: Theme.of(context).canvasColor,
+                    fontWeight: FontWeight.bold)
+                : TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(
+            texto,
+            style: cor == '1'
+                ? TextStyle(color: Theme.of(context).canvasColor)
+                : null,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class CustonLinha extends StatelessWidget {
   String texto;
@@ -44,8 +84,8 @@ class CustonLinha extends StatelessWidget {
   }
 }
 
-class LargExplicacao extends StatelessWidget {
-  LargExplicacao({Key? key}) : super(key: key);
+class SmallExplicacao extends StatelessWidget {
+  SmallExplicacao({Key? key}) : super(key: key);
   List<List<String>> list1 = [
     [
       'Qo',
@@ -147,12 +187,12 @@ class LargExplicacao extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Container(
-            margin: const EdgeInsets.only(left: 200),
-            width: MediaQuery.of(context).size.width * 1.8,
+            margin: const EdgeInsets.only(left: 0),
+            width: MediaQuery.of(context).size.width / 1.5,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 100),
+                const SizedBox(height: 50),
                 const Text(
                     'Preencha os dados necessários na telas de Dados iniciais e Dados do clima'),
                 const Text(
@@ -163,7 +203,7 @@ class LargExplicacao extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 2,
                     child: const Divider()),
                 const Text(
-                  'Verifique o valor do grupo de culturas adequado      (Temp=oC)',
+                  'Verifique o valor do grupo de culturas adequado\n(Temp=oC)',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 const SizedBox(height: 20),
@@ -172,59 +212,68 @@ class LargExplicacao extends StatelessWidget {
                     Text(
                       'Grupo 1',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(' - '),
                     Expanded(
                       child: Text(
-                          'Plantas C3 de Inverno : Feijão, Repolho, Grão de Bico,ervilha, Bata e Trigo ...(3<Temp<30)'),
+                        'Plantas C3 de Inverno : Feijão, Repolho, Grão de Bico,ervilha, Bata e Trigo ...(3<Temp<30)',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     )
                   ],
                 ),
+                const SizedBox(height: 20),
                 Row(
                   children: const [
                     Text(
                       'Grupo 2',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(' - '),
                     Expanded(
                       child: Text(
-                          'Plantas C3 de Verão:  Alfafa, Cítricos, Algodão,Amendoim,Pimentão,Arroz,açafrão,Soja,Girassol,Tabaco,Tomate, ...(15<Temp<40)'),
+                        'Plantas C3 de Verão:  Alfafa, Cítricos, Algodão,Amendoim,Pimentão,Arroz,açafrão,Soja,Girassol,Tabaco,Tomate, ...(15<Temp<40)',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     )
                   ],
                 ),
+                const SizedBox(height: 20),
                 Row(
                   children: const [
                     Text(
                       'Grupo 3',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(' - '),
                     Expanded(
                         child: Text(
-                            'Algumas Variedades de Milho e Sorgo(10<Temp<30)'))
+                      'Algumas Variedades de Milho e Sorgo(10<Temp<30)',
+                      style: TextStyle(fontSize: 12),
+                    ))
                   ],
                 ),
+                const SizedBox(height: 20),
                 Row(
                   children: const [
                     Text(
                       'Grupo 4',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     Text(' - '),
                     Expanded(
                       child: Text(
-                          'Plantas C4: Milho, Sorgo Cana de Açúcar,....(14<Temp<40)'),
+                        'Plantas C4: Milho, Sorgo Cana de Açúcar,....(14<Temp<40)',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
                 Container(
                     margin: const EdgeInsets.only(left: 25),
                     width: MediaQuery.of(context).size.width / 2,
@@ -251,149 +300,70 @@ class LargExplicacao extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          IntrinsicHeight(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 50, left: 50),
-                    child: const Text('Blanço Hidrico\ncom CAD\ne Kc Variavel'),
-                  ),
+          Column(
+            children: [
+              const Divider(
+                thickness: 1,
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+                child: const Text(
+                  'Blanço Hidrico\ncom CAD\ne Kc Variavel',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-                IntrinsicWidth(
-                  child: Expanded(
-                    child: Container(
-                      color: Colors.blueGrey[400],
-                      width: 3,
-                      //height: 600,
-                    ),
-                  ),
+              ),
+              ...List<Widget>.generate(
+                  list1.length,
+                  (int index) => CustonLinhaSmall(
+                        sigla: list1[index][0],
+                        texto: list1[index][1],
+                        cor: list1[index][2],
+                      )).toList(),
+              const Divider(
+                thickness: 1,
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+                child: const Text(
+                  'Produtividade\nReal',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      color: Colors.blueGrey[400],
-                      width: 30,
-                      height: 3,
-                      //height: 600,
-                    ),
-                    ...List<Widget>.generate(
-                        list1.length,
-                        (int index) => CustonLinha(
-                              sigla: list1[index][0],
-                              texto: list1[index][1],
-                              cor: list1[index][2],
-                            )).toList(),
-                    Container(
-                      color: Colors.blueGrey[400],
-                      width: 30,
-                      height: 3,
-                      //height: 600,
-                    ),
-                  ],
-                )
-              ],
-            ),
+              ),
+              ...List<Widget>.generate(
+                  list2.length,
+                  (int index) => CustonLinhaSmall(
+                        sigla: list2[index][0],
+                        texto: list2[index][1],
+                        cor: list2[index][2],
+                      )).toList(),
+              const Divider(
+                thickness: 1,
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 20, left: 20, bottom: 20),
+                child: const Text(
+                  'Produtividade\nPotencial',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ),
+              ...List<Widget>.generate(
+                  list3.length,
+                  (int index) => CustonLinhaSmall(
+                        sigla: list3[index][0],
+                        texto: list3[index][1],
+                        cor: list3[index][2],
+                      )).toList(),
+              const Divider(
+                thickness: 1,
+              ),
+            ],
           ),
           const SizedBox(height: 50),
-          IntrinsicHeight(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 50, left: 50),
-                    child: const Text('Produtividade\nReal'),
-                  ),
-                ),
-                IntrinsicWidth(
-                  child: Expanded(
-                    child: Container(
-                      color: Colors.blueGrey[400],
-                      width: 3,
-                      //height: 600,
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      color: Colors.blueGrey[400],
-                      width: 30,
-                      height: 3,
-                      //height: 600,
-                    ),
-                    ...List<Widget>.generate(
-                        list2.length,
-                        (int index) => CustonLinha(
-                              sigla: list2[index][0],
-                              texto: list2[index][1],
-                              cor: list2[index][2],
-                            )).toList(),
-                    Container(
-                      color: Colors.blueGrey[400],
-                      width: 30,
-                      height: 3,
-                      //height: 600,
-                    ),
-                  ],
-                )
-              ],
-            ),
+          Container(
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            child: const Text(
+                'Balanço Hídrico de Cultura por Thornthwaite & Mather(1955), modificado por BARBIERI(1997)  com Kc e CAD variáveis'),
           ),
-          const SizedBox(height: 50),
-          IntrinsicHeight(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 50, left: 50),
-                    child: const Text('Produtividade\nPotencial'),
-                  ),
-                ),
-                IntrinsicWidth(
-                  child: Expanded(
-                    child: Container(
-                      color: Colors.blueGrey[400],
-                      width: 3,
-                      //height: 600,
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      color: Colors.blueGrey[400],
-                      width: 30,
-                      height: 3,
-                      //height: 600,
-                    ),
-                    ...List<Widget>.generate(
-                        list3.length,
-                        (int index) => CustonLinha(
-                              sigla: list3[index][0],
-                              texto: list3[index][1],
-                              cor: list3[index][2],
-                            )).toList(),
-                    Container(
-                      color: Colors.blueGrey[400],
-                      width: 30,
-                      height: 3,
-                      //height: 600,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          const SizedBox(height: 50),
-          const Text(
-              'Balanço Hídrico de Cultura por Thornthwaite & Mather(1955), modificado por BARBIERI(1997)  com Kc e CAD variáveis'),
           const SizedBox(height: 50),
         ],
       ),

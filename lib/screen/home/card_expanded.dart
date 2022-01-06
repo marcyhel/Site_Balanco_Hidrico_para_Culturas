@@ -1,19 +1,33 @@
-import 'package:expandable/expandable.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:expandable/expandable.dart';
+import 'package:flutter/material.dart';
+
 class Card2 extends StatelessWidget {
+  String titulo;
+  String resumo;
+  String descricao;
+  String img;
+  Card2({
+    Key? key,
+    required this.titulo,
+    required this.resumo,
+    required this.descricao,
+    required this.img,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     buildImg(Color color, double height) {
       return SizedBox(
-          height: height,
-          child: Container(
-            decoration: BoxDecoration(
-              color: color,
-              shape: BoxShape.rectangle,
-            ),
-          ));
+        height: height,
+        child: Container(
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.rectangle,
+          ),
+        ),
+      );
     }
 
     buildCollapsed1() {
@@ -26,7 +40,7 @@ class Card2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Expandable",
+                    titulo,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ],
@@ -36,7 +50,16 @@ class Card2 extends StatelessWidget {
     }
 
     buildCollapsed2() {
-      return buildImg(Colors.lightGreenAccent, 150);
+      return Container(
+        height: 200,
+        width: double.infinity,
+        child: Expanded(
+          child: Image.asset(
+            'assets/' + img,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ); //buildImg(Colors.lightGreenAccent, 150);
     }
 
     buildCollapsed3() {
@@ -53,11 +76,11 @@ class Card2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Expandable",
+                    titulo,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   Text(
-                    "3 Expandable widgets",
+                    descricao,
                     style: Theme.of(context).textTheme.caption,
                   ),
                 ],
@@ -67,22 +90,15 @@ class Card2 extends StatelessWidget {
     }
 
     buildExpanded2() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(child: buildImg(Colors.lightGreenAccent, 100)),
-              Expanded(child: buildImg(Colors.orange, 100)),
-            ],
+      return Container(
+        height: 200,
+        width: double.infinity,
+        child: Expanded(
+          child: Image.asset(
+            'assets/' + img,
+            fit: BoxFit.cover,
           ),
-          Row(
-            children: <Widget>[
-              Expanded(child: buildImg(Colors.lightBlue, 100)),
-              Expanded(child: buildImg(Colors.cyan, 100)),
-            ],
-          ),
-        ],
+        ),
       );
     }
 
@@ -93,7 +109,7 @@ class Card2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'loremIpsum',
+              resumo,
               softWrap: true,
             ),
           ],
@@ -113,6 +129,7 @@ class Card2 extends StatelessWidget {
             child: ScrollOnExpand(
               child: Card(
                 clipBehavior: Clip.antiAlias,
+                elevation: 15,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -134,23 +151,17 @@ class Card2 extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Builder(
-                          builder: (context) {
-                            var controller = ExpandableController.of(context,
-                                required: true)!;
-                            return TextButton(
-                              child: Text(
-                                controller.expanded ? "COLLAPSE" : "EXPAND",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .button!
-                                    .copyWith(color: Colors.deepPurple),
-                              ),
-                              onPressed: () {
-                                controller.toggle();
-                              },
-                            );
-                          },
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Builder(
+                            builder: (context) {
+                              var controller = ExpandableController.of(context,
+                                  required: true)!;
+                              return controller.expanded
+                                  ? Text("")
+                                  : Text("Chique para Expandir!");
+                            },
+                          ),
                         ),
                       ],
                     ),

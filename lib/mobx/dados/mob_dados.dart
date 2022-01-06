@@ -32,10 +32,11 @@ abstract class _Mob_dados with Store {
   Future<void> carregar() async {
     carrega = true;
 
-    var result = await conectar();
+    var result = await conectar(estado);
 
     print(result.length);
     setResult_tabela(result);
+    SalvarDados();
     //await Future.delayed(Duration(seconds: 3));
     carrega = false;
   }
@@ -768,10 +769,10 @@ List<DataClima> datasManual(dataStart, dataEnd) {
   }
 }
 
-Future<List<DataClima>> conectar() async {
+Future<List<DataClima>> conectar(String estado) async {
   var aux = calculateDaysInterval(
-      DateTime(DateTime.now().year - 1, DateTime.now().month - 2,
-          DateTime.now().day),
+      DateTime(
+          DateTime.now().year, DateTime.now().month - 2, DateTime.now().day),
       DateTime.now());
 
   List<List<Climas>> clima = [];
@@ -810,16 +811,18 @@ Future<List<DataClima>> conectar() async {
   double mediaP = 0;
   ObservableList<DataClima> result = ObservableList();
   double tapaBuraco = 25;
+  int indexEstado = verificaIndexEstado(estado);
   for (var i = 0; i < aux.length; i++) {
-    print(clima[i][0]);
+    print(clima[i][indexEstado]);
     try {
-      mediaT += double.parse(clima[i][0].TMAX18.replaceAll('*', ''));
-      tapaBuraco = double.parse(clima[i][0].TMAX18.replaceAll('*', ''));
+      mediaT += double.parse(clima[i][indexEstado].TMAX18.replaceAll('*', ''));
+      tapaBuraco =
+          double.parse(clima[i][indexEstado].TMAX18.replaceAll('*', ''));
     } catch (e) {
       mediaT += tapaBuraco;
     }
     try {
-      mediaP += double.parse(clima[i][0].PMAX12.replaceAll('*', ''));
+      mediaP += double.parse(clima[i][indexEstado].PMAX12.replaceAll('*', ''));
     } catch (e) {
       mediaP += mediaP / cont;
     }
@@ -838,9 +841,95 @@ Future<List<DataClima>> conectar() async {
       cont = 0;
     }
     cont++;
+    print(clima[i][indexEstado].nome);
+    print(indexEstado);
   }
 
   return result;
+}
+
+int verificaIndexEstado(String estado) {
+  if (estado == 'AC') {
+    return 20;
+  }
+  if (estado == 'AL') {
+    return 13;
+  }
+  if (estado == 'AP') {
+    return 12;
+  }
+  if (estado == 'AM') {
+    return 14;
+  }
+  if (estado == 'BA') {
+    return 22;
+  }
+  if (estado == 'CE') {
+    return 9; //
+  }
+  if (estado == 'DF') {
+    return 4; //
+  }
+  if (estado == 'GO') {
+    return 10;
+  }
+  if (estado == 'MA') {
+    return 23;
+  }
+  if (estado == 'MT') {
+    return 6; //
+  }
+  if (estado == 'MS') {
+    return 5; //
+  }
+  if (estado == 'MG') {
+    return 2; //
+  }
+  if (estado == 'PA') {
+    return 1; //
+  }
+  if (estado == 'PB') {
+    return 11;
+  }
+  if (estado == 'PR') {
+    return 7; //
+  }
+  if (estado == 'PE') {
+    return 19;
+  }
+  if (estado == 'PI') {
+    return 25;
+  }
+  if (estado == 'RJ') {
+    return 21;
+  }
+  if (estado == 'RN') {
+    return 15;
+  }
+  if (estado == 'RS') {
+    return 17;
+  }
+  if (estado == 'RO') {
+    return 18;
+  }
+  if (estado == 'RR') {
+    return 3; //
+  }
+  if (estado == 'SC') {
+    return 8; //
+  }
+  if (estado == 'SP') {
+    return 24;
+  }
+  if (estado == 'ES') {
+    return 26; //
+  }
+  if (estado == 'TO') {
+    return 16;
+  }
+
+  print(estado);
+  return 0;
 }
 
 List<DateTime> calculateDaysInterval(DateTime startDate, DateTime endDate) {
