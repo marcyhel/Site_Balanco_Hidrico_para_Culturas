@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:plat11/screen/home/carrocel.dart';
 
 import 'card_expanded.dart';
 
@@ -28,6 +29,7 @@ class _LargHomePageState extends State<LargHomePage> {
         color: Theme.of(context).backgroundColor,
         child: Column(
           children: [
+            Carrocel(),
             Container(
               height: 300,
               width: double.infinity,

@@ -772,7 +772,7 @@ List<DataClima> datasManual(dataStart, dataEnd) {
 Future<List<DataClima>> conectar(String estado) async {
   var aux = calculateDaysInterval(
       DateTime(
-          DateTime.now().year, DateTime.now().month - 2, DateTime.now().day),
+          DateTime.now().year - 2, DateTime.now().month, DateTime.now().day),
       DateTime.now());
 
   List<List<Climas>> clima = [];

@@ -53,11 +53,9 @@ class Card2 extends StatelessWidget {
       return Container(
         height: 200,
         width: double.infinity,
-        child: Expanded(
-          child: Image.asset(
-            'assets/' + img,
-            fit: BoxFit.cover,
-          ),
+        child: Image.asset(
+          'assets/' + img,
+          fit: BoxFit.cover,
         ),
       ); //buildImg(Colors.lightGreenAccent, 150);
     }
@@ -93,11 +91,9 @@ class Card2 extends StatelessWidget {
       return Container(
         height: 200,
         width: double.infinity,
-        child: Expanded(
-          child: Image.asset(
-            'assets/' + img,
-            fit: BoxFit.cover,
-          ),
+        child: Image.asset(
+          'assets/' + img,
+          fit: BoxFit.cover,
         ),
       );
     }
